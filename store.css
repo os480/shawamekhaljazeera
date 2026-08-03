@@ -1,0 +1,5394 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+   
+    
+}
+
+
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body{
+    background-color: #eff0f5
+}
+
+body.with-announcement nav {
+  transform: translateY(50px);
+  /* يحرك nav للأسفل مؤقتًا */
+}
+
+nav {
+  transition: transform 0.3s ease;
+}
+
+.announcement-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #ff0000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  /* فوق الـ nav */
+  font-size: 18px;
+  font-weight: bold;
+  transition: top 0.3s ease;
+  overflow: hidden;
+  padding: 10px 20px;
+  position: relative;
+}
+  
+.announcement-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+}
+  
+.announcement-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.announcement-slide a{
+  color: white;
+  text-decoration: none;
+}
+
+.announcement-slide a:hover{
+  text-decoration: underline;
+}
+
+.announcement-slide.active {
+  opacity: 1;
+  position: relative;
+}
+  
+.arrow-320,
+.right-321 {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  /* نستخدم absolute لتحديد مكان الزر داخل .announcement-wrapper */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.arrow-320 {
+  left: 358px;
+  /* قرب السهم اليسار من بداية الإعلان */
+}
+
+.right-321 {
+  right: 358px;
+  /* قرب السهم اليمين من نهاية الإعلان */
+}
+
+
+.announcement-bar {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  background-color: #f5f5f5;
+  z-index: 9999;
+  height: 50px;
+  /* أو حسب ارتفاع الإعلان */
+}
+
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: #eff0f5;
+  z-index: 1000;
+  /* تحت الإعلان */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  
+}
+
+/* محاذاة زر القائمة مع اللوجو */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* اللوجو */
+.logo {
+  width: 100px;
+  transition: width 0.3s ease;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+}
+
+.main>li {
+  position: relative;
+}
+
+.main>li>a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #dd1d1d;
+  font-size: 11px;
+  padding: 20px 20px;
+  transition: 0.6s ease-in-out;
+}
+
+.main li span{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #dd1d1d;
+    font-size: 11px;
+    padding: 20px 20px;
+    transition: 0.6s ease-in-out;
+}
+
+.main li span:hover{
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.main>li a:hover {
+  background-color: white;
+  color: black;
+
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-10%);
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80vw;
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.main>li:hover .dropdown {
+  display: grid;
+}
+
+.dropdown-item {
+  text-align: left;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item a {
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: #dd1d1d;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.dropdown-item a:hover {
+  text-decoration: underline;
+}
+
+.dropdown-item a i {
+  font-size: 14px;
+  color: #dd1d1d;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-item a:hover i {
+  transform: translateX(5px);
+}
+
+.dropdown-item p {
+  font-size: 14px;
+  margin: 0;
+  color: #555;
+}
+
+/* Icons Section */
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-icons a i {
+  color: #dd1d1d;
+  font-size: 15px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #dd1d1d;
+}
+
+.nav-icons a i:hover {
+  color: lightgray;
+  cursor: pointer;
+  transform: rotate(360deg);
+}
+
+/* أيقونة المستخدم مع تسجيل الدخول */
+.user-login {
+  display: none;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.user-login a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #dd1d1d;
+  text-decoration: none;
+}
+
+.user-login i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+/* أيقونات السوشيال ميديا */
+.social-icons {
+  display: none !important;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.social-icons a {
+  font-size: 20px;
+  color: #dd1d1d;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+/*-------------Navbar----------------*/
+
+/* جعل النص يخرج من أي container */
+.text {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 125px;
+  z-index: 1;
+
+}
+
+.text p {
+  width: 100% ;
+  text-align: center;
+  line-height: 1.6;
+  color: #3c3c3d;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+.text span {
+  color: #ff0000;
+}
+
+.text strong {
+  font-weight: 600;
+}
+
+
+.section-sections--26444961284415__custom_liquid_FiaUJG-padding {
+  padding-top: calc(12px * 0.75);
+  padding-bottom: calc(12px * 0.75);
+  color: rgba(var(--color-foreground), 0.75);
+  background-color: rgb(var(--color-background));
+  margin-top: 150px;
+}
+
+
+:root,
+.color-background-1 {
+  --color-background: 239, 240, 245;
+  --gradient-background: #eff0f5;
+  --color-foreground: 0, 0, 0;
+  --color-background-contrast: 161, 166, 196;
+  --color-shadow: 94, 11, 11;
+  --color-button: 171, 18, 18;
+  --color-button-text: 239, 240, 245;
+  --color-secondary-button: 239, 240, 245;
+  --color-secondary-button-text: 255, 0, 0;
+  --color-link: 255, 0, 0;
+  --color-badge-foreground: 0, 0, 0;
+  --color-badge-background: 239, 240, 245;
+  --color-badge-border: 0, 0, 0;
+  --payment-terms-background-color: rgb(239 240 245);
+}
+
+
+
+
+ /*----------------- Cards Section----------- */
+ .card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 20px;
+  background-color: #eff0f5;
+  
+  
+}
+
+.card .title{
+  margin-top: -4px;
+}
+
+
+
+  .card {
+    background-color: #eff0f5;
+    border: 2px solid #09090a;
+    border-radius: 20px;
+    width: 180px;
+    height: 300px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+  }
+
+  .card:hover {
+    transform: scale(1.05) rotate(1deg); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card img {
+    width: 120px;
+    height: 140px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+  }
+
+ .card:hover img {
+    transform: scale(1.1); 
+  }
+
+  .card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #09090a;
+    padding-top: 18px;
+  }
+
+  .card a {
+    font-size: 20px; /* حجم أصغر افتراضيًا */
+    text-decoration: none;
+    color: #0e0e0e;
+    display: inline-block; /* لضمان تأثير التحويل */
+    transition: transform 0.3s ease-in-out; /* تأثير سلس */
+}
+
+.card a:hover { 
+    transform: scale(2); /* تكبير الحجم عند التمرير */
+}
+
+  
+
+/*---------------Brand------------------*/
+
+.container {
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.container a{
+  text-decoration: none;
+  color: #000;
+
+}
+
+.container .card-slider .card2,
+.container .card-slider .card3,
+.container .card-slider .card4,
+.container .card-slider .card5,
+.container .card-slider .card6,
+.container .card-slider .card2-2 {
+  width: 180px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 15px;
+  /* شكل ألطف */
+}
+
+.container .card-slider .card2:hover,
+.container .card-slider .card3:hover,
+.container .card-slider .card4:hover,
+.container .card-slider .card5:hover,
+.container .card-slider .card6:hover,
+.container .card-slider .card2-2:hover {
+  transform: scale(1.05) rotate(0.8deg);
+  box-shadow: 8px 12px 18px rgba(0, 0, 0, 0.3);
+  /* ظل أكبر ناحية اليمين من تحت */
+}
+
+
+
+
+
+
+
+
+
+
+.card6 .image-container-Auto-Fire-Off{
+  margin-left: -21px;
+  overflow: visible !important;
+}
+
+.card6 .image-container-Auto-Fire-Off img{
+  width: 190px !important;
+}
+
+.card6 .text33{
+  margin-top: -27px;
+}
+
+.card-Auto-Fire .brand{
+  margin-bottom: 5px;
+}
+
+.card-Auto-Fire .price .currency-icon{
+  margin-top: -3px;
+}
+
+
+
+.container .button-viewall{
+   background-color: #ab1212;
+   border-radius: 15px;
+   border: none;
+   margin-top: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 33px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  
+}
+
+
+.container .button-viewall:hover{
+  transform: scale(1.1);
+}
+
+.container .viewall{
+  text-decoration: none;
+  color: #EFF0F5;
+  font-size: 15.75px;
+  font-weight: 400px;
+  line-height: 1.1;
+  
+}
+
+.container h1{
+  margin-bottom: 30px;
+  text-align: left;
+  margin-left: 4%;
+  margin-top: 5%;
+  font-size: 1.1cm;
+  font-weight: bold;
+}
+
+.card-slider {
+ /* overflow: hidden;*/
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.card-wrapper-fighting {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 20px;
+}
+
+
+.card-wrapper-fighting .image-container {
+  position: relative;
+  width: 140px;
+  height: 250px; 
+  overflow: hidden;
+  padding-right: 90%;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.card-wrapper-fighting .image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease-out;
+}
+
+.card-wrapper-fighting .image-container .second-img {
+  opacity: 0; 
+  transform: scale(0.9);
+}
+
+.card-wrapper-fighting .image-container:hover .first-img {
+  opacity: 0; 
+}
+
+.card-wrapper-fighting .image-container:hover .second-img {
+  opacity: 1; 
+  transform: scale(1.1); 
+}
+
+.card-wrapper-fighting .card6 .add-to-cart{
+ margin-top: 12px;
+ padding: 10px 20px;
+ border: 1px solid #dd1d1d;
+ height: 55px;
+ color: #dd1d1d;
+ font-size: 12px;
+ border-radius: 15px;
+ cursor: pointer;
+ transition: 0.3s ease-out;
+ position: absolute;
+ top: 90%;
+ left: 50%;
+ transform: translateX(-50%);
+ text-align: center;
+ width: 70%;
+}
+
+.card-wrapper-fighting .card6 .add-to-cart:hover {
+  width: 100%;
+  border: 2px solid #ff0202;
+  background-color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.card-wrapper-fighting .card6 .add-to-cart-automatic{
+  margin-top: -0.5px !important;
+}
+
+
+
+
+.card-wrapper-fighting .card6 .image-container-cover25KG-Fire{
+  padding-right: 40px !important;
+  width: 140px !important;
+  height: 210px !important;
+  object-fit: contain !important;
+}
+
+
+.card-wrapper-fighting .card6 .price-cover25KG-Fire{
+  margin-top: 1px !important;
+}
+
+.card-wrapper-fighting .card6 .price-cover25KG-Fire .currency-icon {
+  margin-top: -4px !important;
+}
+
+.card-wrapper-fighting .card2 .title-6KG-Powder{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card6 .image-container-6KG-Automatic-Powder{
+  margin-top: -8px;
+  
+}
+
+.card-wrapper-fighting .card6 .text30 {
+  margin-top: -25px;
+}
+
+.card-wrapper-fighting .card6 .text33{
+  margin-top: -44px;
+}
+
+.card-wrapper-fighting .card6 .brand-6KG-Automatic{
+  margin-top: -6px;
+  margin-bottom: 4px;
+}
+
+.card-wrapper-fighting .card6 .brand-Auto-Fire-Off{
+  margin-top: -7px;
+  margin-bottom: 13px !important;
+}
+
+
+
+.card-wrapper-fighting .card2 .title-Resilient{
+  margin-top: -2px !important;
+}
+
+.card-wrapper-fighting .card2 .title-1000ml-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .brand-1000ml-Fire{
+  margin-bottom: 14px;
+}
+
+.card-wrapper-fighting .card2 .title-Dry-1KG-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .title-25KG-Dry-Powder{
+  margin-top: 31px;
+}
+
+.card-wrapper-fighting .card2 .title-Dry-45KG-Fire{
+  margin-top: 19px;
+}
+
+
+
+.card-wrapper-fighting .card2 .title-CO2-6KG-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .title-500ML-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .brand-Fire-Stop-500ml{
+  margin-bottom: 18px;
+}
+
+.card-wrapper-fighting .card2 .title-Test{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .brand-Test-And-Drain{
+  margin-bottom: 19px;
+}
+
+.card-wrapper-fighting .card2 .title-Fire-Blanket{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card2 .brand-Fire-Blanket{
+  margin-bottom: 19px;
+}
+
+.card-wrapper-fighting .card2 .imag-Dry-1KG-Fire{
+  margin-left: 18px;
+}
+
+
+
+.card-wrapper-fighting .card3 .brand-Swing-Check{
+  margin-bottom: 23px;
+}
+
+
+.card-wrapper-fighting .card3 .image-flip-Swing img{
+  width:140px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-fighting .card3 .title-Swing{
+  margin-top: -30px !important;
+}
+
+.card-wrapper-fighting .card2 .title-Flanged{
+  margin-top: 16px;
+}
+
+.card-wrapper-fighting .card2 .brand-Flanged{
+  margin-bottom: 6px;
+}
+
+
+.card-wrapper-fighting .card3 .image-flip-Hose img {
+  width: 140px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-fighting .card3 .title-Hose{
+      margin-top: -20px;
+}
+
+.card-wrapper-fighting .card3 .brand-Fire-Hose{
+  margin-bottom: 19px;
+}
+
+.card-wrapper-fighting .card2 .title-Foam{
+  margin-top: 17px;
+}
+
+.card-wrapper-fighting .card6 .image-container-Fire-Hose-Cabinet img{
+  height: 180px;
+  width: 185px;
+  padding-right: 21px;
+  margin-top: -21px;
+}
+
+.card-wrapper-fighting .card6 .title-Hose-Cabinet{
+  margin-top: -27px;
+}
+
+.card-wrapper-fighting .card6 .brand-Fire-Hose-Cabinet{
+  margin-top: -4px;
+}
+
+.card-wrapper-fighting .card6 .btn-Fire-Hose{
+      margin-top: 0px;
+}
+
+.card-wrapper-fighting .card2 .title-Saudi-6KG-Fire{
+  margin-top: 0;
+}
+
+.card-wrapper-fighting .card2 .title-Saudi-CO2-Fire{
+  margin-top: 19px;
+}
+
+
+.card-wrapper-fighting .card6 .image-container-Bristol img{
+    width: 200px !important;
+    height: 140px !important;
+    object-fit: contain !important;
+}
+
+.card-wrapper-fighting .card6 .title-Bristol{
+  margin-top: -17px !important;
+}
+
+.card-wrapper-fighting .card6 .title-Cover25KG-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card6 .title-Cover6KG-Fire{
+  margin-top: 19px;
+}
+
+.card-wrapper-fighting .card6 .add-to-cart-Bristole{
+  margin-top: 0;
+}
+
+
+
+.card-wrapper-fighting .card3 .price-Swing-Check .new-price,
+.card-wrapper-fighting .card3 .price-Swing-Check .old-price,
+.card-wrapper-fighting .card2 .price-Resilient .new-price,
+.card-wrapper-fighting .card2 .price-Resilient .old-price{
+   font-size: 14.3px !important;
+}
+
+.card-wrapper-fighting .card3 .price-Swing-Check{
+  gap: 4px !important;
+  margin-top: 4px;
+}
+
+.card-wrapper-fighting .card3 .price-Swing-Check .currency-icon{
+  margin-top: -4px;
+}
+
+.card-wrapper-fighting .card6 .btn-Auto-Fire-Off{
+  margin-top: 0;
+}
+
+
+/*=========================================================*/
+
+.card-wrapper-alarm{
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 20px;
+}
+
+.card-wrapper-alarm .card3 .image-container-Conventional{
+  margin-top: 20px !important;
+}
+
+
+.card-wrapper-alarm .card3 .image-container-Conventional img {
+  width: 140px !important;
+  height: 180px !important;
+  margin-right: 40%;
+  
+}
+
+.card-wrapper-alarm .card3 .title-Conentional-Alarm-Control{
+  margin-top: 15px;
+}
+
+.card-wrapper-alarm .card2 .title-Conventional-Photoelectric{
+  margin-top: 15px;
+}
+
+
+.card-wrapper-alarm .card4 .image-container2-Wheelock img {
+  width: 140px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-alarm .card4 .title-Wheelock{
+  margin-top: 35px !important;
+}
+
+.card-wrapper-alarm .card2 .title-Manual,
+.card-wrapper-alarm .card2 .title-Fire6-Bell{
+  margin-top: 15px;
+}
+.card-wrapper-alarm .card2 .price-Manual-Call{
+  margin-top: 15px;
+}
+
+.card-wrapper-alarm .card2 .title-ROR-Heat{
+  margin-top: 27px;
+}
+
+.card-wrapper-alarm .card2 .brand-ROR-Heat{
+  margin-bottom: 11px;
+}
+
+.card-wrapper-alarm .card2 .brand-Fire6-Bell{
+  margin-bottom: 30px;
+}
+
+.card-wrapper-alarm .card2 .title-Sounder{
+  margin-top: 13px;
+}
+
+.card-wrapper-alarm .card2 .title-Alarm{
+  margin-top: 12px;
+}
+
+.card-wrapper-alarm .card2 .title-LF6127-AV{
+  margin-top: 10px;
+}
+
+.card-wrapper-alarm .card2 .title-LF6107-CDI{
+  margin-top: 0;
+}
+
+.card-wrapper-alarm .card2 .title-LF66203-MCP{
+  margin-top: 0;
+}
+
+.card-wrapper-alarm .card2 .text33{
+  margin-top: 0;
+}
+
+.card-wrapper-alarm .card2 .title-SD{
+  margin-top: 0;
+}
+
+
+.card-wrapper-alarm .card3 .image-flip-Conventional-Alarm img {
+  width: 160px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-alarm .card3 .title-Conentional-Alarm{
+  margin-top: -55px;
+}
+
+.card-wrapper-alarm .card3 .image-flip-Conventional-Indoor{
+  margin-top: 12px;
+}
+
+
+
+.card-wrapper-alarm .card3 .image-flip-Conventional-Indoor img {
+  width: 160px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-alarm .card3 .title-Conventional-Indoor{
+  margin-top: 15px;
+}
+
+.card-wrapper-alarm .card3 .image-flip-9V-Smoke img {
+  width: 120px !important;
+  height: 180px !important;
+  margin-right: 40%;
+}
+
+.card-wrapper-alarm .card6 .image-container-UL-Shielded img{
+  width: 120px !important;
+  height: 150px !important;
+  margin-right: 40%;
+  
+}
+
+.card-wrapper-alarm .card6 .image-container-UL-Shielded{
+  margin-top: -10px !important;
+}
+
+.card-wrapper-alarm .card6 .title-Ul-Shielded{
+  margin-top: -50px !important;
+}
+
+.card-wrapper-alarm .card6 .title-Manual-Call{
+  margin-top: -40px;
+}
+
+.card-wrapper-alarm .card6 .title-LF-SD-41{
+  margin-top: -55px;
+}
+
+.card-wrapper-alarm .card4 {
+  background: #fff;
+  border: 2px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 15px;
+  width: 180px;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .card-wrapper-alarm .card4:hover {
+  transform: scale(1.05) rotate(0.8deg); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+} */
+
+
+.card-wrapper-alarm .card4 img {
+  width: 150px;
+  height: 200px;
+  margin-bottom: 15px;
+  transition: 0.4s ease-out;
+}
+
+.card-wrapper-alarm .card4 img:hover{
+  transform: scale(1.1);
+}
+
+.card-wrapper-alarm .card4 h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.card-wrapper-alarm .card4 h3:hover{
+  text-decoration: underline;
+}
+
+.card-wrapper-alarm .card4 p{
+  margin-top: 6%;
+}
+
+.card-wrapper-alarm .card4 .brand {
+  font-size: 12px;
+  color: gray;
+}
+
+.card-wrapper-alarm .card4 .price {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-wrapper-alarm .image-container2 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px; 
+  display: grid;
+  align-items: center;
+}
+
+.card-wrapper-alarm .image-container2 img {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  backface-visibility: hidden; 
+  transition: transform 0.6s ease;
+  margin-left: 7%;
+  
+}
+
+.card-wrapper-alarm .image-container2 img.front2 {
+  transform: rotateY(0deg);
+}
+
+.card-wrapper-alarm .image-container2 img.back2 {
+  transform: rotateY(100deg);
+}
+
+.card-wrapper-alarm .image-container2:hover img.front2 {
+  transform: rotateY(-90deg);
+}
+
+.card-wrapper-alarm .image-container2:hover img.back2 {
+  transform: rotateY(0deg);
+}
+
+/*===================================================================*/
+
+.card-wrapper-Life{
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 20px;
+  width: 40%;
+}
+
+.card-wrapper-Life .card2,.card6{
+  background: #fff;
+  border: 2px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 15px;
+  width: 180px !important;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-wrapper-Life .image-container {
+  position: relative;
+  width: 140px;
+  height: 250px; 
+  overflow: hidden;
+  padding-right: 90%;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.card-wrapper-Life .card6 .image-container-Saso-Ul{
+  margin-left: 5% !important;
+  margin-top: -18px !important;
+}
+
+.card-wrapper-Life .card25-SasoUL .brand{
+  margin-top: -10px !important;
+  
+}
+
+.card-wrapper-Life .card6 .image-container-Saso-Ul img {
+  width: 140px !important;
+  height: 165px !important;
+  
+
+}
+
+.card-wrapper-Life .card6 .text55{
+  margin-top: -15px;
+}
+
+.card-wrapper-Life .card6 .title-UL-PRC-Door{
+  margin-top: -15px;
+}
+
+.card-wrapper-Life .card6 .add-to-cart-SASO{
+  margin-top: -1px !important;
+}
+
+.card-wrapper-Life .image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease-out;
+}
+
+.card-wrapper-Life .image-container .second-img {
+  opacity: 0; 
+  transform: scale(0.9);
+}
+
+.card-wrapper-Life .image-container:hover .first-img {
+  opacity: 0; 
+}
+
+.card-wrapper-Life .image-container:hover .second-img {
+  opacity: 1; 
+  transform: scale(1.1); 
+}
+
+.card-wrapper-Life .card6 .add-to-cart{
+ margin-top: 12px;
+ padding: 10px 20px;
+ border: 1px solid #dd1d1d;
+ height: 55px;
+ color: #dd1d1d;
+ font-size: 12px;
+ border-radius: 15px;
+ cursor: pointer;
+ transition: 0.3s ease-out;
+ position: absolute;
+ top: 90%;
+ left: 50%;
+ transform: translateX(-50%);
+ text-align: center;
+ width: 70%;
+}
+
+.card-wrapper-Life .card6 .add-to-cart:hover {
+  width: 100%;
+  border: 2px solid #ff0202;
+  background-color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.card-wrapper-Life .card6 .price-SASO-Ul{
+  margin-top: 2px !important;
+}
+
+.card-wrapper-Life .card6 .price-SASO-Ul .currency-icon{
+     margin-top: -4px !important;
+}
+
+/* .card-wrapper-Life .card6 .price-SASO-Ul .old-price, .new-price{
+  font-size: 17px !important;
+  
+} */
+
+.card-wrapper-Life .card25-SasoUL .price {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  font-size: 18px !important;
+  text-align: center !important;
+  margin-top: -5px !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+
+.card-wrapper-Life .card25-SasoUL .old-price-container,
+.card-wrapper-Life .card25-SasoUL .new-price-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 1px !important;
+  justify-content: center !important;
+
+}
+
+.card-wrapper-Life .card25-SasoUL .new-price{
+  font-size: 20px !important;
+  font-weight: bold !important;
+  margin-top: 0 !important;
+
+}
+
+.card-wrapper-Life .card25-SasoUL .old-price {
+  font-size: 17px !important;
+  text-decoration: line-through !important;
+  color: gray !important;
+  margin-top: 2px !important;
+}
+
+.card-wrapper-Life .card25-SasoUL .currency-icon {
+  width: 33px !important;
+  height: 20px !important;
+  transform: scale(1.2) !important;
+  /* تكبير الأيقونة */
+  display: inline-block !important;
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .price {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  font-size: 18px !important;
+  text-align: center !important;
+  margin-top: -10px !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .old-price-container,
+.card-wrapper-Life .card25-UL-Emergency-Door .new-price-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5px !important;
+  justify-content: center !important;
+
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .new-price {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  margin-top: -35px !important;
+
+}
+
+
+.card-wrapper-Life .card25-UL-Emergency-Door .old-price {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  margin-top: 0 !important;
+
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .currency-icon {
+  width: 33px !important;
+  height: 20px !important;
+  transform: scale(1.2) !important;
+  /* تكبير الأيقونة */
+  display: inline-block !important;
+  margin-top: 0!important;
+  transform: translateY(-11px) !important;
+  gap: 0 !important;
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .old-price-container img{
+  transform: translateY(4px) !important;
+}
+
+
+.card-wrapper-Life .card6 .image-container-Acrylic {
+  padding-right: 40px !important;
+  width: 140px !important;
+  height: 210px !important;
+  object-fit: contain !important;
+}
+
+.card-wrapper-Life .card6 .title-Acrylic{
+  margin-top: 5px;
+}
+
+
+.card-wrapper-Life .card6 .image-container-Emergency-Exit {
+  padding-right: 40px !important;
+  width: 140px !important;
+  height: 210px !important;
+  object-fit: contain !important;
+}
+
+.card-wrapper-Life .card6 .pric-Emergency{
+  margin-top: 15px !important;
+}
+
+.card-wrapper-Life .card6 .title-Industrial-2-Hour{
+  margin-top: -30px;
+}
+
+.card-wrapper-Life .card6 .title-Manual-Call,
+.card-wrapper-Life .card6 .title-LF-SD-41{
+  margin-top: -25px;
+}
+
+
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 44px;
+
+  
+  
+}
+
+.pagination .arrow {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: -40px;
+}
+
+.pagination span{
+  margin-top: -40px;
+}
+
+.pagination .page-number-fighting {
+  font-size: 18px;
+}
+
+.pagination .page-number-alarm{
+  font-size: 18px;
+}
+
+.pagination .page-number-Life{
+  font-size: 18px;
+}
+
+.arrow.disabled {
+  opacity: 0.5; /* مظهر شفاف */
+  cursor: not-allowed; /* تغيير المؤشر */
+}
+
+.arrow.disabled:hover {
+  color: red; /* لون أثناء التمرير */
+}
+
+.arrow-alarm.disabled {
+  opacity: 0.5; /* مظهر شفاف */
+  
+}
+
+
+.arrow-alarm.disabled:hover {
+  color: red; /* لون أثناء التمرير */
+  cursor: not-allowed; /* مؤشر معطل */
+}
+
+.pagination .arrow-alarm {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: -40px;
+}
+
+
+.add-to-cart:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.arrow-Life.disabled {
+  opacity: 0.5; /* مظهر شفاف */
+ 
+}
+
+.arrow-Life.disabled:hover {
+  color: red; /* لون عند التمرير على زر معطل */
+  cursor: not-allowed; /* مؤشر معطل */
+}
+
+.pagination .arrow-Life {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: -40px;
+}
+
+
+
+/*-------------Filters-----------*/
+.filter-section {
+  text-align: left;
+  padding: 20px;
+  margin-top: -11px;
+}
+
+.filter-section .filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* الحاوية الرئيسية */
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* الجزء الشمال (Filter + Availability + Price + Brand + Type) */
+.filters-left {
+  display: flex;
+  align-items: center;
+  
+}
+
+.filters-left h2 {
+  font-size: 16.8px;
+  color: #000;
+  font-weight: 400;
+  margin-top: 14px;
+  margin-left: 5px;
+}
+
+/* الجزء اليمين (Sort by + Featured + 46 products) */
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 260px;
+}
+
+.product-count {
+  font-size: 14px;
+  color: RGBA(0, 0, 0, 0.75);
+  margin-top: 14px;
+}
+
+.filter {
+  display: inline-block;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+
+.filter button {
+  border: none;
+  background-color: #eff0f5;
+  right: 0;
+  position: relative;
+  color: RGBA(0, 0, 0, 0.75);
+}
+
+.filter button:hover{
+  color: #000;
+  text-decoration: underline;
+}
+
+.filter button .icon {
+  position: absolute;
+  height: .6rem;
+  right: -0.5rem;
+  top: calc(50% - .2rem);
+}
+
+.filter-toggle {
+  background-color: #f0f0f0;
+  font-size: 18px;
+  border: none;
+  color: #eb5454;
+}
+
+.dropdown-toggle {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.status .selected-count {
+  font-weight: bold;
+  color: #000;
+}
+
+.status .reset-button {
+  background-color: transparent;
+  border: none;
+  color: #b51414;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.status .reset-button:hover {
+  text-decoration: underline;
+}
+
+.match-all {
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+  display: block;
+}
+
+.dimmed-option {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.dropdown-menu {
+  width: 250px;
+}
+
+.dropdown-menu,
+.dropdown-menu2 {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu label,
+.dropdown-menu2 label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu input {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.6s, color 0.6s;
+}
+
+.dropdown-menu label {
+  word-spacing: -1px;
+  letter-spacing: -0.5px;
+}
+
+.dropdown-menu label:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.label-container {
+  display: flex;
+}
+
+.label1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3%;
+}
+
+.label1 input {
+  width: 53%;
+  border-radius: 15px;
+  padding: 5px;
+  height: 55px;
+}
+
+.filter.active .dropdown-menu,
+.filter.active .dropdown-menu2 {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu p a {
+  margin-left: 40px;
+  margin-bottom: 1%;
+  color: #b51414;
+}
+
+.dropdown-menu2 p a {
+  margin-left: 40px;
+  margin-bottom: 1%;
+  color: #b51414;
+}
+
+.dropdown-menu p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+.dropdown-menu2 p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+.reset-button {
+  margin-top: 10px;
+  background-color: transparent;
+  border: none;
+  color: #b51414;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.reset-button:hover {
+  text-decoration: underline;
+}
+
+.mobile-view {
+  display: none;
+  background-color: #f0f0f0;
+  font-size: 18px;
+}
+
+.mobile-filter-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  padding: 20px;
+  color: #000;
+}
+
+/* منيو الفلاتر (Brand + Type) */
+.dropdown-menu,
+.dropdown-menu2 {
+  max-height: 250px;
+  /* الطول الأقصى للمنيو */
+  overflow-y: auto;
+  /* يخلي في Scroll لو المحتوى أطول */
+  overflow-x: hidden;
+  /* يمنع البار الأفقي */
+}
+
+/* شكل الاسكرول */
+.dropdown-menu::-webkit-scrollbar,
+.dropdown-menu2::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb,
+.dropdown-menu2::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover,
+.dropdown-menu2::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+/* منيو الفلاتر للموبايل (Brand + Type + غيرها) */
+.dropdown-menu3 {
+  max-height: 180px;   /* الطول الأقصى أصغر */
+  overflow-y: auto;    
+  overflow-x: hidden;  
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+/* شكل الاسكرول */
+.dropdown-menu3::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu3::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.dropdown-menu3::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+
+
+
+
+  /*--------------Card2,Card3------*/
+
+  .cards-container2 {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 8%;
+    cursor: pointer !important;
+   
+  }
+
+  
+    .cards-container2 .card2,
+    .cards-container2 .card3,
+    .cards-container2 .card4,
+    .cards-container2 .card5,
+    .cards-container2 .card6,
+    .cards-container2 .card2-2 {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 15px;
+      /* شكل ألطف */
+    }
+  
+    .cards-container2 .card2:hover,
+    .cards-container2 .card3:hover,
+    .cards-container2 .card4:hover,
+    .cards-container2 .card5:hover,
+    .cards-container2 .card6:hover,
+    .cards-container2 .card2-2:hover {
+      transform: scale(1.05) rotate(0.8deg);
+      box-shadow: 8px 12px 18px rgba(0, 0, 0, 0.3);
+      /* ظل أكبر ناحية اليمين من تحت */
+    }
+
+
+  .cards-container2 .card-fire-Hose 
+  ,.card-Swing-Check , .card-Conventional-Alarm-Panel
+  , .card-Wheelock-Mb
+  {
+    width: 280px !important;
+  }
+
+    .cards-container2 .card6 .image-container-UL img {
+        width: 190px !important;
+        height: 180px !important;
+        margin-top: -40px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 19px;
+    }
+
+    .cards-container2 .card6 .title-UL{
+        margin-top: -26px !important;
+    }
+
+  .cards-container2 .card6KG-Auto , .card-Bristol , .card-Cover25KG 
+  , .card-Belt-Strap , .card-Cover6KG {
+    width: 280px !important;
+  }
+
+  .cards-container2 .card-Flasher-Outdoor ,.card-Indoor-Sounder ,.card-9V-Smoke{
+    width: 280px !important;
+  }
+
+  /* .cards-container2 .card6 .price-Reflective-Vest{
+    margin-top: 0 !important;
+  } */
+
+    .cards-container2 .card6 .price-Reflective-Vest .currency-icon{
+      margin-top: -2px !important;
+    }
+
+
+  
+  .card2,.card3,.card4,.card5,.card6 {
+    background: #fff;
+    border: 2px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 15px;
+    width: 280px !important;
+    height: 500px !important;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 8%;
+    
+  }
+
+
+  .card2:hover {
+    transform: scale(1.05) rotate(0.8deg); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cards-container2 a{
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .card2 .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  .card2 .badge1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #dfe0e4;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  .card2 img {
+    width: 150px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.4s ease-out;
+  }
+
+  .card2 img:hover{
+    transform: scale(1.05);
+  }
+
+  .card2 h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+    /* margin-top: 25px; */
+    
+  }
+
+  .card2 .title-12_12-Blanket{
+    margin-top: 0px;
+  }
+
+  .card2 .title-18_18-Blanket{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Flanged{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Foam-Fire{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Fire-Hose{
+    margin-top: 5px;
+  }
+
+  .card2 .title-Saudi-6KG-Fire{
+    margin-top: 0px;
+  }
+
+
+
+  .card2 .title-sd{ 
+    margin-top: -13px;
+  }
+
+  .card2 .title-system{
+    margin-top: -13px;
+  }
+
+  .card2 .title-Convex{
+    margin-top: 0;
+  }
+
+  .card2 .title-EM{
+    margin-top: 0;
+  }
+
+  .card2 .title-EM2025LD{
+    margin-top: -9px;
+  }
+
+  .card2 h3:hover{
+    text-decoration: underline;
+  }
+
+  .card2 p{
+    margin-top: 1%;
+  }
+
+.card2 .UL-Listed-25-Gallon {
+  margin-top: -11px;
+}
+
+  .card2 .Title-Dry{
+    margin-top: -12px !important;
+  }
+
+  .card2 .imag-6KG-Dry-Powder{
+    width: 240px;
+    height: 280px;
+  }
+
+  .card2 .Title-Resilient{
+      margin-top: -3px !important;
+  }
+
+  .card2 .title-N95-Particulate{
+        margin-top: 17px;
+  }
+
+  .card2 .title-V-4410-SL{
+    margin-top: 4px;
+  }
+
+  .card2 .title-Wall-Mountable {
+    margin-top: 54px;
+  }
+
+  .card2 .imag-Resilient-Seated{
+    width: 200px;
+    height: 280px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+  }
+
+
+  .card2 .title-2_5KG-Dry-Fire{
+          margin-top: 12px;
+  }
+
+  .card2 .title-Fire-1000-Stop,
+  .card2 .title-Dry-1KG-Fire{
+    margin-top: 2px;
+  }
+
+  .card2 .brand-Fire-1000-Stop,
+  .card2 .brand-Dry-1KG-Fire{
+    margin-top: 21px !important;
+  }
+
+  .card2 .image-Fire-Stop,
+  .card2 .image-Dry-1KG-Fire,
+  .card2 .imag-2_5KG-Dry-Fire,
+  .card2 .imag-4_5KG-Dry-Fire,
+  .card2 .imag-CO2-6KG-Fire,
+  .card2 .imag-Fire-Stop-500ml,
+  .card2 .imag-Fire-Blanket,
+  .card2 .imag-12_12-Blanket,
+  .card2 .imag-18_18-Blanket,
+  .card2 .imag-Flanged-NRS-Gate,
+  .card2 .imag-Foam-Fire,
+  .card2 .imag-Saudi-6KG-Dry-Powder,
+  .card2 .imag-Saudi-6KG-Fire{
+    width: 240px;
+    height: 280px;
+  }
+
+    .card2 .imag-50KG-Wheeled-Dry{
+        width: 155px;
+        height: 280px;
+        margin-top: -9px;
+        margin-bottom: 18px;
+    }
+
+    .card2 .imag-Test-and-Drain{
+      width: 263px;
+      height: 201px;
+      margin-top: 11px;
+ 
+    }
+
+    .card2 .title-Fire-Blanket,
+    .card2 .title-12_12-Blanket,
+    .card2 .title-18_18-Blanket,
+    .card2 .title-Flanged,
+    .card2 .title-Foam-Fire,
+    .card2 .title-Saudi-6KG-Dry-Powder,
+    .card2 .title-Saudi-6KG-Fire{
+      margin-top: 12px;
+    }
+
+  .card2 .title-Black-Orange{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Black-Yellow{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Fire-Fabric-Case{
+    margin-top: 12px;
+  }
+
+  .card2 .title-Red-White{
+    margin-top: -12px;
+  }
+
+  .card2 .title-UL-30Listed{
+    margin-top: 0px;
+  }
+
+  .card2 .title-ul20{
+    margin-top: 0px;
+  }
+
+  .card2 .title-UL-50Listed{
+    margin-top: 0px;
+  }
+
+  .card2 .title-UL-125Listed{
+    margin-top: 0px;
+  }
+
+  .card2 .title-UL-Listed-5LB{
+    margin-top: 0px;
+  }
+
+  .card2 .title-UL-Listed-10LB{
+    margin-top: 0px;
+  }
+
+  .card2 .title-Solar{
+    margin-top: -28px;
+  }
+
+  .card2 .title-High{
+    margin-top: -20px;
+  }
+
+  .card2 .title-Convex-Mirror{
+    margin-top: -20px;
+  }
+
+  .card2 .title-conventional{
+    margin-top: 22px !important;
+  }
+
+  .card2 .title-KS2024{
+    margin-top: -14px;
+  }
+
+
+  
+  .card2 .brand {
+    font-size: 12px;
+    color: gray;
+    text-transform: uppercase;
+  }
+
+
+  
+  .price {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+   
+  }
+
+.card2 .price  {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+
+  }
+
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 16px;
+}
+
+.card2-2 .price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* مسافة صغيرة بين السعر القديم والجديد */
+  font-size: 20px;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: -11px !important;
+}
+
+.card2-2 .old-price-container, .new-price-container {
+  display: inline-flex; /* يجعل النص والرمز على نفس الخط */
+  align-items: center;
+  gap: 3px;
+}
+
+.card2-2 .old-price {
+  font-size: 18px;
+  text-decoration: line-through;
+  color: gray;
+}
+
+.card2-2 .new-price {
+  font-size: 18px;
+  font-weight: bold;
+    
+}
+
+.card2-2 .currency-icon {
+  width: 18px; /* تصغير أيقونة العملة */
+  height: auto;
+  vertical-align: middle;
+  margin-left: 2px; /* ضمان المحاذاة الجيدة بجانب السعر */
+  margin-top: 15px;
+}
+
+.card2 .imag-LF-6100A{
+    margin-top: -11px !important;
+}
+
+.card3 .currency-icon-44{
+  margin-top: -3px;
+}
+
+
+.card6 .currency-icon-6k{
+  margin-top: -6px;
+}
+
+.card6 .text{
+  margin-top: -12px;
+}
+
+.card6 .price-ul{
+  margin-top: 1.5px !important;
+}
+
+.card6 .price-ul .currency-icon{
+  margin-top: -5px !important;
+  width: 0.8em !important;
+}
+
+.card5 .text {
+  margin-top: -12px;
+}
+
+.card5 .currency-icon-6k {
+  margin-top: -2px;
+}
+
+
+  
+.card2-2 .text2{
+  margin-top: -15px;
+}
+
+.card2 .img-25KG-Wheeled-CO2{
+  height: 230px;
+}
+
+.card2 .img-50KG-Wheeled-CO2{
+  height: 230px;
+  width: 100px;
+ 
+}
+
+.card2 .img-50KG-Wheeled-CO2:hover {
+  transform: scale(1.1);
+}
+
+
+.card2 .title-Conventional-Manual{
+  margin-top: 17px;
+}
+
+.card2 .title-LF-PHD,
+.card2 .title-LF-PE{
+  margin-top: 24px;
+}
+
+.card2 .title-2core{
+  margin-top: 22px;
+}
+
+.card2 .image-BRISTOL-UL-Fire-Rated-Emergency{
+    height: 239px;
+    width: 184px;
+}
+
+
+
+
+/*===========================Card3===================*/
+  
+.card3 {
+  background: #fff;
+  border: 2px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 15px;
+  width: 280px;
+  height: 400px;
+  text-align: center; 
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 600px;
+  
+}
+
+.card-Swing-Check{
+  perspective: 600px;
+}
+
+.card-Swing-Check:hover .image-flip{
+  transform: rotateX(360deg);
+}
+
+.card3 .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.card3:hover {
+  transform: scale(1.05) rotate(0.8deg); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  perspective: 1000px; 
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+
+}
+
+
+.container-6KG-Automatic-Dry-Powder {
+  perspective: 1000px;
+  width: 100px;
+  height: 225px;
+  display: grid;
+  align-items: center;
+  margin-top :-22px;
+  margin-bottom: 8px;
+  margin-right: 145px;
+}
+
+
+
+.image-flip {
+  width: 250px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d; 
+  position: relative;
+  transition: transform 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40px;
+  
+  
+}
+
+.card3:hover .image-flip {
+  transform: rotatex(180deg); 
+}
+
+.image-flip img {
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  backface-visibility: hidden; 
+  margin-top: 0;
+  
+}
+
+.image-flip .front-image {
+  transform: rotatex(0deg); 
+  
+}
+
+.image-flip .back-image {
+  transform: rotatex(180deg);
+  
+}
+
+.card3 h3 {
+  font-size: 16px;
+  margin: 10px 0;
+  margin-top: -40px;
+  
+}
+
+.card3 h3:hover{
+  text-decoration: underline;
+}
+
+.card3 .Title-Swing{
+  margin-top: 24px;
+}
+
+.card3 .price-Swing{
+  margin-top: 6px !important;
+}
+
+.card3 .price-Swing img{
+  margin-top: -4px;
+}
+
+.card3 .Title-House{
+  margin-top: 28px;
+}
+
+
+.card3 p {
+  margin: 6px 0;
+}
+
+.card3 .brand {
+  font-size: 12px;
+  color: gray;
+  text-transform: uppercase;
+}
+
+.card3 .price {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+
+
+.card3 .old-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 16px;
+  
+}
+
+.card3 .currency-icon-alarm{
+  margin-top: -3px;
+}
+
+.add-to-cart {
+ 
+  padding: 10px 20px;
+  border: 1px solid #dd1d1d;
+  height: 55px;
+  color: #dd1d1d;
+  font-size: 14px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 70%;
+  margin-top: 10px;
+  
+}
+
+.add-to-cart2 {
+ 
+  padding: 10px 20px;
+  border: 1px solid #f59a9e;
+  height: 55px;
+  color: #f59a9e;
+  font-size: 14px;
+  border-radius: 15px;
+  cursor: not-allowed;
+  transition: 0.3s ease-out;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 70%;
+  margin-top: 10px;
+  
+  
+}
+
+.add-to-cart:hover {
+  width: 100%;
+  border: 2px solid #ff0202;
+  background-color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.add-to-cart2:hover {
+  width: 100%;
+  border: 2px solid #f59a9e;
+  background-color: #ffffff;
+  letter-spacing: 2px;
+}
+
+ 
+  .add-to-cart.sold-out {
+  background-color: #f8d7da;
+  color: #721c24;
+  cursor: not-allowed;
+}
+
+.card6 .title-6KG-Automatic-Dry{
+    margin-top: 24px !important;
+}
+
+.card2 .brand-6KG-Dry-Powder{
+  margin-top: 8px;
+}
+
+.card2 .title-Test-and-Drain{
+  margin-top: 43px;
+}
+
+.card2 .brand-Test-and-Drain{
+  margin-top: 25px;
+}
+
+.card2 .price-Test-and-Drain img,
+.card2 .price-Fire-Blanket img,
+.card2 .price-12_12-Blanket img,
+.card2 .price-18_18-Blanket img,
+.card2 .price-Flanged img,
+.card6 .price-House img,
+.card2 .price-Foam-Fire img,
+.card6 .price-belt img,
+.card2 .price-Saudi-6KG-Dry-Powder img,
+.card2 .price-Saudi-6KG-Fire img,
+.card6 .price-bir img,
+.card6 .price-Fire-Extinguisher-Cover-6KG img,
+.card2 .price-ul10 img,
+.card2 .price-ul20 img,
+.card2 .price-UL-30Listed img,
+.card2 .price-UL-50Listed img,
+.card2 .price-UL-125Listed img,
+.card2 .price-UL-Listed-5LB img,
+.card2 .price-UL-Listed-10LB img,
+.card2 .price-UL-Listed-15LB img,
+.card2 .price-UL-Listed-50-LB img,
+.card2 .price-UL-Listed-100-LB img,
+.card2 .price-UL-Listed-20-LB img,
+.card2 .price-UL-Listed-6L-Portable img,
+.card2 .price-UL-Listed-9_6-Liter img,
+.card2 .price-UL-Listed-6L-Portable img,
+.card2 .price-UL-Listed-2_5-Gallon img,
+.card2 .price-6_OS_Y-Gate img,
+.card2 .price-25KG-Wheeled-CO2 img,
+.card2 .price-50KG-Wheeled-CO2 img,
+.card6 .price-6-Liter-Portable img,
+.card6 .price-2-Liter-Portable img,
+.card2 .price-Fire-Rated-120-minute-UL-Listed img,
+.card2 .price-Extinguisher-Mobile-Type-25-Kg img{
+  transform: scale(1) !important;
+
+}
+
+.card2 .price-Test-and-Drain,
+.card2 .price-Fire-Blanket,
+.card2 .price-12_12-Blanket,
+.card2 .price-18_18-Blanket,
+.card2 .price-Flanged,
+.card2 .price-Foam-Fire,
+.card6 .price-belt,
+.card2 .price-Saudi-6KG-Dry-Powder,
+.card2 .price-Saudi-6KG-Fire,
+.card6 .price-bir,
+.card6 .price-Fire-Extinguisher-Cover-6KG,
+.card2 .price-ul10,
+.card2 .price-ul20,
+.card2 .price-UL-30Listed,
+.card2 .price-UL-50Listed,
+.card2 .price-UL-125Listed,
+.card2 .price-UL-Listed-5LB,
+.card2 .price-UL-Listed-10LB,
+.card2 .price-UL-Listed-15LB,
+.card2 .price-UL-Listed-50-LB,
+.card2 .price-UL-Listed-100-LB,
+.card2 .price-UL-Listed-20-LB,
+.card2 .price-UL-Listed-6L-Portable,
+.card2 .price-UL-Listed-9_6-Liter,
+.card2 .price-UL-Listed-6L-Portable,
+.card2 .price-UL-Listed-2_5-Gallon,
+.card2 .price-6_OS_Y-Gate,
+.card2 .price-25KG-Wheeled-CO2,
+.card2 .price-50KG-Wheeled-CO2,
+.card6 .price-6-Liter-Portable,
+.card6 .price-2-Liter-Portable,
+.card2 .price-Fire-Rated-120-minute-UL-Listed,
+.card2 .price-Extinguisher-Mobile-Type-25-Kg{
+  font-size: 18px !important;
+}
+
+.card6 .brand-Swing{
+  margin-top: -6px;
+  margin-bottom: 3px !important;
+}
+
+.card6 .image-container-Swing-Check img,
+.card6 .image-container-House img{
+    height: 266px !important;
+    width: 239px;
+    margin-left: 9px;
+}
+
+.card6 .Title-Swing{
+  margin-top: -10px;
+}
+
+.card6 .Title-House{
+  margin-top: 27px;
+}
+
+.card6 .price-Swing{
+  margin-top: 4px !important;
+}
+
+.card6 .price-Swing img{
+  margin-top: 0 !important;
+}
+
+.card6 .brand-House{
+  margin-top: -2px !important;
+}
+
+.card6 .text-cover{
+  margin-top: 27px !important;
+}
+
+.card6 .Title-Belt-Strap{
+  margin-top: -12px !important;
+}
+
+.card2 .title-ul10{
+  margin-top: 35px;
+}
+
+.card2 .title-ul20{
+  margin-top: 9px;
+}
+
+.card2 .img-UL-30Listed{
+  width: 240px;
+  height: 320px;
+  margin-top: -28px;
+}
+
+.card2 .title-UL-30Listed{
+  margin-top: 19px;
+}
+
+.card2 .imge-UL-50Listed{
+  width: 270px;
+  margin-left: -8px;
+  height: 310px;
+}
+
+.card2 .imge-UL-125Listed,
+.card2 .imge-UL-Listed-5LB{
+  width: 270px;
+  height: 320px;
+  margin-left: -5px;
+}
+
+.card2 .title-UL-125Listed{
+  margin-top: -10px;
+}
+
+.card2 .title-UL-Listed-5LB{
+  margin-top: -11px;
+}
+
+.card2 .img-UL-Listed-10LB,
+.card2 .img-UL-Listed-15LB{
+  width: 270px;
+  height: 320px;
+  margin-left: -5px;
+}
+
+.card2 .img-UL-Listed-50-LB,
+.card2 .img-UL-Listed-100-LB{
+  width: 240px;
+  height: 320px;
+  margin-left: -5px;
+}
+
+.card2 .img-UL-Listed-20-LB,
+.card2 .imag-UL-Listed-6L-Portable{
+    width: 270px;
+    height: 320px;
+}
+
+.card2 .imag-UL-Listed-6L-Portable,
+.card2 .img-UL-Listed-9_6-Liter{
+      width: 270px;
+      height: 320px;
+      margin-left: -20px;
+}
+
+.card2 .img-UL-Listed-2_5-Gallon,
+.card2 .img-6_OS_Y-Gate,
+.card2 .img-25KG-Wheeled-CO2,
+.card2 .img-50KG-Wheeled-CO2{
+  width: 240px;
+  height: 320px;
+  margin-right: -5px;
+}
+
+.card6 .image-container-6-Liter-Portable img{
+  width: 250px;
+  height: 320px;
+  margin-top: 85px;
+  margin-left: -25px;
+}
+
+.card6 .image-container-2-Liter-Portable img{
+    width: 250px;
+    height: 320px;
+    margin-top: 30px;
+    margin-left: -25px;
+}
+
+.image-container-6-Liter-Portable .second-img:hover,
+.image-container-2-Liter-Portable .second-img:hover{
+  transform: scale(1) !important;
+}
+
+.title-6-Liter-Portable{
+  margin-top: 66px !important;
+}
+
+.title-2-Liter-Portable{
+  margin-top: 30px !important;
+}
+
+.card2 .img-Fire-Rated-120-minute-UL-Listed{
+  width: 250px;
+  height: 300px;
+  margin-right: -5px;
+}
+
+.card2 .title-Fire-Rated-120-minute-UL-Listed{
+  margin-top: -6px;
+}
+
+.card2 .title-Extinguisher-Mobile-Type-25-Kg{
+    margin-top: 84px;
+    font-size: 23px;
+}
+
+.card-Extinguisher-Mobile-Type-25-Kg{
+  height: 348px !important;
+}
+
+  /*-------------Fire Alarm--------------------*/
+   
+
+  .cards-container2 .card-UL-Shielded{
+    width: 280px !important;
+  }
+
+  .card4 {
+    background: #fff;
+    border: 2px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 15px;
+    width: 280px;
+    height: 400px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 800px;
+  }
+
+  .card4:hover {
+    transform: scale(1.05) rotate(0.8deg); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .card4 img {
+    width: 150px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.4s ease-out;
+  }
+
+  .card4 img:hover{
+    transform: scale(1.1);
+  }
+  
+  .card4 h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 43px;
+  }
+
+  .card4 h3:hover{
+    text-decoration: underline;
+  }
+
+  .card4 p{
+    margin-top: 6%;
+  }
+  
+  .card4 .brand {
+    font-size: 12px;
+    color: gray;
+    text-transform: uppercase;
+  }
+  
+.card4 .price {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+
+  .image-container2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d; 
+    display: grid;
+    align-items: center;
+  }
+  
+  .image-container2 img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    backface-visibility: hidden; 
+    transition: transform 1s ease;
+    margin-left: 7%;
+    
+  }
+
+  .card-Wheelock-Mb .image-container2{
+    margin-top: 9px;
+  }
+  
+  .image-container2 img.front2 {
+    transform: rotateY(0deg);
+  }
+  
+  .image-container2 img.back2 {
+    transform: rotateY(180deg);
+  }
+  
+  .image-container2:hover img.front2 {
+    transform: rotateY(-180deg);
+  }
+  
+  .image-container2:hover img.back2 {
+    transform: rotateY(0deg);
+  }
+
+  .card4 .add-to-cart{
+    margin-bottom:0 ;
+  }
+
+  .card4 .title-Wheelock{
+    margin-top: 27px;
+  }
+
+  .card5 {
+    background: #fff;
+    border: 2px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 15px;
+    width: 280px;
+    height: 400px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 800px;
+}
+   
+
+.card5:hover {
+  transform: scale(1.05) rotate(0.8deg); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card5 .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.card5 img {
+  width: 150px;
+  height: 200px;
+  margin-bottom: 15px;
+  transition: 0.4s ease-out;
+}
+
+.card5 img:hover{
+  transform: scale(1.1);
+}
+
+.card5 h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 35px !important;
+}
+
+.card5 h3:hover{
+  text-decoration: underline;
+  
+}
+
+.card5 p{
+  margin-top: 1%;
+}
+
+.card5 .brand {
+  font-size: 12px;
+  color: gray;
+  text-transform: uppercase;
+}
+
+.card5 .price {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+
+}
+
+.card5 .currency-icon{
+  margin-top: 10px;
+}
+
+.card5 .price .old-price {
+  text-decoration: line-through;
+  color: gray;
+  margin-right: 2px;
+}
+
+
+.image-container3 {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    transform-style: preserve-3d;
+  }
+
+
+.image-container3 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden !important; 
+    transition: transform 0.6s ease;
+}
+
+
+.image-container3 .front3 {
+    transform: rotateY(0deg); 
+}
+
+
+.image-container3 .back3 {
+    transform: rotateY(180deg); 
+}
+
+
+.card5:hover .front3 {
+    transform: rotateY(180deg); 
+}
+
+.card5:hover .back3 {
+    transform: rotateY(0deg); 
+}
+
+
+
+
+
+
+
+
+/*-------------------Life-Safety-----------*/
+
+.cards-container2 {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.cards-container2 .card6-1 , .card6-3 , .card6-5{
+  width: 280px !important;
+}
+
+.card-EM3030-Portable {
+  width: 280px !important;
+}
+
+
+
+.card-EM3030-Portable img{
+  height: 200px !important;
+  margin-top: -44px !important;
+}
+
+.card-EM3030-Portable .title-EM3030-Portable{
+  margin-top: -20px;
+}
+
+.card-EM3030-Portable .price{
+  margin-top: -82px !important;
+}
+
+.card-EM3030-Portable .price img{
+  margin-top: 4px !important;
+}
+
+.card-Industrial-2-Hour-Fire-Rated{
+  width: 280px !important;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .image-container {
+  width: 220px !important;
+  height: 269px !important;
+  margin-left: 30px;
+  margin-top: -18px;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .image-container img{
+  width: 200px !important;
+  height: 240px !important;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .price img{
+      margin-top: 4px;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .price{
+  margin-top: -2px !important;
+}
+
+.card6 {
+  background: #fff;
+  border: 2px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 15px;
+  width: 280px;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+.card6:hover {
+  transform: scale(1.05) rotate(0.8deg); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card6 .price {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size:18px;
+  font-weight: 700;
+
+}
+
+ .card6 img {
+   width: 100%;
+   height: auto;
+   border-radius: 8px;
+   transition: 0.6s ease-in-out;
+ }
+
+
+.card6 img:hover {
+  transform: scale(1.1);
+
+}
+
+
+
+.card6 .title-Auto-Fire-Off{
+      margin-top: 29px;
+}
+
+
+
+.card6 .brand-Rubber{
+  margin-top: -4px;
+}
+
+.card6 .price-Rubber{
+  margin-top: 0 !important;
+}
+
+.card6 .price-Rubber img{
+  margin-top: -2px;
+}
+
+.card6 .title-Acrylic{
+  margin-top: -8px;
+}
+
+.card6 .title-Compact{
+  margin-top: -2px;
+}
+
+.card6 .price-6kg{
+  padding-top: 9px;
+}
+
+.card6 .text-hay{
+  margin-top: -30px;
+}
+
+.card6 .price-com img{
+  margin-top: -2px !important;
+}
+
+.card6 .price-com{
+  margin-top: -2px !important;
+}
+
+.card6 .title-cover6kg{
+  margin-top: -12px;
+}
+
+.card6 .Title-Belt{
+  margin-top: 14px;
+}
+
+.card6 .title-Emergency{
+  margin-top: -15px;
+}
+
+.card6 .image-container-21{
+    margin-top: -5px !important;
+}
+
+.card6 .image-container-cover6kg{
+  margin-top: -17px;
+}
+
+.card6 .image-container-belt-strap{
+  margin-top: -18px;
+}
+
+.card6 .image-container-UL-Shielded{
+  margin-left: 10%;
+}
+
+
+
+.card6 .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+ .image-container {
+   perspective: 1000px;
+   width: 280px;
+   height: 280px;
+   display: grid;
+   align-items: center;
+
+ }
+
+ .image-container img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   transition: all 0.4s ease-out;
+
+ }
+
+
+
+ .image-container .second-img {
+   opacity: 0;
+   transform: scale(0.9);
+   height: 350px;
+   
+ }
+
+ .image-container:hover .first-img {
+   opacity: 0;
+ }
+
+ .image-container:hover .second-img {
+   opacity: 1;
+   transform: scale(1.1);
+ }
+
+.card-mo .currency-icon{
+  margin-top: -3px;
+}
+
+.card6 h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.card6 h3:hover{
+  text-decoration: underline;
+}
+
+.card6 p{
+  margin-top: 1%;
+}
+
+.card6 .title-com{
+  margin-top: -4px !important;
+}
+
+.card6 .title-Low-Ankle-Safety,
+.card6 .title-Low-Ankle-Safety-Shoes{
+  margin-top: 10px;
+}
+
+
+/* .card6 .title-Reflective-Safety{
+  margin-bottom: 2px;
+} */
+
+.card6 .brand-Reflective-Safety{
+  margin-bottom: 9px;
+}
+
+.card6 .title-H-5010-Safety-Helmet{
+  margin-top: 2px;
+}
+
+.card6 .title-First-Blanket{
+  margin-top: 0;
+}
+
+.card6 .title-High-Ankle-Safety{
+  margin-top: 4px;
+}
+
+.card6 .price-Plastic{
+  padding-top: 4px;
+}
+
+.card6 .brand-plastic{
+  margin-top: -7px;
+  margin-bottom: 6px;
+}
+
+.card6 .price-Plastic .currency-icon{
+  margin-top: -1px;
+}
+
+.card6-2 .price{
+  margin-top: -10px !important;
+}
+
+.card6-2 .brand{
+  margin-top: -8px;
+  margin-bottom: 9px;
+}
+
+.card6 .text-bir{
+      margin-top: 28px;
+}
+
+
+.card6 .brand-cover{
+  margin-top: -8px;
+}
+
+.card6 .image-container-UL{
+  margin-left: 5%;
+}
+
+.card6 .title-UL{
+  margin-top: -17px !important;
+}
+
+
+.card6 .brand {
+  font-size: 12px;
+  color: gray;
+  text-transform: uppercase;
+}
+
+
+.card-TX7130-Conventional{
+  width: 280px !important;
+}
+
+.card-TX7130-Conventional .image-container{
+  margin-left: 21px;
+}
+
+.card6 .image-container-Auto-Fire-Off{
+  margin-top: -31px;
+  margin-bottom: 18px;
+}
+
+.card6 .image-container-Auto-Fire-Off img{
+  width: 250px;
+  height: 200px;
+}
+
+.card6 .price-Auto-Fire-Off{
+  margin-top: 2px !important;
+}
+
+.card6 .price-Auto-Fire-Off img{
+  margin-top: -4px;
+}
+
+.card6 .image-container-6-Liter-Portable{
+    margin-left: 28px !important;
+    margin-top: -33px;
+}
+
+.card6 .title-6-Liter-Portable{
+    margin-top: -11px;
+}
+
+.card-Auto-Extinguishing .image-container-Auto-Fire-Off img{
+  width: 280px !important;
+}
+
+
+.card6 .price-Fire-Extinguisher-Cover-6KG{
+  margin-top: 4px !important;
+}
+
+.card2 .title-EM3020{
+  margin-top: 12px;
+}
+
+.card2 .title-CO2-6KG-Fire{
+  margin-top: -24px;
+}
+
+.card2 .brand-CO2-6KG-Fire,
+.card2 .brand-Fire-Stop-500ml{
+  margin-top: 25px !important;
+}
+
+.card2 .title-Fire-Stop-500ml{
+  margin-top: -24px;
+}
+
+
+/* =========================Personal protective============ */
+
+.cards-container2 .card6-6 , .card-Fire-Blanket{
+  width: 280px !important;
+}
+
+
+/* ===============Traffic Safty=========================== */
+
+.cards-container2 .card-Rubber-Weel {
+  width: 280px !important;
+}
+
+/* ================Fire Exit Door========================== */
+
+.cards-container2 .card-UL-Fire-IND {
+  width: 280px !important;
+}
+
+
+/*=================Animation for All Cards====================*/
+[class^="card"],
+[class*=" card"] {
+  opacity: 0;
+  transform: translateX(-50px); /* تخفيف الحركة للجوال */
+  transition: all 0.8s ease-in-out;
+}
+
+[class^="card"].show,
+[class*=" card"].show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+/*-------------Footer-----------*/
+
+.custom-footer {
+  background: #eff0f5;
+  text-align: center;
+  padding: 30px 0 25px;
+  font-family: Arial, sans-serif;
+}
+
+/* Top */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Social */
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 59px;
+}
+
+.footer-social-icons i {
+  font-size: 22px;
+  color: #e53935;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.6s ease-in-out;
+}
+
+.footer-social-icons i:hover {
+  transform: scale(2);
+  transform: rotate(360deg);
+}
+
+/* App Store */
+.app-store {
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+/* Divider */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 15px 0 20px;
+}
+
+/* Certifications */
+.footer-certifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 10px;
+}
+
+.footer-certifications img {
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Links */
+/* ================= DESKTOP ================= */
+.desktop-links {
+  display: block;
+  font-size: 12.5px;
+  color: #c94b4b;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.desktop-links span {
+  font-weight: 500;
+}
+
+.desktop-links a {
+  color: #e07a7a;
+  text-decoration: none;
+  margin: 0 4px;
+}
+
+.desktop-links a:hover {
+  text-decoration: underline;
+}
+
+/* نخفي الموبايل افتراضي */
+.mobile-links {
+  display: none;
+}
+
+
+
+/* Info */
+.footer-info {
+  font-size: 13px;
+  color: #d64545;
+  margin: 8px 0 15px;
+}
+
+/* Payments */
+.footer-payments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-payments img {
+  height: 26px;
+  object-fit: contain;
+}
+
+/*=============pagination-36=================*/
+
+.pagination-36{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px !important;
+    margin-top: 40px;
+    font-family: sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/*=======================Contact-Page=================*/
+
+
+.text .title-Sasseco-Service {
+  color: #9f9f9f;
+}
+
+.text .title-Sasseco-Service a {
+  color: #0029f0;
+}
+
+/* هنا السحر الحقيقي */
+.text .title-Sasseco-Service {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1.6;
+  color: #9f9f9f;
+  font-size: 18px;
+  margin: 0;
+  padding: 0 80px;
+  /* تسيب مساحة من عند اللوجو وأيقونات اليوزر */
+  width: 100%;
+}
+
+.contact-section {
+  max-width: 800px;
+  margin: 55px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #111;
+
+}
+
+.contact-section h1 {
+  font-size: 57.2px;
+  margin: 35px 0;
+  font-weight: 700;
+}
+
+.contact-info {
+  margin: 20px 0;
+}
+
+.locations {
+  margin-bottom: 30px;
+  /* مسافة بين العناوين وأرقام التواصل */
+}
+
+.contact-info p {
+  margin: 8px 0;
+}
+
+.contact-info a {
+  color: rgb(109 48 49);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.contact-info a:hover {
+  color:#fe1010;
+  text-decoration-thickness: 3px;
+  
+}
+
+.contact-section strong{
+  color:#a4a3b3;
+}
+
+
+
+.map {
+  width: 100%;
+  max-width: 750px;
+  /* تحكم بالعرض الأقصى على الشاشات الكبيرة */
+  height: 300px;
+  margin: 0 auto;
+}
+
+#ContactForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+  /* مسافة بين الأعمدة والصفوف */
+  max-width: 800px;
+  margin: 10px auto;
+}
+
+/* الحقول */
+#ContactForm input,
+#ContactForm textarea {
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #555;
+  outline: none;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#ContactForm-email{
+  margin-top: 15px;
+  
+ 
+}
+
+
+
+#ContactForm .field--comment {
+  grid-column: 1 / 3 !important;
+}
+
+#ContactForm .contact__fields {
+  grid-column: 1 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+}
+
+#ContactForm .field--email {
+  grid-column: 1 / 3;
+}
+
+
+
+
+/* Comment ياخد العرض كله */
+#ContactForm-body {
+  min-height: 120px;
+  border-radius: 20px;
+  resize: vertical;
+}
+
+/* زر الإرسال */
+.contact__button {
+  grid-column: 1 / span 2;
+  text-align: left;
+  /* يحركه للشمال */
+  margin-top: 10px;
+  /* ينزل لتحت شوية */
+}
+
+.contact__button button {
+  position: relative;
+  background: transparent;
+  color: #000;
+  border: 2px solid #000;
+  padding: 12px 40px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  overflow: hidden;
+  transition: color 0.5s ease;
+  z-index: 1;
+}
+
+/* الطبقة التي تُملأ من اليسار إلى اليمين */
+.contact__button button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: rgb(32, 56, 138);
+  transition: width 0.8s ease;
+  border-radius: 25px;
+  z-index: -1;
+  /* المهم: تجعلها خلف النص */
+}
+
+/* عند الـ hover يبدأ الامتلاء */
+.contact__button button:hover::before {
+  width: 100%;
+}
+
+/* تغيير لون النص أثناء الامتلاء */
+.contact__button button:hover {
+  color: #fff;
+}
+
+/* تأثير التركيز (Focus) */
+#ContactForm input:focus,
+#ContactForm textarea:focus {
+  border: 2px solid black;
+  box-shadow: 0 0 5px #7c797966;
+}
+
+#ContactForm-body::placeholder {
+  font-size: 18px !important;
+  
+}
+
+/* الحجم العادي للـ placeholder */
+#ContactForm input::placeholder,
+#ContactForm textarea::placeholder {
+  font-size: 1.2em;
+  /* كبير شوية */
+  transition: font-size 0.3s ease, color 0.3s ease;
+  color: #777;
+  /* لون placeholder */
+}
+
+/* لما المستخدم يعمل Focus على أي حقل */
+#ContactForm input:focus::placeholder,
+#ContactForm textarea:focus::placeholder {
+  font-size: 0.8em;
+  color: #aaa;
+  
+
+}
+
+
+/*------------------Responsive-------------*/
+@media (max-width: 768px) {
+  .announcement-container {
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .arrow-320,
+  .right-321 {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .arrow-320 {
+    left: 10px;
+    /* مناسب للجوال */
+  }
+
+  .right-321 {
+    right: 10px;
+    /* مناسب للجوال */
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    /* تبدأ خارج الشاشة */
+    width: 100%;
+    /* اجعلها 70% من العرض لتبدو منسدلة بشكل جيد */
+    height: 75vh;
+    /* تغطي ارتفاع الشاشة */
+    background-color: #eff0f5;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: left 0.5s ease-in-out;
+    gap: 15px;
+  }
+
+  .main.active {
+    left: 0;
+    /* تتحرك إلى اليمين */
+  }
+
+
+
+  .main>li>a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #dd1d1d;
+    font-size: 14px;
+    padding: 25px 25px;
+    transition: 0.6s ease-in-out;
+  
+  }
+
+  .main>li a:hover {
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+    padding: 10px 10px;
+    line-height: 1.3;
+  }
+
+  .main li span{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #dd1d1d;
+    font-size: 14px;
+    padding: 25px 25px;
+    transition: 0.6s ease-in-out;
+ 
+  }
+
+  .main li span:hover{
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+    padding: 10px 10px;
+    line-height: 1.3;
+  }
+
+  .nav-icons a i {
+    font-size: 28px;
+  }
+
+  .user-login,
+  .social-icons {
+    display: block !important;
+    margin-top: 4px;
+  }
+
+  .nav-icons .user-pc {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: block !important;
+    font-size: 40px;
+    cursor: pointer;
+    color: #dd1d1d;
+  }
+
+  .social-icons {
+    font-size: 35px;
+  }
+
+
+  /* Dropdown Menu */
+  .dropdown {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px !important;
+    /* تكبير عرض القائمة */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border-radius: 8px;
+    z-index: 2000;
+
+    /* لجعلها مخفية ولكن بطريقة سلسة */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+
+  .main>li:hover .dropdown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown-item {
+    width: 100%;
+    /* تكبير عرض العناصر */
+    text-align: center;
+    background-color: white;
+    padding: 15px 20px;
+    /* زيادة المسافات الداخلية */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .dropdown-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100% !important;
+  }
+
+  .dropdown-item a {
+    font-size: 18px;
+    /* تكبير حجم النص */
+    font-weight: bold;
+    /* جعل النص واضحًا */
+    padding: 10px 0;
+    color: #dd1d1d;
+    text-decoration: none;
+  }
+
+  .dropdown-item a:hover {
+    text-decoration: underline;
+    width: 100% !important;
+  }
+
+
+  .dropdown-item a i {
+    font-size: 14px;
+    color: #dd1d1d;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .dropdown-item a:hover i {
+    transform: translateX(5px);
+    width: 100% !important;
+  }
+
+  .dropdown-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #555;
+  }
+
+   
+}
+
+@media (max-width:768px){
+  .filter-section h1 {
+      margin-top: 38px !important;
+      margin-left: 1px !important;
+      font-size: 35px !important;
+      width: 433px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .fire-protection-services p {
+      margin: -28px 0 10px !important;
+    }
+}
+  
+
+
+@media (max-width: 640px) {
+  .card-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* صفين في كل سطر */
+      gap: 10px; /* تقليل المسافات */
+      justify-items: center; /* محاذاة العناصر في المنتصف */
+      padding-top: 77px;
+  }
+
+  .card {
+      width: 170px; /* تصغير العرض */
+      height: auto; /* السماح بالتمدد */
+      padding: 15px 5px; /* تقليل المسافات الداخلية */
+  }
+
+  .card img {
+      width: 120px; /* تقليل حجم الصورة */
+      height: 130px;
+  }
+
+  .card h3 {
+      font-size: 16px; /* تصغير الخط */
+  }
+
+  .card a {
+      font-size: 18px;
+  }
+
+  .card-wrapper-Life{
+    width: 100%;
+  }
+
+  .card-wrapper-fighting{
+    height: auto;
+    padding-bottom: 23px;
+    margin-left: 6px !important;
+  }
+
+ .card-wrapper-fighting .card2 .price img {
+  width: 32px !important;
+  height: 16px !important;
+  display: inline-block;
+  vertical-align: bottom;
+  /* تأكد أن كلا العنصرين في نفس السطر */
+  margin-top: 9px !important;
+
+
+}
+
+.card-wrapper-alarm{
+    height: auto;
+    padding-bottom: 20px;
+    margin-left: 6px !important;
+}
+
+.card-wrapper-fighting .pagination{
+  margin-top: 6px !important;
+}
+
+.card-wrapper-alarm .pagination{
+  margin-top: 4px !important;
+}
+
+.card-wrapper-Life {
+  height: auto;
+  padding-bottom: 20px;
+  margin-left: 6px !important;
+}
+
+.card-wrapper-Life .pagination {
+  margin-top: 4px !important;
+}
+
+}
+
+
+@media (max-width: 640px) {
+  .text {
+    height: 20%; /* تكبير ارتفاع الحاوية */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* جعل النص في المنتصف عموديًا وأفقيًا */
+    padding-top: 70% !important;
+    padding: 0 5%; /* إضافة مساحة جانبية بسيطة */
+    margin-bottom: 25% !important;
+  }
+
+  .text p {
+    width: 90%; /* تقليل عرض النص */
+    font-size: 16px; /* تصغير حجم النص */
+    line-height: 1.8; /* زيادة التباعد بين الأسطر لتحسين القراءة */
+    padding: 0; /* إزالة المسافة الداخلية */
+    text-align: center; /* محاذاة النص في الوسط */
+  }
+
+  .text span {
+    font-size: 18px; /* تكبير حجم النص داخل العنصر span */
+  }
+
+  .text strong {
+    width: auto; /* السماح للنص بالعرض التلقائي */
+  }
+}
+
+
+@media (max-width: 640px) {
+  .desktop-view {
+    display: none;
+  }
+  .mobile-view {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-size: 18px;
+    color: #000;
+   
+  }
+
+  .mobile-view span{
+    padding-top: 6px;
+  }
+
+  .filter-toggle{
+    background-color: #f0f0f0;
+    font-size: 18px;
+    border: none;
+    color: #eb5454;
+  }
+
+  .dropdown-menu3 {
+    display: none;
+    position: relative; /* تأكد من عدم جعله absolute */
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+   
+}
+.dropdown-menu3.active {
+  display: block !important;
+}
+.mobile-dropdown {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+}
+.mobile-dropdown::after {
+    content: "▼";
+    float: right;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.status .selected-count {
+  font-weight: bold;
+  color: #000;
+}
+
+.status .reset-button {
+  background-color: transparent;
+  border: none;
+  color: #b51414;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.dropdown-menu3 label{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu3 input {
+  margin-right: 10px;
+  padding: 10px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.6s, color 0.6s; 
+}
+
+.dropdown-menu3 label:hover {
+  background-color: #007bff; 
+  color: #fff; 
+}
+
+.label-container {
+  display: flex; 
+}
+
+.label1 {
+  flex: 1; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  margin-top: 3%;
+}
+
+.label1 input {
+  width: 53%; 
+  border-radius: 15px;
+  padding: 5px;
+  height: 55px;
+}
+
+.dropdown-menu3 p a {
+  margin-left: 40px; 
+  margin-bottom: 1%;
+  color: #b51414;
+}
+
+.dropdown-menu3 p {
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 4%;
+}
+/* ✅ القائمة الرئيسية (إخفاء وتحريك بسلاسة من اليسار إلى اليمين) */
+.mobile-filter-menu {
+  position: fixed; /* تثبيت القائمة */
+  top: 25%;
+  left:  20%;
+  width: 80%; /* عرض القائمة (يمكنك تعديله حسب الحاجة) */
+  height: 100%; /* تأخذ كامل الارتفاع */
+  background-color: white;
+  box-shadow: -55px 0 53px rgba(255, 0, 0, 0.425);
+  z-index: 200; /* فوق باقي العناصر */
+  transition: transform 0.9s ease; /* حركة سلسة */
+  overflow-y: auto; /* دعم التمرير عند الحاجة */
+  
+}
+
+
+
+/* ✅ عند الضغط على زر "Filters and Sort" تتحرك القائمة للداخل */
+.mobile-filter-menu.active {
+  transform: translateX(-80%);
+}
+
+/* ✅ زر الإغلاق (X) */
+.close-menu {
+  position: absolute;
+  top: 35px;
+  right: 20px; /* على اليمين */
+  font-size: 26px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ff6666; /* لون الزر */
+}
+
+/* ✅ تنسيق زر "Filters and Sort" */
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* تجعل علامة X على اليمين */
+  cursor: pointer;
+}
+
+.filter-button span {
+  margin-left: 10px; /* مسافة بين النص والعلامة */
+}
+
+
+
+.mobile-filter-menu h2 {
+  text-align: center;
+  font-size: 28px; /* تكبير حجم النص */
+  margin: 0;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.mobile-filter-menu h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+
+
+
+   
+   
+   
+}
+
+/* تطبيق grid فقط على الجوال */
+@media (max-width: 768px) {
+  .cards-container2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* عرض بطاقتين في كل صف */
+      gap: 10px;
+      justify-content: center;
+      text-align: center;
+      margin-right: 32px !important;
+      max-width: 1200px;
+      
+  }
+
+
+
+  .card2,.card3,.card6,.card4,.card5 {
+      width: 100%; /* جعل الكارت يأخذ العرض بالكامل داخل العمود */
+      max-width: 180px !important; /* تحديد عرض أقصى */
+      margin: 15px auto; /* توسيط البطاقات */
+  }
+
+  .card-wrapper-fighting .card2 .img-Foam-Fire{
+      margin-left: -10px;
+  }
+
+  .card-wrapper-fighting .card6 .title-Hose-Cabinet{
+    margin-top: -29px !important;
+  }
+
+  .card-wrapper-fighting .card6 .image-container-Fire-Hose-Cabinet{
+    margin-left: 11px;
+  }
+
+  .card-wrapper-alarm .card2 .price-Conventional-Smoke{
+    margin-top: -4px;
+  }
+
+  .card-wrapper-alarm .card4 .price-Wheelock-MB{
+    margin-top: 4px;
+  }
+
+  .card-wrapper-alarm .card2 .title-Alarm {
+    margin-top: 0px;
+  }
+
+  .card-wrapper-alarm .card4 .price-Wheelock-MB img{
+    margin-bottom: -1px;
+  }
+
+  .card-wrapper-alarm .card3 .brand-Fire-Alarm-Panel{
+    margin-top: 21px;
+  }
+
+  .card-wrapper-alarm .card2 .brand-Manual-Call{
+    margin-top: 2px;
+    margin-bottom: 4px;
+  }
+
+  .card-wrapper-alarm .card2 .title-Sounder {
+    margin-top: -3px;
+  }
+
+
+  .card2 .title-BRISTOL-UL-Fire-Rated-Emergency{
+    margin-top: -16px;
+  }
+
+.card2 .price-BRISTOL-UL-Fire-Rated-Emergency .old-price,.card2 .price-BRISTOL-UL-Fire-Rated-Emergency .new-price {
+  font-size: 14px !important;
+}
+
+.card2 .price-BRISTOL-UL-Fire-Rated-Emergency{
+  gap: 3px !important;
+  margin-top: -8px !important;
+}
+
+  .card2 .seconed{
+    margin-top: 17px;
+  }
+
+  .card2 .seconed:hover{
+    width: 180px !important;
+  }
+
+  .card2 .text{
+    margin-top: -82px !important;
+  }
+
+  .card2 .title-Fire-Blanket{
+    margin-top: 18px !important;
+  }
+
+  .card2 .title-18_18-Blanket{
+    margin-top: 30px !important;
+  }
+
+  .card2 .title-12_12-Blanket {
+    margin-top: 30px;
+  }
+
+  .card2 .Title-House{
+    margin-top: -8px !important;
+  }
+
+
+
+
+
+  .card6-6{
+    width: 250px;
+  }
+
+  .card2 .Title-Dry{
+    margin-top: -15px !important;
+  }
+
+  .card2 .Title-Resilient{
+        margin-top: 16px !important;
+  }
+
+  .card2 .imag-Foam-Fire{
+    margin-top: 25px;
+    margin-left: -13px;
+  }
+
+  .card6.image-container-21{
+    padding-right: 15px !important;
+
+  }
+
+  .card2 .title-Dry-1KG-Fire{
+    margin-top: -10px;
+  }
+  
+  .card2 .title-Fire-1000-Stop{
+       margin-top: -10px;
+  }
+
+  .card2 .image-Fire-Stop{
+    margin-right: 2px;
+  }
+
+  .card2 .image-Dry-1KG-Fire{
+    margin-left: 10px;
+  }
+
+  .card2 .title-4_5KG-Dry-Fire{
+    margin-top: 0px;
+  }
+
+  .card2 .title-2_5KG-Dry-Fire{
+    margin-top: 7px;
+  }
+
+  .card2 .title-CO2-6KG-Fire{
+    margin-top: -12px;
+  }
+
+
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
+    padding-right: 90%;
+  }
+  
+  .image-container img,.image-container3 img {
+    width: 150px !important;
+    height: 200px !important;
+    margin-bottom: 15px;
+    transition: 0.4s ease-out;
+  }
+
+  .image-flip {
+    width: 230px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d; 
+    position: relative;
+    transition: transform 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 80px !important;
+    
+    
+  }
+  
+  .card3:hover .image-flip {
+    transform: rotatex(180deg); 
+  }
+
+ 
+
+  
+.image-flip .front-image {
+  transform: rotatex(0deg); 
+  
+}
+
+.image-flip .back-image {
+  transform: rotatex(180deg); 
+}
+  
+  .image-container .second-img {
+    opacity: 0; 
+    transform: scale(0.9);
+  }
+  
+  .image-container:hover .first-img {
+    opacity: 0; 
+  }
+  
+  .image-container:hover .second-img {
+    opacity: 1; 
+    transform: scale(1.1); 
+  }
+
+  .card3 .price-Swing .new-price-container{
+  margin-top: 20px !important;
+  }
+
+  .card3 .Title-House {
+    margin-top: -43px;
+  }
+
+  .card2 img {
+    width: 150px !important;
+    height: 200px !important;
+    margin-bottom: 15px;
+    transition: 0.4s ease-out;
+  }
+
+  .card2 .imag-con{
+   padding-right: 8px !important;
+  }
+
+  .card2 .title-electronic{
+    margin-top: -10px;
+  }
+
+  .card2 .title-6fire{
+    margin-top: -4px;
+  }
+
+  .card2 .title-LF{
+    margin-top: -10px;
+  }
+
+  .card2 .Title-LF-AV{
+    margin-top: -21px;
+  }
+
+  .card2 .title-LF-CDI{
+    margin-top: -21px;
+  }
+
+  .card2 .title-LF-HD{
+    margin-top: -11px;
+  }
+
+  .card2 .title-LF-MCP{
+    margin-top: -12px;
+  }
+
+  .card2 .title-LF-PE{
+    margin-top: -17px;
+  }
+
+  .card2 img:hover{
+    transform: scale(1.1) !important;
+  }
+
+  .card2 .title-LF-PHD{
+    margin-top: -17px;
+  }
+
+  .card2 .title-2core{
+    margin-top: -18px;
+  }
+
+  .image-container2 {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    perspective: 1000px; 
+    display: grid;
+    align-items: center;
+    margin-left: -12px;
+  }
+
+  .image-container2 img {
+    position: absolute;
+    width: 150px !important;
+    height: 200px !important;
+    backface-visibility: hidden; 
+    transition: transform 0.6s ease;
+   
+    
+  }
+  
+  .image-container2 img.front2 {
+    transform: rotateY(0deg);
+  }
+  
+  .image-container2 img.back2 {
+    transform: rotateY(100deg);
+  }
+  
+  .image-container2:hover img.front2 {
+    transform: rotateY(-90deg);
+  }
+  
+  .image-container2:hover img.back2 {
+    transform: rotateY(0deg);
+  }
+
+  .card-Indoor-Sounder .price-25{
+    margin-top: 2px !important;
+  }
+
+  .card-9V-Smoke .price-25{
+    margin-top: 2px !important;
+  }
+
+  .card4 .add-to-cart{
+    margin-bottom:0 ;
+  }
+
+  .card4 .price-wheelock{
+    margin-top: -8px;
+  }
+
+  
+
+  .card3 h3{
+    margin-bottom: -6px;
+  }
+
+  .card3 .bt-1,.bt-2{
+    margin-top: 12px;
+  }
+
+ .price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    position: relative;
+    font-weight: 700;
+}
+
+.card2 .price img {
+    width: 32px !important;
+    height: 16px !important;
+    font-size: 24px !important;
+    display: inline-block;
+    vertical-align: bottom; /* تأكد أن كلا العنصرين في نفس السطر */
+    margin-top: 9px !important;
+    transform: scale(1.1);
+      /* تكبير الأيقونة */
+    
+    
+}
+
+.card2 .title-conventional{
+  margin-top: -17px !important;
+}
+
+.title-Saudi-6KG-Fire{
+  margin-top: 8px !important;
+}
+
+.card6 .text{
+    margin-top: -121px !important;
+    width: 169px;
+}
+
+.card2 .brand-6KG-Dry-Powder{
+  margin-bottom: 13px;
+}
+
+.card2 .brand-Fire-1000-Stop,
+.card2 .brand-Dry-1KG-Fire,
+.card2 .brand-2_5KG-Dry-Fire,
+.card2 .brand-4_5KG-Dry-Fire,
+.card2 .brand-50KG-Wheeled-Dry,
+.card2 .brand-CO2-6KG-Fire,
+.card2 .brand-Fire-Stop-500ml{
+  margin-bottom: 15px;
+}
+
+
+
+.card6 .price-automatic{
+  margin-top: -20px !important;
+}
+
+.card6 .price-automatic .new-price-container{
+  margin-top: -25px !important;
+}
+
+.card6 .text33{
+  margin-top: -47px;
+}
+
+.card6 .Title-Belt {
+  margin-top: -12px;
+}
+
+.card6 .image-container-Auto-Fire-Off{
+  margin-top: -27px !important;
+}
+
+.card2 .text33{
+  margin-top: -10px;
+}
+
+.card2 .price-2Core16AWG{
+  margin-top: 2px !important;
+}
+
+.card4 .title-Wheelock{
+  margin-top: 0;
+}
+
+.card6 .text30{
+  margin-top: -38px !important; 
+}
+
+.card6 .text-bir{
+  margin-top: -25px !important;
+}
+
+.card6 .title-Auto-Fire-Off {
+  margin-top: -18px;
+}
+
+.card6 .text-cover{
+  margin-top: -115px !important;
+}
+
+.card6 .price-Auto-Fire-Off .old-price-container{
+    margin-bottom: 6px;
+}
+
+.card6 .price-cover{
+  margin-top: -50px !important;
+}
+
+.card6 .price-cover .old-price-container{
+  margin-top: 25px !important;
+}
+
+.card6 .brand-cover{
+  margin: -9px 0px !important;
+}
+
+.card6 .brand{
+  padding-bottom: 12px;
+}
+
+.card6 .text55{
+  margin-top: -18px !important;
+}
+
+.card6 .text66{
+  margin-top: -32px !important;
+}
+
+.card6 .image-container-Call-Point{
+  margin-bottom: 14px !important;
+}
+
+.card2 .text55{
+  margin-top: -18px !important;
+}
+
+.card2 .title-Fire-Exit{
+  margin-top: -20px;
+}
+
+.card2 .title-UL-Fire{
+  margin-top: -10px;
+}
+
+.card2 .title-UL-Rated{
+  margin-top: -10px !important;
+}
+
+
+.card2 .title-ul10{
+  margin-top: 0 !important;
+}
+
+.card2 .title-ul20{
+  margin-top: 0 !important;
+}
+
+.card2 .imag-ul20{
+  margin-top: 0 !important;
+}
+
+.card2 .title-ul50{
+  margin-top: 0 !important;
+}
+
+.card2 .title-ul100{
+  margin-top: 0!important;
+}
+
+.card2 .price-UL-100{
+  margin-top: -3px !important;
+}
+
+.card2 .imag-Red-Danger {
+  display: inline-block !important;
+  margin-top: 14px !important;
+}
+
+.card6 .title-First-Blanket{
+  margin-top: -30px !important;
+  word-break: break-word;
+  word-wrap: break-word !important;
+  font-size: 18px;
+  
+}
+
+.card2 .title-Fire-Fabric-Case {
+  margin-top: 6px;
+}
+
+.card6 .image-container-Fire-Plastic{
+  padding-right: 55px !important;
+  margin-left: 0!important;
+}
+
+.card6 .old-price-container{
+  padding-bottom: 6px !important;
+}
+
+.card2 .price-Fire-Fabric-Case{
+  margin-top: 1px !important;
+}
+
+.card2 .title-L-7296-Safety-Shoes {
+  margin-top: 7px;
+}
+
+.card2 .title-N95-Particulate {
+  margin-top: 2px;
+}
+
+.card6 .title-Safety-Helmet{
+  margin-top: -3px !important;
+}
+
+.card2 .title-Wall-Mountable {
+  margin-top: 3px;
+}
+
+
+.card6-1 h3{
+  margin-top: -28px !important;
+}
+
+.card6-4 h3{
+  margin-top: -9px !important;
+}
+
+.card6-3 h3{
+  margin-top: -47px !important;
+}
+
+.card6 .price-com, .card2 .price-Convex{
+  margin-top: -4px !important;
+  font-size: 20px;
+}
+
+.card6 .title-com {
+  margin-top: -28px !important;
+}
+
+.card6 .brand-com{
+ 
+  margin-bottom: 10px !important;
+}
+
+.card6 .image-container-LF-SD-41 img{
+  width: 140px !important;
+  height: 100px !important;
+  
+}
+
+.card6 .title-LF-SD-41{
+  margin-bottom: 57px !important;
+  margin-top: -36px !important;
+}
+
+.card6 .title-LF-SD-42{
+  margin-bottom: 50px !important;
+}
+
+
+
+.card6-5 h3{
+  margin-top: -26px !important;
+}
+
+
+.card5 .new-price-container-kl{
+  padding-top: 1px !important;
+}
+
+.card5 .Title-Con-Out{
+  margin-top: -77px !important;
+}
+
+.card3 .new-price-container-kl {
+  padding-top: 18px !important;
+}
+
+.card3 .text55 {
+  margin-top: -18px !important;
+}
+
+ .old-price {
+  font-size: 15px; /* تصغير السعر القديم */
+  text-decoration: line-through;
+  color: gray;
+  margin-right: 5px;
+}
+
+.text{
+    margin-top: -63px !important;
+    width: 418px;
+    margin-left: -11px;
+}
+
+
+
+
+.card6 .osama{
+  height: 255px;
+}
+
+
+.card-EM3030-Portable .title-EM3030-Portable{
+  margin-top: -37px;
+}
+
+
+.card-EM3030-Portable .price{
+  margin-top:-3px !important;
+}
+
+
+.card-Industrial-2-Hour-Fire-Rated .image-container{
+  margin-left: -2px;
+  margin-top: -48px;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .image-container img {
+   width: 155px !important;
+   height: 160px !important;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .title-Industrial-2-Hour-Fire-Rated{
+  margin-top: -48px;
+}
+
+.card-Industrial-2-Hour-Fire-Rated .price-Industrial-2-Hour{
+  margin-top: -8px;
+}
+
+.card6 .brand-KS2023{
+  margin-top: 14px;
+}
+
+.card6 .title-KS2023{
+  margin-top: -19px;
+}
+
+.card-TX7130-Conventional .image-container{
+  margin-left: -2px;
+
+}
+
+.card-TX7130-Conventional .title-TX7130{
+  margin-top: -108px !important;
+}
+
+
+.card2-2 .price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+  margin-top: -5px;
+  position: relative;
+}
+
+.card2-2 .old-price-container, .new-price-container {
+  display: inline-flex; /* بدلاً من flex العادي */
+  align-items: center;
+  gap: 1.5px;
+  justify-content: center;
+  
+}
+
+
+
+
+.card2-2 .new-price-container{
+  margin-top: -15px !important;
+}
+
+.card-osa .new-price-container{
+  margin-top: 10px !important;
+}
+
+.card2-2 .old-price {
+  font-size: 1.3rem;
+  text-decoration: line-through;
+  color: gray;
+}
+
+.card2-2 .new-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: -12px !important;
+    
+}
+
+.card2-2 .currency-icon {
+  width: 33px !important;
+  height: 20px !important;
+  transform: scale(1.1);
+  display: inline-block;
+}
+
+.card6 .new-price{
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 5px !important;
+}
+
+.card2-os .new-price{
+  font-size: 18px !important;
+}
+
+
+
+.card2-os .new-price-container .osama{
+   margin-top: -1.5px !important;
+}
+
+.card2-2 .text2{
+    margin-top: -7px;
+}
+
+
+.social-icons{
+  font-size: 16px;
+}
+
+.card6 .image-container-UL-Shielded {
+ margin-left: 13px !important;
+}
+
+
+.card6 .image-container-cover6kg{
+  margin-left: 0 !important;
+}
+
+.card6 .title-cover6kg{
+  margin-left: 0 !important;
+  margin-top: -35px !important;
+}
+
+.card6 .price-cover6kg{
+  margin-top: -28px !important;
+}
+
+.card6 .image-container-belt-strap{
+  margin-left: 0 !important;
+}
+
+.card6 .text-belt-strap{
+    margin-left: 0 !important;
+    margin-top: -35px !important;
+}
+
+.card6 .price-belt{
+  margin-top: -3px !important;
+}
+
+.card6 .price-ul{
+  margin-top: -8px !important;
+  gap: 15px;
+}
+
+
+
+
+
+.card6 .image-container-UL{
+  height: 230px !important;
+}
+
+
+.card-wrapper-fighting .card2 .title-6KG-Powder{
+  margin-top: -8px !important;
+}
+
+.card-wrapper-fighting .card6 .price-6kg{
+  margin-top: -20px !important;
+}
+
+.card-wrapper-fighting .card2 .text33 {
+  margin-top: -8px !important;
+}
+
+.card-wrapper-fighting .card2 .title-Resilient {
+  margin-top: -8px !important;
+}
+
+.card-wrapper-fighting .card2 .title-1000ml-Fire ,.title-Dry-1KG-Fire , .title-Dry-45KG-Fire ,.title-CO2-6KG-Fire ,.title-500ML-Fire ,
+ .title-Test ,.title-Fire-Blanket ,.title-Swing ,.title-Flanged ,.title-Hose ,.title-Foam 
+ ,.title-Hose-Cabinet  ,.title-Saudi-CO2-Fire 
+ ,.title-Bristol ,.title-Cover25KG-Fire ,.title-Cover6KG-Fire
+
+ {
+  margin-top: -8px !important;
+}
+
+.card-wrapper-fighting .card3 .image-flip-Swing ,.image-flip-Hose{
+  margin-left: 21% !important;
+}
+
+.card-wrapper-fighting .card6 .add-to-cart-Bristole{
+  margin-top: -4px !important;
+}
+
+.card-wrapper-alarm .card3 .image-container-Conventional{
+  margin-left: 30% !important;
+  margin-top: -33px !important;
+}
+
+.card-wrapper-alarm .card2 .price-Manual-Call{
+  margin-top: -8px !important;
+}
+
+.card-wrapper-alarm .card2 .title-Fire6-Bell {
+  margin-top: 7px !important;
+}
+
+.card-wrapper-alarm .card2 .title-ROR-Heat{
+  margin-top: 18px !important;
+}
+
+.card-wrapper-alarm .card2 .title-LF6127-AV{
+  margin-top: -5px;
+}
+
+.card-wrapper-alarm .card2 .title-LF6107-CDI {
+  margin-top: -5px;
+}
+
+.card-wrapper-alarm .card2 .text33{
+  margin-top: -15px !important;
+}
+
+.card-wrapper-alarm .card2 .brand-2Core-16AWG{
+  margin-bottom: 6px;
+}
+
+.card-wrapper-alarm .card3 .image-flip-Conventional-Alarm {
+  margin-left: 23% !important;
+}
+
+.card-wrapper-alarm .card3 .title-Conentional-Alarm{
+  margin-top: -45px !important;
+}
+
+.card-wrapper-alarm .card3 .image-flip-Conventional-Indoor{
+  margin-left: 31% !important;
+  margin-top: -10px !important;
+}
+
+.card-wrapper-alarm .card3 .title-Conventional-Indoor{
+    margin-top: -32px !important;
+}
+
+.card-wrapper-alarm .card3 .brand-Flasher{
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+.card-wrapper-alarm .card3 .brand-Conventional-Indoor{
+  margin-top: 13px;
+  margin-bottom: 11px;
+}
+
+.card-wrapper-alarm .card6 .brand-LF-SD-41{
+  margin-top: -31px;
+}
+
+.card-wrapper-Life .card6 .title-LF-SD-41{
+  margin-top: -14px;
+}
+
+.card-wrapper-Life .card6 .brand-LF-SD-41{
+  margin-top: -48px;
+}
+
+.card-wrapper-Life .card25-UL-Emergency-Door .new-price-container{
+  margin-top: 3px !important;
+}
+
+.cards-container2 .card6 .title-UL {
+  margin-top: -32px !important;
+}
+
+.card6 .price-ul .old-price, .card6 .price-ul .new-price{
+  font-size: 14px !important;
+}
+
+.cards-container2 .card6 .image-container-UL img {
+  width: 140px !important;
+  height: 180px !important;
+  margin-top: -30px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0 !important;
+  margin-right: 15px !important;
+}
+
+.cards-container2 .card2 .brand-PRC{
+  margin-top: -3px !important;
+}
+
+.card6 .image-container-6-Liter-Portable {
+  margin-left: 3px !important;
+  margin-top: -33px;
+}
+
+.card-Auto-Extinguishing .image-container-Auto-Fire-Off img {
+  width: 180px !important;
+}
+
+
+.card6 .title-Delta {
+  margin-top: -41px !important;
+}
+
+
+.card6 .price-Plastic {
+  padding-top: 11px;
+}
+
+
+
+
+
+}
+
+
+@media screen and (max-width:640px) {
+  .custom-footer {
+    padding: 25px 15px 20px;
+  }
+
+  /* السوشيال */
+  .footer-social-icons {
+    gap: 17px;
+    margin-bottom: 34px;
+    width: 33px !important;
+    height: 30px;
+    margin-top: 17px;
+
+  }
+
+  .footer-social-icons i {
+    font-size: 22px !important;
+  }
+
+  /* App Store */
+  .app-store {
+    height: 42px;
+    margin-bottom: 15px;
+  }
+
+  /* اللوجوهات */
+  .footer-certifications {
+    gap: 34px;
+  }
+
+  .footer-certifications img {
+    width: 180px !important;
+    transform: scale(1.1);
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .desktop-links {
+    display: none;
+  }
+
+  .mobile-links {
+    display: block;
+    text-align: center;
+    font-size: 16.8px;
+    line-height: 2.1;
+    margin-top: 12px;
+  }
+
+  .mobile-links div {
+    margin-bottom: 4px;
+    color: #c94b4b;
+    font-size: 15px;
+  }
+
+  .mobile-links a {
+    color: #e07a7a;
+    text-decoration: none;
+    margin: 0 3px;
+  }
+
+  .mobile-links a:hover {
+    text-decoration: underline;
+  }
+
+  .mobile-links span {
+    font-weight: 500;
+  }
+
+  /* CR & VAT */
+  .footer-info {
+    font-size: 19px;
+    margin: 16px 0;
+  }
+
+  /* الدفع */
+  .footer-payments {
+    flex-wrap: wrap;
+    margin-top: 18px !important;
+    gap: 22px;
+  }
+
+  .footer-payments img {
+    height: 24px;
+    margin-top: 20px;
+    transform: scale(1.1);
+  }
+}
+
+
+/* =========Contact Page================= */
+@media screen and (max-width:768px){
+  .text .title-Sasseco-Service{
+        width: 529px;
+        margin-left: -72px;
+        margin-top: -50px;
+  }
+
+  .contact-section h1 {
+    font-size: 57.2px;
+    margin-top: -34px;
+    margin-bottom: 36px;
+    font-weight: 700;
+  }
+
+  .locations p{
+    margin-bottom: 26px;
+  }
+
+  .contact-info a {
+      color: rgb(109 48 49);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      display: inline-block;
+      margin-top: 8px;
+      width: 349px;
+      line-height: 1.2;
+  }
+
+  .map {
+    width: 100%;
+    height: 250px;
+  }
+
+#ContactForm .contact__fields {
+  display: flex;
+  flex-direction: column;
+  /* خليهم تحت بعض */
+  gap: 1rem;
+  /* مسافة بسيطة بين الحقول */
+  margin-top: 72px;
+}
+
+#ContactForm .field__input {
+  width: 100%;
+  /* عرض كامل */
+  box-sizing: border-box;
+  /* عشان البادينج مايزودش العرض */
+}
+
+.field--comment textarea {
+  width: 100%;
+}
+
+.contact__button button {
+  width: 100%;
+  /* الزرار كمان ياخد عرض الشاشة */
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+

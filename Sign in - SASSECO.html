@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign in - SASSECO</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nocache, noarchive, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+    <link rel="stylesheet" crossorigin="anonymous"
+        href="//cdn.shopify.com/shopifycloud/shopify/assets/access_and_auth/customer_authentication_provider/application-b78a311273b3360627dcf254a37ee83a64caa88dfc2f5807a98618d1b9970470.css"
+        media="all" data-turbolinks-track="reload" integrity="sha256-t4oxEnOzNgYn3PJUo37oOmTKqI38L1gHqYYY0bmXBHA=" />
+    <script
+        src="//cdn.shopify.com/shopifycloud/shopify/assets/access_and_auth/customer_authentication_provider/application-225e6bc033a01198115ae2206ac3bd15522a426480d8536f2d6b19eb2a52816e.js"
+        crossorigin="anonymous" data-turbolinks-track="reload"
+        integrity="sha256-Il5rwDOgEZgRWuIgasO9FVIqQmSA2FNvLWsZ6ypSgW4="></script>
+    <link rel="shortcut icon" type="image/x-icon" href="data:,">
+</head>
+
+<body id="body-content">
+
+
+
+
+    <style data-test-id="branding-styles">
+        :root {
+            --x-primary-button-border: NONE;
+            --x-primary-button-border-color: #ab1212;
+            --x-primary-button-border-color-hovered: #ab1212;
+            --x-primary-button-background-color: #ab1212;
+            --x-primary-button-background-color-hovered: #800a0a;
+            --x-primary-button-text-color: #ffffff;
+            --x-primary-button-text-color-hovered: var(--x-primary-button-text-color);
+            --x-primary-button-border-radius: 8px;
+            --x-primary-button-font: inherit;
+            --x-primary-button-letter-spacing: normal;
+            --x-primary-button-letter-case: none;
+            --x-primary-button-weight: 700;
+
+            --x-accent-color: #ff0000;
+            --x-accent-color-hovered: #cf0000;
+
+            --x-error-color: #D91C1C;
+
+            --x-card-text-color: #000000;
+            --x-card-text-color-subdued: #000000a8;
+            --x-card-text-color-subdued-200: #00000033;
+            --x-card-background-color: #fff;
+            --x-card-border: 1px solid #f5f5f5;
+
+            --x-textfield-border-color: #dedede;
+            --x-textfield-top-left-right-border-color: var(--x-textfield-border-color);
+            --x-textfield-background-color: #fff;
+            --x-textfield-border-radius: 8px;
+            --x-textfield-text-color: #000000;
+            --x-textfield-text-color-subdued: #000000a8;
+
+            --x-main-background-color: #F5F5F5;
+            --x-main-background-image: url();
+
+            --x-default-color-text: #000000;
+            --x-default-color-background: #f5f5f5;
+            --x-default-color-border: #dedede;
+
+            --x-social-color-text: hsl(0, 0%, 0%);
+            --x-social-color-background: hsl(0, 0%, 100%);
+            --x-social-color-background-hovered: hsl(0, 0%, 96.7%);
+            --x-social-color-border: hsl(0, 0%, 87%);
+
+            --x-border-radius-base: 8px;
+            --x-border-radius-large: 12px;
+
+            --x-font-family-primary: inherit;
+            --x-font-family-secondary: inherit;
+        }
+    </style>
+
+    <style>
+        @supports selector(:focus-visible) {
+
+            a:focus,
+            summary:focus {
+                color: var(--x-accent-color);
+                text-decoration: none;
+                outline-color: transparent;
+            }
+
+            a:focus-visible,
+            summary:focus-visible {
+                color: var(--x-accent-color-hovered);
+                text-decoration: underline;
+                outline-color: var(--x-accent-color-hovered);
+            }
+
+            .social-login-button:focus {
+                background-color: var(--x-social-color-background);
+            }
+
+            .social-login-button:focus-visible {
+                background-color: var(--x-social-color-background-hovered);
+            }
+
+            .submit-button:focus {
+                border-color: var(--x-primary-button-border-color);
+                background-color: var(--x-primary-button-background-color);
+                color: var(--x-primary-button-text-color);
+                outline-color: transparent;
+            }
+
+            .submit-button:focus-visible {
+                border-color: var(--x-primary-button-border-color-hovered);
+                background-color: var(--x-primary-button-background-color-hovered);
+                color: var(--x-primary-button-text-color-hovered);
+                outline-color: var(--x-primary-button-background-color);
+            }
+        }
+    </style>
+
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            <main class="login-main">
+                <h1>
+                    <a href="Online Shop.html">
+                        <img alt="SASSECO Logo" id="shop-logo"
+                            src="https://cdn.shopify.com/s/files/1/0786/5122/8479/files/horizontal_3bd293cb-3600-4478-8b70-4cf9e4101c2d_200x60@2x.png?v=1727713763.webp" />
+                    </a>
+                </h1>
+
+                <h2>
+                    Sign in
+                </h2>
+
+                <p id="customer-account-description" class="">
+                    Choose how you'd like to sign in
+                </p>
+
+
+                <div class="shop-login-container">
+                    <script
+                        src="https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-for-new-customer-accounts.esm.js"
+                        crossorigin="anonymous" type="module"></script>
+                    <script
+                        src="https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-email-lookup-coordinator.esm.js"
+                        crossorigin="anonymous" type="module"></script>
+
+                    <div class="shop-login-button-wrapper shop-login-button-wrapper--skeleton">
+                        <div class="shop-login-button-spinner">
+                            <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                                <use href="#icon-spinner"></use>
+                            </svg>
+                        </div>
+                        <div class="shop-login-button-skeleton"></div>
+                        <shop-login-button full-width analytics-context="loginWithShopSelfServe" anchor-to="input#email"
+                            client-id="fa0b0c9f-9178-4cdc-bee5-60de261256f5"
+                            code-challenge="e-K3Ku7QMkJJRvTHvYAZ8hVlGhlGhrYvqtDt_xeXSx8" code-challenge-method="S256"
+                            compact="true" disable-sign-up email-input-selector="input#email"
+                            email-verification-required experiments="{}" flow="self_serve_customer_accounts"
+                            id="standalone-button-core-idp" redirect-type="top_frame"
+                            redirect-uri="https://shopify.com/authentication/78651228479/login/external/shop/callback"
+                            response-mode="web_message" response-type="code"
+                            scope="openid email:verified pay:session_token profile shop:account_uuid"
+                            state="aW85dW05S2NBY0l2UnlYNW92K1NjczEzNTN6d2l2WTlBeFBZZTQ1a1ptTVhhRkdQVUR0d1ZKSm9XeFpTQ2xta3hYNFl3VlNiVWx3c2dVTG53R09sVWRyTUxVZ3JFMU80YW5HSmJxZDVwd0x6eUI3VC9NZzhzdGxNeEdwdVpwd2pzaWFMeFpPeHJRKzZvNnJmamtHaFRtczh4V2NFbk5pZ1ljenQrbFg1cnd4TjN0TmRwOExOQ0xsemdYZGN0cjlKQmQ5Yi9GMDE0c3B6VXZqRGlza3RhSSsvdi9nVW1OdCtIWlMvTjI0RjdsOTBKSmd2SVJRelROejM4bXp3K0NXRFkyd3pDU3ZJK1BRc3VYL3UyOW94RDdUYXYrYk4wSFFQUzZabUdhc0c5Z3poUnlYenc4dVVGbXV6OFByOTdzK0p2REY5Qk1UamdKdFRReCt2UnRGUTlQMjB1OUk0MGZYMm5pQVowbEJaWFhwUlhDUitqSUV6YWZQMGZXMlV3b093UHZRdERkSjBRMk9qYUVjaDgzNWJTTSsvbU9HaFU0QWEydFhMcnhIQVZ6dXBsZWFJKzFUdVBndkJOa1V3RHV6NFh0Y056YlNJdS81VHBRVUl5c051YmpBcFR5c1UxVWx5Y3lGQWkxUWRxQTMwaTlYRUpNbUhuRy8wQVZRaW5EU2VJRlpDVElYMndLckMzdGlscERJQ055UDFXVUlzYmtLY2JzYlVMS0cwK2VBR0NIdm0rK2tneFN5dnNQVDFmUDN1SzJOV2ZveHdTUlhualhRQ3VzY25KSUVPaUhsRmFLVWI2TTN1Y1ozbVRlMnY5NE56TEIrZE1nbk9CZmE1a2dudnBRM2hSaDdtRHVjaDM5RW41UjMwTUE9PS0tT3JiM0p0R1R0eVp2bEllNnFXRzhrZz09--1877da70607684724a4fa65e06d6d223eb11c119"
+                            storefront-domain="https://shop.shawamekh.com" use-pay-alt-domain ux-mode="windoid">
+                        </shop-login-button>
+                        <div define="setupShopSDKEmailListener()"></div>
+                    </div>
+
+                </div>
+
+                <div class="login-container">
+
+                    <div role="separator" class="or-separator">
+                        or
+                    </div>
+
+                    <form id="captcha_form" novalidate="novalidate"
+                        action="/authentication/78651228479/verify?client_id=0a9c3e21-7a0b-4d68-8d3e-81082188385c&amp;locale=en&amp;redirect_uri=%2Fauthentication%2F78651228479%2Foauth%2Fauthorize%3Fclient_id%3D0a9c3e21-7a0b-4d68-8d3e-81082188385c%26locale%3Den%26nonce%3Dfcc91bc1-be78-4569-a14a-adca2a40cff8%26redirect_uri%3Dhttps%253A%252F%252Fshopify.com%252F78651228479%252Faccount%252Fcallback%253Fsource%253Dcore%26region_country%3DSA%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWN4iEEK6uNRGankOLIHcB86&amp;region_country=SA"
+                        accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token"
+                            value="Kv1TsmMAoVfqck10dSDhIIfErVpceASOC6jfZWgSLqXeeYZ_BApDStIDIvCrtd-fFy1BsxXoXiu7b-bP2cLBew" />
+                        <p id="customer-account-description-visuallyhidden" class="sr-only">
+                            Enter your email and we&#39;ll send you a verification code
+                        </p>
+
+                        <div class="textfield-wrapper"><input type="email" autocomplete="false" autofocus="autofocus"
+                                aria-required="true" aria-describedby="customer-account-description-visuallyhidden"
+                                class="textfield " placeholder="Email" size="30" name="email" id="email" /><label
+                                for="email" class="textfield-label " data-textfield-label="Email">Email</label></div>
+
+                        <script type="text/javascript">
+                            var hcaptchacallback = function (token) {
+                                document.querySelector("#captcha_form").submit();
+                            }
+
+                            var hcaptchaEnabled = true;
+                        </script>
+                        <script type="text/javascript" src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off&hl=en"
+                            async defer></script>
+
+
+                        <button name="commit" type="submit" disabled="disabled"
+                            class="submit-button h-captcha captcha__submit"
+                            data-sitekey="d1307d1e-2e50-450a-8634-54aa2b8220d2" data-callback="hcaptchacallback"><span
+                                class="button-content">Continue</span><span class="sr-only">Processing…</span><svg
+                                xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                                <use href="#icon-spinner"></use>
+                            </svg></button>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+        <footer class="login-footer">
+            <a class="login-footer__link" target="_blank" data-testid="privacy-policy-link"
+                href="https://shop.shawamekh.com/78651228479/policies/33120321855.html?locale=en">Privacy policy</a>
+
+            <a class="login-footer__link" target="_blank" data-testid="terms-of-service-link"
+                href="https://shop.shawamekh.com/78651228479/policies/33120354623.html?locale=en">Terms of service</a>
+        </footer>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-spinner" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M20 10c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0v2a8 8 0 1 0 8 8z"></path>
+        </symbol>
+    </svg>
+</body>
+
+</html>

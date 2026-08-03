@@ -1,0 +1,219 @@
+/* ==========================================================
+   SHAWAMEKH DESIGN SYSTEM
+   File: variables.css
+   ========================================================== */
+
+:root {
+
+    /* ======================================================
+       COLORS
+       ====================================================== */
+
+    --color-primary: #0F172A;
+    --color-secondary: #1E293B;
+
+    --color-accent: #F59E0B;
+
+    --color-success: #16A34A;
+    --color-danger: #DC2626;
+    --color-warning: #F59E0B;
+    --color-info: #0EA5E9;
+
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    --color-body: #64748B;
+
+    --color-heading: #0F172A;
+
+    --color-border: #E2E8F0;
+
+    --color-background: #FFFFFF;
+
+    --color-background-light: #F8FAFC;
+
+   --primary: #A81422;
+   
+   --flame: #F04A37;
+
+
+
+    /* ======================================================
+       TYPOGRAPHY
+       ====================================================== */
+
+--font-sans:
+      "IBM Plex Sans Arabic",
+      "Geist",
+      system-ui,
+      sans-serif;
+
+   --font-display:
+         "Geist",
+         sans-serif;
+
+   --font-mono:
+   "Geist Mono",
+   "Geist Mono Fallback",
+   ui-monospace,
+   monospace;
+
+    --font-serif: "Instrument Serif", serif;
+
+    --font-amiri: "Amiri", serif;
+
+   /* Arabic Display */
+   
+   --font-display-arabic:
+      "Amiri",
+      "Aref Ruqaa",
+      "IBM Plex Sans Arabic",
+      serif;
+
+
+
+    /* ======================================================
+       FONT WEIGHTS
+       ====================================================== */
+
+    --fw-light: 300;
+
+    --fw-regular: 400;
+
+    --fw-medium: 500;
+
+    --fw-semibold: 600;
+
+    --fw-bold: 700;
+
+
+
+    /* ======================================================
+       FONT SIZES
+       ====================================================== */
+
+    --fs-xs: .75rem;
+
+    --fs-sm: .875rem;
+
+    --fs-base: 1rem;
+
+    --fs-lg: 1.125rem;
+
+    --fs-xl: 1.25rem;
+
+    --fs-2xl: 1.5rem;
+
+    --fs-3xl: 2rem;
+
+    --fs-4xl: 2.5rem;
+
+    --fs-5xl: 3rem;
+
+
+
+    /* ======================================================
+       LINE HEIGHT
+       ====================================================== */
+
+    --lh-tight: 1.1;
+
+    --lh-normal: 1.6;
+
+    --lh-relaxed: 1.9;
+
+
+
+    /* ======================================================
+       BORDER RADIUS
+       ====================================================== */
+
+    --radius-sm: 6px;
+
+    --radius-md: 12px;
+
+    --radius-lg: 18px;
+
+    --radius-xl: 28px;
+
+    --radius-round: 999px;
+
+
+
+    /* ======================================================
+       SPACING
+       ====================================================== */
+
+    --space-1: .25rem;
+
+    --space-2: .5rem;
+
+    --space-3: .75rem;
+
+    --space-4: 1rem;
+
+    --space-5: 1.25rem;
+
+    --space-6: 1.5rem;
+
+    --space-8: 2rem;
+
+    --space-10: 2.5rem;
+
+    --space-12: 3rem;
+
+    --space-16: 4rem;
+
+    --space-20: 5rem;
+
+
+
+    /* ======================================================
+       LAYOUT
+       ====================================================== */
+
+    --container-width: 1320px;
+
+    --header-height: 90px;
+
+    --section-padding: 120px;
+
+
+
+    /* ======================================================
+       SHADOWS
+       ====================================================== */
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
+
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, .08);
+
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, .12);
+
+
+
+    /* ======================================================
+       TRANSITIONS
+       ====================================================== */
+
+    --transition-fast: .2s ease;
+
+    --transition-normal: .35s ease;
+
+    --transition-slow: .5s ease;
+
+
+
+    /* ======================================================
+       Z-INDEX
+       ====================================================== */
+
+    --z-dropdown: 100;
+
+    --z-sticky: 500;
+
+    --z-fixed: 900;
+
+    --z-modal: 1000;
+
+}
