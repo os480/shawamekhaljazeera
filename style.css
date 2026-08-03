@@ -10568,7 +10568,7 @@ html[dir="rtl"] .footer-bottom-links a {
   
       padding: 24px 28px;
   
-      margin-bottom: 441px;
+      margin-bottom: 82px;
   
   
     }
@@ -11565,7 +11565,7 @@ background:
 
   padding: 24px 28px;
 
-  margin-bottom: 441px;
+  margin-bottom: 68px;
   
 
 }
@@ -12744,7 +12744,7 @@ body.menu-open footer {
 
    padding: 18px 28px 24px;
 
-  margin-top: 69px;
+  /* margin-top: 69px; */
 
    display: flex;
 
@@ -12891,324 +12891,7 @@ body.menu-open footer {
 
 
 
-/*=================================================
-                 HERO Section Small Size
-  =================================================*/
-@media (min-width:280px) and (max-width:500px) {
-    .hero {
-    
-        width: 100%;
-        background: #fff;
-        margin-top: 87px;
-        margin-left: -6px;
-    
-      }
-    
-      .hero-company {
-    
-        color: var(--primary);
-        font-size: 11px;
-        font-family: Geist Mono, Geist Mono Fallback, ui-monospace, monospace;
-        letter-spacing: .18em;
-    
-    
-      }
-    
-      .hero-title {
-    
-        margin-top: 42px;
-    
-        display: flex;
-    
-        flex-direction: column;
-    
-        align-items: flex-start;
-    
-        max-width: 18ch;
-    
-        font-size: clamp(2.4rem, 9.5vw, 7rem);
-    
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-    
-        line-height: 1;
-    
-        text-align: left !important;
-    
-        letter-spacing: -.04em;
-    
-        font-weight: var(--font-weight-semibold);
-    
-      }
-    
-      .title-line-1 {
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-        font-size: clamp(2.4rem, 9.5vw, 7rem);
-        font-weight: 700;
-        color: #090909;
-        letter-spacing: -.04em;
-      }
-    
-      .title-line-2 {
-        margin-top: 10px;
-        font-family: "Instrument Serif", serif;
-        font-size: clamp(2.4rem, 9.5vw, 7rem);
-        font-style: italic;
-        font-weight: 400;
-        color: #d71920;
-        letter-spacing: -.04em;
-        position: relative;
-        display: block;
-        width: fit-content;
-      }
-    
-      .title-line-2::after {
-        content: "";
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        background: #111;
-        margin-left: 5px;
-        margin-bottom: 0px;
-        border-radius: 1px;
-      }
-    
-    
-      .hero-content {
-    
-        margin-top: calc(var(--spacing) * 8);
-    
-      }
-    
-      .hero-description {
-    
-        max-width: 490px;
-    
-        font-size: 16px;
-    
-        line-height: var(--leading-relaxed);
-    
-        color: var(--muted-foreground);
-    
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-    
-      }
-    
-      .hero-actions {
-    
-        display: inline-block;
-        gap: 14px;
-        margin-top: 36px;
-    
-      }
-    
-      .hero-quote-btn {
-    
-        width: 456px;
-        height: 44px;
-        padding: 6px 24px;
-        border-radius: 999px;
-        background: #d70f2d;
-        color: #fff;
-        gap: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        transition: .35s;
-        margin-bottom: 15px;
-        display: inline-block;
-        text-align: center;
-    
-      }
-    
-      .hero-quote-btn svg {
-        margin-top: 2px;
-      }
-    
-      .hero-phone-btn {
-    
-        width: 400px;
-    
-        height: calc(var(--spacing) * 12);
-    
-        padding: 6px 24px;
-    
-        border: 1px solid #d8d8d8;
-    
-        border-radius: 999px;
-    
-        display: inline-flex;
-    
-        justify-content: center;
-    
-    
-    
-        color: #111;
-    
-        background-color: #0000;
-    
-        background-clip: padding-box;
-    
-        font-size: var(--text-sm);
-        line-height: var(--tw-leading, var(--text-sm--line-height));
-    
-        --tw-font-weight: var(--font-weight-medium);
-        font-weight: var(--font-weight-medium);
-    
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-    
-    
-    
-        syntax: "*";
-        inherits: false;
-        initial-value: solid;
-    
-        transition-property: all;
-        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-        transition-duration: var(--tw-duration, var(--default-transition-duration));
-    
-      }
-    
-      .hero-whatsapp {
-    
-        width: calc(var(--spacing) * 11);
-    
-        height: calc(var(--spacing) * 11);
-    
-        border-radius: 50%;
-    
-        background-color: #25d366;
-    
-        display: inline-flex;
-    
-        justify-content: center;
-    
-        align-items: center;
-    
-        margin-left: 12px;
-    
-        color: var(--color-white);
-    
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-    
-    
-    
-        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-        transition-duration: var(--tw-duration, var(--default-transition-duration));
-    
-      }
-    
-      .hero-divider {
-    
-        width: 100%;
-    
-        height: 1px;
-    
-        background: #dddddd;
-    
-      }
-    
-      .hero-footer {
-    
-        margin-top: 65px;
-    
-        width: 480px;
-    
-      }
-    
-      .hero-info .mobile {
-        display: none !important;
-      }
-    
-      .hero-info {
-    
-        display: inline-flex;
-    
-        align-items: center;
-    
-        flex-wrap: nowrap;
-    
-        margin-top: 4px;
-    
-        row-gap: calc(var(--spacing) * 2);
-    
-        column-gap: calc(var(--spacing) * 8);
-    
-        padding-top: calc(var(--spacing) * 4);
-    
-        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-    
-        color: var(--foreground);
-    
-      }
-    
-      .hero-info span {
-    
-        position: relative;
-    
-        /* padding-right: 18px; */
-    
-        font-feature-settings: "tnum";
-    
-        color:
-          color-mix(in oklch, var(--foreground) 52%, transparent);
-    
-        font-family: var(--font-mono);
-    
-        letter-spacing: .08em;
-    
-        text-transform: uppercase;
-    
-        font-size: 10.8px;
-    
-      }
-    
-    
-      .hero-image {
-        position: relative;
-        width: 100%;
-        margin-top: 38px;
-        max-height: 560px;
-        width: 100%;
-        overflow: hidden;
-        aspect-ratio: 16 / 10;
-        color: var(--foreground);
-    
-      }
-    
-      .hero-image img {
-    
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        color: transparent;
-        object-fit: cover;
-        max-width: 100%;
-        vertical-align: middle;
-    
-      }
-    
-      .hero-image-caption {
-    
-        position: absolute;
-        left: 19px;
-        bottom: 12px;
-        z-index: 5;
-        color:
-          color-mix(in oklab, var(--color-white) 90%, transparent);
-        font-size: 10px;
-        font-weight: 500;
-        font-family: Geist Mono, Geist Mono Fallback, ui-monospace, monospace;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        user-select: none;
-    
-      }
- 
-}
+
 
 
 
@@ -13218,7 +12901,7 @@ body.menu-open footer {
                 Hero Section                       
 ===================================================*/
 
-@media screen and (min-width:501px) and (max-width:607px) {
+@media screen and (min-width:380px) and (max-width:607px) {
 
   .hero {
   
