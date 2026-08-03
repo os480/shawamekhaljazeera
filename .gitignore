@@ -12,3 +12,6 @@ Desktop.ini
 # Backup files
 *.bak
 *.old
+
+# Local files
+files.txt
