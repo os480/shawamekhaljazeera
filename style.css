@@ -9926,7 +9926,7 @@ html[dir="rtl"] .footer-bottom-links a {
                     MOBILE HEADER
 ==================================================*/
 
-@media screen and (min-width:400px) and (max-width:639px) {
+@media screen and (min-width:397px) and (max-width:639px) {
 
 /*==================================================
                         HEADER
@@ -11907,7 +11907,7 @@ body.menu-open footer {
                 Hero Section                       
 ===================================================*/
 
-@media screen and (min-width:400px) and (max-width:639px) {
+@media screen and (min-width:397px) and (max-width:639px) {
 
   .hero {
   
