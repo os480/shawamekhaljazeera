@@ -9922,1004 +9922,11 @@ html[dir="rtl"] .footer-bottom-links a {
 ================================================*/
 
 
-/*===============================================
-
-                SMALL SIZE header
-================================================*/
-
-@media (min-width:280px) and (max-width:500px) {
-
-  /*===============HEADER=========================*/ 
-  .header-inner {
-      height: 82px;
-    }
-  
-    .header-inner .container {
-      padding-inline: 18px;
-    }
-  
-    .header-inner.scrolled {
-  
-      width: 96%;
-  
-      margin-top: 12px;
-  
-      height: 60px;
-  
-      border-radius: 20px;
-  
-      background-color:
-        color-mix(in oklab, var(--background) 75%, transparent);
-  
-      backdrop-filter: blur(16px);
-  
-      -webkit-backdrop-filter: blur(16px);
-  
-      box-shadow: 0 12px 40px rgba(0, 0, 0, .08);
-  
-    }
-  
-  
-    /*==================================================
-                      HIDE DESKTOP
-    ==================================================*/
-  
-    .navbar,
-    .header-right {
-  
-      display: none;
-  
-    }
-  
-  
-    /*==================================================
-                      MOBILE TOGGLE
-    ==================================================*/
-  
-    .menu-toggle {
-  
-      display: flex;
-  
-      justify-content: center;
-      align-items: center;
-  
-    }
-  
-  
-    /*==================================================
-                          LOGO
-    ==================================================*/
-  
-    .logo img {
-  
-      height: 42px;
-      width: auto;
-  
-    }
-  
-  
-  
-    /*==================================================
-                  MOBILE OVERLAY
-  ==================================================*/
-  
-  
-  
-    .mobile-overlay {
-  
-      display: block;
-  
-      position: fixed;
-  
-      inset: calc(var(--spacing) * 0);
-  
-      z-index: 9998;
-  
-      opacity: 0;
-  
-      visibility: hidden;
-  
-      pointer-events: none;
-  
-      transition: .45s;
-  
-      overflow: hidden;
-  
-      --tw-duration: .1s;
-  
-      transition-duration: 0.1s;
-  
-      background-color:
-        color-mix(in oklab, var(--color-black) 10%, transparent);
-  
-      --tw-backdrop-blur: blur(var(--blur-xs));
-  
-      backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
-  
-      -webkit-backdrop-filter:
-        blur(38px) saturate(160%) brightness(1.02);
-  
-      animation: enter var(--tw-animation-duration, var(--tw-duration, .15s)) var(--tw-ease, ease) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
-    }
-  
-  
-    .mobile-overlay.active {
-  
-      opacity: 1;
-  
-      visibility: visible;
-  
-      pointer-events: auto;
-  
-    }
-  
-    .mobile-overlay::before {
-  
-      content: "";
-  
-      position: absolute;
-  
-      inset: 0;
-  
-      background:
-  
-        radial-gradient(circle at 20% 10%,
-          rgba(255, 255, 255, .22),
-          transparent 55%),
-  
-        radial-gradient(circle at 80% 70%,
-          rgba(255, 255, 255, .10),
-          transparent 60%),
-  
-        linear-gradient(rgba(255, 255, 255, .04),
-          rgba(255, 255, 255, .02));
-  
-      mix-blend-mode: screen;
-  
-    }
-  
-  
-    .mobile-overlay-noise {
-  
-      position: absolute;
-  
-      inset: 0;
-  
-      pointer-events: none;
-  
-      opacity: .065;
-  
-      mix-blend-mode: overlay;
-  
-      background-image:
-  
-        radial-gradient(#000 1px, transparent 1px),
-  
-        radial-gradient(#fff .8px, transparent .8px);
-  
-      background-size:
-  
-        4px 4px,
-  
-        7px 7px;
-  
-    }
-  
-  
-  
-  
-  
-  
-    /*==================================================
-                        MOBILE MENU
-    ==================================================*/
-  
-    body {
-      cursor: auto;
-    }
-  
-  
-    .mobile-menu {
-  
-      display: flex;
-  
-      flex-direction: column;
-  
-      position: fixed;
-  
-      height: 96%;
-  
-      top: 12px;
-      right: 12px;
-      left: auto;
-      bottom: 12px;
-  
-      font-size: var(--text-sm);
-  
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-  
-      --removed-body-scroll-bar-size: 0px;
-  
-      width: 75%;
-      max-width: 384px;
-  
-      border-radius: 26px;
-  
-  
-      overflow: hidden;
-  
-      -webkit-overflow-scrolling: touch;
-  
-      overscroll-behavior: contain;
-  
-      isolation: isolate;
-  
-      z-index: 9999;
-  
-      transform:
-        translateX(120%) scale(.97);
-  
-      transition:
-        transform .28s cubic-bezier(.22, .61, .36, 1);
-  
-      background:
-  
-        linear-gradient(rgba(255, 255, 255, .28),
-  
-          rgba(255, 255, 255, .18));
-  
-      backdrop-filter:
-  
-        blur(60px) saturate(190%) brightness(1.08);
-  
-      -webkit-backdrop-filter:
-        blur(48px) saturate(180%) brightness(1.05);
-  
-      border: 1px solid rgba(255, 255, 255, .55);
-  
-      outline:
-        1px solid rgba(255, 255, 255, .12);
-  
-      outline-offset: -1px;
-  
-      box-shadow:
-  
-        0 40px 90px rgba(0, 0, 0, .12),
-  
-        0 12px 28px rgba(0, 0, 0, .08),
-  
-        inset 0 1px rgba(255, 255, 255, .9),
-  
-        inset 0 -1px rgba(255, 255, 255, .15),
-  
-        0 0 0 1px rgba(255, 255, 255, .22);
-  
-      color: var(--popover-foreground);
-  
-      text-rendering: optimizeLegibility;
-  
-      -webkit-font-smoothing: antialiased;
-  
-      pointer-events: auto;
-  
-      border-color: var(--border);
-  
-    }
-  
-  
-  
-    /*==================================================
-                    GLASS CONTENT LAYER
-    ==================================================*/
-  
-    .mobile-menu>*:not(.mobile-menu-glass) {
-  
-      position: relative;
-  
-      z-index: 2;
-  
-    }
-  
-  
-  
-    /*==================================================
-              GLASS SHINE
-  ==================================================*/
-  
-    .mobile-menu::before {
-  
-      content: "";
-  
-      position: absolute;
-  
-      top: -40%;
-  
-      left: -40%;
-  
-      width: 160%;
-  
-      height: 180%;
-  
-  
-  
-      background: linear-gradient(115deg,
-          transparent 35%,
-          rgba(255, 255, 255, .08) 42%,
-          rgba(255, 255, 255, .55) 50%,
-          rgba(255, 255, 255, .15) 58%,
-          transparent 65%);
-  
-      filter: blur(18px);
-  
-      transform:
-        rotate(18deg) translateX(-180%);
-  
-      pointer-events: none;
-  
-      opacity: 0;
-  
-      z-index: 3;
-  
-    }
-  
-    .mobile-menu.active::before {
-  
-      animation: glassShine 2.6s cubic-bezier(.22, .61, .36, 1) forwards;
-  
-    }
-  
-    @keyframes glassShine {
-  
-      from {
-  
-        transform:
-          rotate(18deg) translateX(-180%);
-  
-        opacity: 0;
-      }
-  
-      30% {
-        opacity: .8;
-      }
-  
-      to {
-  
-        transform:
-          rotate(18deg) translateX(180%);
-  
-        opacity: 0;
-      }
-  
-    }
-  
-  
-  
-    /*==================================================
-                LOWER GLASS REFLECTION
-    ==================================================*/
-  
-    .mobile-menu::after {
-  
-  
-  
-      content: "";
-  
-      position: absolute;
-  
-      left: 0;
-  
-      right: 0;
-  
-      bottom: 0;
-  
-  
-  
-      pointer-events: none;
-  
-      z-index: 1;
-  
-      background:
-  
-        linear-gradient(to top,
-  
-          rgba(255, 255, 255, .18),
-  
-          rgba(255, 255, 255, .05),
-  
-          transparent);
-  
-      inset: 0;
-  
-      pointer-events: none;
-  
-      opacity: .03;
-  
-      background-image:
-        radial-gradient(#000 1px, transparent 1px);
-  
-      background-size: 4px 4px;
-  
-      mix-blend-mode: overlay;
-  
-    }
-  
-  
-  
-    /*==================================================
-                  GLASS LAYER
-  ==================================================*/
-  
-    .mobile-menu-glass {
-  
-      position: absolute;
-  
-      inset: 0;
-  
-      z-index: 1;
-  
-      pointer-events: none;
-  
-      border-radius: inherit;
-  
-      background:
-  
-        radial-gradient(circle at 15% 10%,
-  
-          rgba(255, 255, 255, .55),
-  
-          rgba(255, 255, 255, .16) 35%,
-  
-          transparent 70%),
-  
-        linear-gradient(180deg,
-  
-          rgba(255, 255, 255, .22),
-  
-          rgba(255, 255, 255, .06));
-  
-      mix-blend-mode: screen;
-  
-    }
-  
-  
-  
-    /*==================================================
-                      MENU OPEN
-    ==================================================*/
-  
-    body.menu-open {
-  
-      overflow: hidden;
-  
-    }
-  
-  
-  
-    .mobile-menu-header,
-    .mobile-menu-list,
-    .mobile-contact,
-    .mobile-menu-footer {
-  
-      position: relative;
-  
-      z-index: 2;
-  
-    }
-  
-  
-  
-    .mobile-menu.active {
-  
-      transform:
-        translateX(0) scale(1);
-  
-    }
-  
-  
-    /*==================================================
-              MOBILE MENU HEADER
-  ==================================================*/
-  
-    .mobile-menu-header {
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: space-between;
-  
-      padding-bottom: calc(var(--spacing) * 2);
-  
-      padding-top: calc(var(--spacing) * 5);
-  
-      padding-inline: calc(var(--spacing) * 6);
-  
-      border-bottom: 1px solid rgba(0, 0, 0, .06);
-  
-      font-size: var(--text-sm);
-  
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-  
-      --removed-body-scroll-bar-size: 0px;
-  
-      border-bottom: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
-  
-    }
-  
-    .mobile-menu-header img {
-  
-      height: 42px;
-  
-    }
-  
-  
-    /*==================================================
-                  CLOSE BUTTON
-  ==================================================*/
-  
-    .mobile-close {
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: center;
-  
-      width: 42px;
-      height: 42px;
-  
-      border: none;
-  
-      background: none;
-  
-      cursor: pointer;
-  
-      font-size: 24px;
-  
-      color: #222;
-  
-    }
-  
-  
-    /*==================================================
-                  MENU LIST
-  ==================================================*/
-  
-    .mobile-menu-list {
-  
-      list-style: none;
-  
-      margin: 0;
-  
-      padding-top: calc(var(--spacing) * 6);
-  
-      padding-inline: calc(var(--spacing) * 6);
-  
-      /* overflow-y: auto; */
-  
-      flex: 1;
-  
-      display: flex;
-  
-      flex-direction: column;
-  
-      font-size: var(--text-sm);
-  
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-  
-      color: var(--popover-foreground);
-  
-      --removed-body-scroll-bar-size: 0px;
-  
-      gap: 0;
-  
-    }
-  
-    .mobile-menu-list li a {
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: space-between;
-  
-      padding: 21px 0;
-  
-      border-bottom: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
-  
-      font-size: 18px;
-  
-      font-weight: 600;
-  
-      color: #111;
-  
-      transition: .3s;
-  
-    }
-  
-  
-  
-    .mobile-menu-list li a:hover {
-  
-      color: #CE0B24;
-  
-    }
-  
-    .mobile-menu-list small {
-  
-      font-size: 11px;
-  
-      font-weight: 600;
-  
-      letter-spacing: .08em;
-  
-      color: #999;
-  
-      opacity: .45;
-  
-    }
-  
-  
-    /*==================================================
-                  CONTACT
-  ==================================================*/
-  
-    .mobile-contact {
-  
-      padding: 24px 28px;
-  
-      margin-bottom: 82px;
-  
-  
-    }
-  
-    .mobile-contact-title {
-  
-      display: block;
-  
-      margin-bottom: 18px;
-  
-      font-size: 11px;
-  
-      letter-spacing: .18em;
-  
-      color: #9b9b9b;
-  
-      font-weight: 600;
-  
-    }
-  
-    .mobile-phone {
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: space-between;
-  
-      gap: 14px;
-  
-      color: #111;
-  
-      text-decoration: none;
-  
-      font-size: 15px;
-  
-      font-weight: 600;
-  
-  
-  
-    }
-  
-    .mobile-phone span {
-  
-      flex: 1;
-  
-    }
-  
-    .phone-icon {
-  
-      flex-shrink: 0;
-  
-    }
-  
-    .transition-colors {
-      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-      transition-duration: var(--tw-duration, var(--default-transition-duration));
-    }
-  
-    .text-white {
-      color: var(--color-white);
-    }
-  
-    .bg-\[\#25D366\] {
-      background-color: #25d366;
-    }
-  
-    .rounded-full {
-      border-radius: 3.40282e38px;
-    }
-  
-    .justify-center {
-      justify-content: center;
-    }
-  
-    .items-center {
-      align-items: center;
-    }
-  
-    .shrink-0 {
-      flex-shrink: 0;
-    }
-  
-  
-    .size-8 {
-      width: calc(var(--spacing) * 8);
-      height: calc(var(--spacing) * 8);
-    }
-  
-    .inline-flex {
-      display: inline-flex;
-    }
-  
-    .text-sm {
-      font-size: var(--text-sm);
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-    }
-  
-    .whatsapp-icon {
-  
-      flex-shrink: 0;
-  
-      width: calc(var(--spacing) * 3.5);
-      height: calc(var(--spacing) * 3.5);
-  
-      font-size: var(--text-sm);
-  
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-  
-      vertical-align: middle;
-  
-      color: var(--color-white);
-  
-      background-color: #25d366;
-  
-      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
-      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-      transition-duration: var(--tw-duration, var(--default-transition-duration));
-  
-      border-radius: 3.40282e38px;
-  
-    }
-  
-  
-    .bg-\[\#25D366\]:hover {
-  
-      background: #0f913f;
-      color: #ffffff;
-    }
-  
-  
-    /*==================================================
-                  FOOTER
-  ==================================================*/
-  
-    .mobile-menu-footer {
-  
-      padding: 18px 28px 24px;
-  
-      display: flex;
-  
-      align-items: center;
-  
-      justify-content: space-between;
-  
-      gap: 14px;
-  
-      border-top: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
-  
-    }
-  
-    .mobile-menu-footer .language-switch {
-  
-      flex-shrink: 0;
-  
-    }
-  
-    .mobile-menu-footer .quote-btn {
-  
-      flex: 1;
-  
-      justify-content: center;
-  
-      height: 42px;
-  
-      font-size: 13px;
-  
-    }
-  
-  
-    /*==================================================
-                  MENU ANIMATION
-  ==================================================*/
-  
-  
-  
-    /*=============================================
-          MENU ITEMS
-  =============================================*/
-  
-    .mobile-menu-list li {
-  
-      opacity: 0;
-  
-      transform:
-        translateY(-25px);
-  
-      transition:
-        opacity .45s ease,
-        transform .6s cubic-bezier(.22, .61, .36, 1);
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li {
-  
-      opacity: 1;
-  
-      transform: none;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(1) {
-  
-      transition-delay: .22s;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(2) {
-  
-      transition-delay: .30s;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(3) {
-  
-      transition-delay: .38s;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(4) {
-  
-      transition-delay: .46s;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(5) {
-  
-      transition-delay: .54s;
-  
-    }
-  
-    /*=============================================
-          CONTACT
-  =============================================*/
-  
-    .mobile-contact {
-  
-      opacity: 0;
-  
-      transform:
-        translateY(-30px);
-  
-      transition:
-        opacity .45s ease,
-        transform .65s cubic-bezier(.22, .61, .36, 1);
-  
-    }
-  
-    .mobile-menu.active .mobile-contact {
-  
-      opacity: 1;
-  
-      transform: none;
-  
-      transition-delay: .66s;
-  
-    }
-  
-    /*=============================================
-          FOOTER
-  =============================================*/
-  
-    .mobile-menu-footer {
-  
-      opacity: 0;
-  
-      transform:
-        translateY(-30px);
-  
-      transition:
-        opacity .45s ease,
-        transform .65s cubic-bezier(.22, .61, .36, 1);
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-footer {
-  
-      opacity: 1;
-  
-      transform: none;
-  
-      transition-delay: .82s;
-  
-    }
-  
-    /*==================================================
-                  PAGE FROSTED GLASS
-    ==================================================*/
-  
-    body {
-  
-      transition:
-        filter .35s ease,
-        transform .35s ease;
-  
-    }
-  
-  
-    /*==================================================
-                  PAGE GLASS EFFECT
-  ==================================================*/
-  
-    main,
-    header,
-    footer {
-  
-      transition:
-        filter .45s ease,
-        transform .45s ease,
-        opacity .45s ease;
-  
-    }
-  
-    body.menu-open main {
-  
-      filter:
-        brightness(.96) saturate(.95);
-  
-    }
-  
-  
-  
-    body.menu-open footer {
-  
-      filter:
-  
-        blur(12px) brightness(.70);
-  
-    }
-  
-    .header {
-      z-index: 999;
-    }
-  
-    .mobile-overlay {
-      z-index: 9998;
-    }
-  
-    .mobile-menu {
-      z-index: 9999;
-    }
-}
-
-
-
 /*==================================================
                     MOBILE HEADER
 ==================================================*/
 
-@media screen and (min-width:501px) and (max-width:607px) {
+@media screen and (min-width:400px) and (max-width:639px) {
 
 /*==================================================
                         HEADER
@@ -11124,7 +10131,7 @@ html[dir="rtl"] .footer-bottom-links a {
 
     position: fixed;
 
-    height: 96%;
+    height: 97%;
 
     top: 12px;
     right: 12px;
@@ -11431,15 +10438,13 @@ background:
 
     padding-inline: calc(var(--spacing) * 6);
 
-    border-bottom: 1px solid rgba(0, 0, 0, .06);
-
     font-size: var(--text-sm);
 
     line-height: var(--tw-leading, var(--text-sm--line-height));
 
     --removed-body-scroll-bar-size: 0px;
 
-    border-bottom: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
+   
 
   }
 
@@ -11492,7 +10497,7 @@ background:
 
     padding-inline: calc(var(--spacing) * 6);
 
-    /* overflow-y: auto; */
+    overflow-y: auto;
 
     flex: 1;
 
@@ -11534,6 +10539,11 @@ background:
 
   }
 
+  .mobile-menu.active .mobile-menu-list li:nth-child(1) {
+
+    border-top: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
+  }
+
 
 
   .mobile-menu-list li a:hover {
@@ -11563,11 +10573,9 @@ background:
 
 .mobile-contact {
 
-  padding: 24px 28px;
-
-  margin-bottom: 68px;
+  padding-top: 29px;
+  margin-top: -12px;
   
-
 }
 
 .mobile-contact-title {
@@ -11592,19 +10600,7 @@ background:
 
   align-items: center;
 
-  justify-content: space-between;
-
   gap: 14px;
-
-  color: #111;
-
-  text-decoration: none;
-
-  font-size: 15px;
-
-  font-weight: 600;
-
-  
 
 }
 
@@ -11612,11 +10608,24 @@ background:
 
   flex: 1;
 
+  font-size: var(--text-sm);
+
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+
+  font-variant-numeric: tabular-nums;
+
 }
+
 
 .phone-icon {
 
   flex-shrink: 0;
+
+  margin-left: auto;
+
+  width: calc(var(--spacing) * 3.5);
+
+  height: calc(var(--spacing) * 3.5);
 
 }
 
@@ -11635,15 +10644,16 @@ background:
 }
 
 .rounded-full {
-  border-radius: 3.40282e38px;
+  border-radius: 16px;
+  padding: 0 !important;
 }
 
 .justify-center {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .items-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .shrink-0 {
@@ -11652,8 +10662,8 @@ background:
 
 
 .size-8 {
-  width: calc(var(--spacing) * 8);
-  height: calc(var(--spacing) * 8);
+  width: 32px;
+  height: 32px;
 }
 
 .inline-flex {
@@ -11703,6 +10713,8 @@ background:
 ==================================================*/
 
   .mobile-menu-footer {
+
+    flex-shrink: 0;
 
     padding: 18px 28px 24px;
 
@@ -11919,7 +10931,7 @@ body.menu-open footer {
                 TABLET HEADER
 ==================================================*/
 
-@media screen and (min-width:608px) and (max-width:926px) {
+@media screen and (min-width:640px) and (max-width:1023px) {
 
   /*=========================================
             HEADER
@@ -12891,17 +11903,11 @@ body.menu-open footer {
 
 
 
-
-
-
-
-
-
 /*=================================================
                 Hero Section                       
 ===================================================*/
 
-@media screen and (min-width:380px) and (max-width:607px) {
+@media screen and (min-width:400px) and (max-width:639px) {
 
   .hero {
   
@@ -12989,7 +11995,7 @@ body.menu-open footer {
 
   .hero-description {
 
-    max-width: 490px;
+    max-width: 363px;
 
     font-size: 16px;
 
@@ -13011,7 +12017,7 @@ body.menu-open footer {
 
     .hero-quote-btn {
       
-      width: 456px;
+      width: 338px;
       height: 44px;
       padding: 6px 24px;
       border-radius: 999px;
@@ -13027,13 +12033,18 @@ body.menu-open footer {
 
     }
 
+    .hero-quote-btn span{
+      display: inline-block;
+      margin-top: 4px;
+    }
+
     .hero-quote-btn svg{
       margin-top: 2px;
     }
 
     .hero-phone-btn {
 
-      width: 400px;
+      width: 278px;
 
       height: calc(var(--spacing) * 12);
 
@@ -13047,8 +12058,7 @@ body.menu-open footer {
 
       justify-content: center;
 
-      
-
+    
       color: #111;
 
       background-color: #0000;
@@ -13129,13 +12139,13 @@ body.menu-open footer {
 
     .hero-info {
 
-      display: inline-flex;
+      display: flex;
 
       align-items: center;
 
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
 
-      margin-top: 4px;
+      margin-top: -1px;
 
       row-gap: calc(var(--spacing) * 2);
 
@@ -13146,6 +12156,8 @@ body.menu-open footer {
       font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
 
       color: var(--foreground);
+
+      width: 350px;
 
     }
 
@@ -13166,7 +12178,7 @@ body.menu-open footer {
 
       text-transform: uppercase;
 
-      font-size: 10.8px;
+      font-size: .675rem;
 
     }
 
