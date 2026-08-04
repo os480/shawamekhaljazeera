@@ -10972,8 +10972,7 @@ body.menu-open footer {
                     HIDE DESKTOP
   ==================================================*/
 
-  .navbar,
-  .header-right {
+  .navbar {
 
     display: none;
 
