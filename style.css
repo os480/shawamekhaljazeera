@@ -14056,7 +14056,7 @@ body.menu-open footer {
 
     color: var(--foreground);
 
-    width: 57%;
+    width: 95%;
 
   }
 
@@ -14857,12 +14857,10 @@ body.menu-open footer {
 
   }
 
-  .trusted-section .container {
-
-
-    margin: auto;
-
-  }
+.trusted-section .container {
+  max-width: 1235px;
+  margin: auto;
+}
 
   /*==================================================
                     TOP
@@ -14933,7 +14931,7 @@ body.menu-open footer {
 
   .trusted-right {
 
-    width: 535px;
+    width: 704px;
     margin-top: -59px;
 
   }
@@ -14956,7 +14954,7 @@ body.menu-open footer {
 
   .trusted-divider {
 
-    width: 585px;
+    width: 751px;
     height: 1px;
     background: #e7e7e7;
     margin: 40px 0 58px;
