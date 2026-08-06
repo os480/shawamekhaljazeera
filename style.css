@@ -847,7 +847,7 @@ button {
 
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: -54px auto;
   padding: 40px 32px 0;
 
 }
@@ -1057,19 +1057,21 @@ button {
 
   margin-top: 48px;
 
+  width: 646px;
+
 }
 
 .hero-description {
 
-  width: 610px;
+  margin-top: calc(var(--spacing) * 10);
 
   font-size: 20px;
 
-  line-height: 1.55;
+  line-height: 1.4;
 
-  color: #222;
+  color: var(--muted-foreground);
 
-  font-weight: 400;
+  max-width: var(--container-2xl);
 
 }
 
@@ -1353,26 +1355,28 @@ svg:not(:root) {
 
   width: 100%;
 
-  margin-top: 38px;
-
-
+  margin-top: 68px;
+  
+  aspect-ratio: 21 / 9;
+ 
   background: #000;
+
+  overflow: hidden;
+
+  max-height: 560px;
 
 }
 
 .hero-image img {
 
-  display: block;
-
-  width: 100%;
-
-  height: 620px;
-
-
-
-  object-position: center center;
-  
-  transform: scale(1.02);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: transparent;
 
 }
 
@@ -10972,7 +10976,8 @@ body.menu-open footer {
                     HIDE DESKTOP
   ==================================================*/
 
-  .navbar {
+  .navbar,
+  .header-right {
 
     display: none;
 
@@ -12906,11 +12911,19 @@ body.menu-open footer {
 
 
 
+
 /*=================================================
                 Hero Section Small size                     
 ===================================================*/
 
 @media screen and (min-width:390px) and (max-width:417px) {
+
+  .hero-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: -8px auto;
+      padding: 40px 18px 0;
+    }
 
   .hero {
   
@@ -13012,7 +13025,7 @@ body.menu-open footer {
 
     .hero-actions {
   
-      display: inline-block;
+      display: block;
       gap: 14px;
       margin-top: 36px;
   
@@ -13031,14 +13044,14 @@ body.menu-open footer {
       font-weight: 600;
       transition: .35s;
       margin-bottom: 15px;
-      display: inline-block;
       text-align: center;
 
     }
 
     .hero-quote-btn span{
-      display: inline-block;
-      margin-top: 4px;
+        display: block;
+          margin-top: 4px;
+          margin-left: 72px;
     }
 
     .hero-quote-btn svg{
@@ -13060,8 +13073,6 @@ body.menu-open footer {
       display:inline-flex;
 
       justify-content: center;
-
-    
       color: #111;
 
       background-color: #0000;
@@ -13075,12 +13086,6 @@ body.menu-open footer {
       font-weight: var(--font-weight-medium);
 
       font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
-
-   
-
-      syntax: "*";
-      inherits: false;
-      initial-value: solid;
 
       transition-property: all;
       transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -13241,6 +13246,13 @@ body.menu-open footer {
 
 @media screen and (min-width:418px) and (max-width:639px) {
 
+  .hero-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 32px 0;
+    }
+
   .hero {
 
     width: 100%;
@@ -13327,7 +13339,7 @@ body.menu-open footer {
 
   .hero-description {
 
-    max-width: 588px;
+    max-width: 366px;
 
     font-size: 16px;
 
@@ -13349,7 +13361,7 @@ body.menu-open footer {
 
   .hero-quote-btn {
 
-    width: 534px;
+    width: 364px;
     height: 44px;
     padding: 6px 24px;
     border-radius: 999px;
@@ -13376,7 +13388,7 @@ body.menu-open footer {
 
   .hero-phone-btn {
 
-    width: 470px;
+    width: 304px;
 
     height: calc(var(--spacing) * 12);
 
@@ -13455,13 +13467,15 @@ body.menu-open footer {
 
     background: #dddddd;
 
+    margin-left: -2px;
+
   }
 
   .hero-footer {
 
     margin-top: 65px;
-
-    width: 545px;
+    width: 494px;
+    margin-left: -13px;
 
   }
 
@@ -13564,6 +13578,7 @@ body.menu-open footer {
 }
 
 
+
 /*================================================
                 Hero section Tablet               
 ==================================================*/
@@ -13585,7 +13600,7 @@ body.menu-open footer {
 
     width: 100%;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: -21px auto;
     padding: 40px 32px 0;
 
   }
@@ -13794,11 +13809,11 @@ body.menu-open footer {
 
     margin-top: calc(var(--spacing) * 10);
 
-    width: 672px;
+    max-width: var(--container-2xl);
 
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
 
-   line-height: var(--tw-leading, var(--text-xl--line-height));
+    line-height: var(--tw-leading, var(--text-lg--line-height));
 
     color: var(--muted-foreground);
 
@@ -14031,7 +14046,7 @@ body.menu-open footer {
 
     flex-wrap: wrap;
 
-    row-gap: calc(var(--spacing) * 2);
+    row-gap: 8px;
 
     column-gap: calc(var(--spacing) * 8);
 
@@ -14040,6 +14055,8 @@ body.menu-open footer {
     font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
 
     color: var(--foreground);
+
+    width: 57%;
 
   }
 
@@ -14162,5 +14179,997 @@ body.menu-open footer {
   }
 
 }
+
+
+
+/*================================================
+                TRUSTED SECTION small size
+=================================================*/
+
+@media screen and (min-width:390px) and (max-width:417px) {
+  
+  /*==================================================
+                  TRUSTED SECTION
+  ==================================================*/
+  
+    .trusted-section {
+  
+      width: 100%;
+      background: #fff;
+      padding: 96px 0 92px;
+  
+    }
+  
+    .trusted-section .container {
+  
+      max-width: 1257px;
+      margin: auto;
+  
+    }
+  
+    /*==================================================
+                  TOP
+  ==================================================*/
+  
+    .trusted-top {
+  
+      display: block;
+      margin-left: -9px;
+
+  
+    }
+  
+    /*==================================================
+                  LEFT
+  ==================================================*/
+  
+    .trusted-left {
+
+      width: 690px;
+  
+    }
+  
+    .trusted-small {
+  
+      display: block;
+      margin-bottom: calc(var(--spacing) * 4);
+      font-size: .7rem;
+      font-weight: 500;
+      color:
+          color-mix(in oklch, var(--foreground) 55%, transparent);
+      margin-left: -21px;
+      font-family: var(--font-mono);
+      letter-spacing: .04em;
+      font-feature-settings: "tnum", "ss01";
+  
+    }
+  
+    .trusted-title {
+  
+      font-size: var(--text-2xl);
+
+      font-weight: var(--font-weight-semibold);
+  
+      line-height: 1.12;
+  
+      letter-spacing: -.025em;
+
+      padding-bottom: calc(var(--spacing) * 1);
+  
+      color: var(--foreground);
+  
+      font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+
+      margin-left: -20px;
+  
+    }
+  
+    /*==================================================
+                  RIGHT
+  ==================================================*/
+  
+    .trusted-right {
+  
+      width: 330px;
+      margin-top: 22px;
+  
+    }
+  
+    .trusted-right p {
+  
+      font-size: var(--text-sm);
+  
+      line-height: var(--leading-relaxed);
+  
+      color: var(--muted-foreground);
+
+      margin-left: -16px;
+  
+    }
+  
+    /*==================================================
+                  DIVIDER
+  ==================================================*/
+  
+    .trusted-divider {
+  
+        width: 324px;
+        height: 1px;
+        background: #e7e7e7;
+        margin: 40px 0 58px;
+        margin-left: -23px;
+  
+    }
+  
+    /*==================================================
+                  GRID
+  ==================================================*/
+  
+    .trusted-logos {
+  
+      display: grid;
+  
+      grid-template-columns: repeat(3, 1fr);
+  
+      column-gap: 54px;
+  
+      row-gap: 58px;
+  
+      align-items: center;
+
+      margin-left: -15px;
+
+      margin-top: -16px;
+  
+    }
+  
+    /*==================================================
+                  LOGO
+  ==================================================*/
+  
+    .trusted-logo {
+  
+      position: relative;
+  
+      display: flex;
+  
+      justify-content: center;
+  
+      align-items: center;
+  
+      cursor: pointer;
+  
+      transition:
+        transform .28s ease,
+        opacity .28s ease;
+  
+    }
+  
+    .trusted-logo img {
+  
+      width: 100%;
+      height: 72px;
+      max-width: 165px;
+  
+      object-fit: contain;
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      opacity: .92;
+  
+      transition:
+        filter .35s cubic-bezier(.22, .61, .36, 1),
+        transform .35s cubic-bezier(.22, .61, .36, 1),
+        opacity .35s cubic-bezier(.22, .61, .36, 1);
+  
+      will-change: transform, filter;
+  
+    }
+  
+  
+  
+  
+    /*==================================================
+              INDIVIDUAL SIZES
+  ==================================================*/
+  
+    .trusted-logo:nth-child(1) img {
+      max-width: 186px;
+    }
+  
+    .trusted-logo:nth-child(2) img {
+      max-width: 150px;
+    }
+  
+    .trusted-logo:nth-child(3) img {
+      max-width: 122px;
+    }
+  
+    .trusted-logo:nth-child(4) img {
+      max-width: 184px;
+    }
+  
+    .trusted-logo:nth-child(5) img {
+      max-width: 146px;
+    }
+  
+    .trusted-logo:nth-child(6) img {
+      max-width: 168px;
+    }
+  
+    .trusted-logo:nth-child(7) img {
+      max-width: 182px;
+    }
+  
+    .trusted-logo:nth-child(8) img {
+      max-width: 118px;
+    }
+  
+    .trusted-logo:nth-child(9) img {
+      max-width: 168px;
+    }
+  
+    .trusted-logo:nth-child(10) img {
+      max-width: 145px;
+    }
+  
+    .trusted-logo:nth-child(11) img {
+      max-width: 88px;
+    }
+  
+    /*==================================================
+                  LOGO HOVER
+  ==================================================*/
+  
+    .trusted-logo {
+  
+      position: relative;
+  
+      display: flex;
+  
+      justify-content: center;
+  
+      align-items: center;
+  
+      cursor: pointer;
+  
+      transition:
+        transform .25s ease;
+  
+    }
+  
+    .trusted-logo img {
+  
+      width: 100%;
+  
+      height: 72px;
+  
+      object-fit: contain;
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      transition:
+        filter .28s ease,
+        transform .28s ease,
+        opacity .28s ease;
+  
+    }
+  
+  
+  
+  
+    .trusted-logos:hover img {
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      opacity: .28;
+  
+    }
+  
+    .trusted-logo:hover img {
+  
+      filter: none;
+  
+      opacity: 1;
+  
+      transform: scale(1.03);
+  
+    }
+  
+    .trusted-logo:hover {
+  
+      transform: translateY(-4px);
+  
+    }
+
+    /*==================================================
+      ECONOMY LOGO (Special Filter)
+==================================================*/
+
+    .logo-economy img {
+
+      filter:
+        grayscale(80%) brightness(1.25) contrast(.90);
+
+    }
+
+    .logo-economy:hover img {
+
+      filter: none;
+
+      opacity: 1;
+
+      transform: scale(1.03);
+
+    }
+  
+}
+
+/*===============================================
+                 TRUSTED Section Medium size
+  ===============================================*/
+
+@media screen and (min-width:418px) and (max-width:639px) {
+  /*==================================================
+                    TRUSTED SECTION
+    ==================================================*/
+  
+    .trusted-section {
+  
+      width: 100%;
+      background: #fff;
+      padding: 96px 0 92px;
+  
+    }
+  
+    .trusted-section .container {
+  
+      
+      margin: auto;
+  
+    }
+  
+    /*==================================================
+                    TOP
+    ==================================================*/
+  
+    .trusted-top {
+
+      margin-left: -5px;
+      width: 850px !important;
+      display: grid;
+  
+    }
+  
+    /*==================================================
+                    LEFT
+    ==================================================*/
+  
+    .trusted-left {
+
+      width: 414px;
+
+      font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+
+    }
+  
+    .trusted-small {
+  
+      display: block;
+      margin-bottom: calc(var(--spacing) * 4);
+      font-size: .7rem;
+      font-weight: 500;
+      color:
+        color-mix(in oklch, var(--foreground) 55%, transparent);
+      margin-left: -21px;
+      font-family: var(--font-mono);
+      letter-spacing: .04em;
+      font-feature-settings: "tnum", "ss01";
+  
+    }
+
+    /* .divider-title{
+      display: none !important;
+    } */
+  
+    .trusted-title {
+
+        padding-bottom: calc(var(--spacing) * 1);
+  
+        font-size: 24px;
+
+        font-weight: 600;
+      
+        line-height: 1.12;
+      
+        letter-spacing: -.025em;
+      
+        color: #111;
+
+        margin-left: -22px;
+
+
+
+        
+  
+    }
+  
+    /*==================================================
+                    RIGHT
+    ==================================================*/
+  
+    .trusted-right {
+  
+      width: 347px;
+      margin-top: -59px;
+  
+    }
+  
+    .trusted-right p {
+  
+      font-size: var(--text-sm);
+  
+      line-height: var(--leading-relaxed);
+  
+      color: var(--muted-foreground);
+  
+      margin-left: -16px;
+  
+    }
+  
+    /*==================================================
+                    DIVIDER
+    ==================================================*/
+  
+    .trusted-divider {
+  
+      width: 324px;
+      height: 1px;
+      background: #e7e7e7;
+      margin: 40px 0 58px;
+      margin-left: -23px;
+  
+    }
+  
+    /*==================================================
+                    GRID
+    ==================================================*/
+  
+    .trusted-logos {
+  
+      display: grid;
+  
+      grid-template-columns: repeat(3, 1fr);
+  
+      column-gap: 54px;
+  
+      row-gap: 58px;
+  
+      align-items: center;
+  
+      margin-left: -15px;
+  
+      margin-top: -16px;
+  
+    }
+  
+    /*==================================================
+                    LOGO
+    ==================================================*/
+  
+    .trusted-logo {
+  
+      position: relative;
+  
+      display: flex;
+  
+      justify-content: center;
+  
+      align-items: center;
+  
+      cursor: pointer;
+  
+      transition:
+        transform .28s ease,
+        opacity .28s ease;
+  
+    }
+  
+    .trusted-logo img {
+  
+      width: 100%;
+      height: 72px;
+      max-width: 165px;
+  
+      object-fit: contain;
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      opacity: .92;
+  
+      transition:
+        filter .35s cubic-bezier(.22, .61, .36, 1),
+        transform .35s cubic-bezier(.22, .61, .36, 1),
+        opacity .35s cubic-bezier(.22, .61, .36, 1);
+  
+      will-change: transform, filter;
+  
+    }
+  
+  
+  
+  
+    /*==================================================
+                INDIVIDUAL SIZES
+    ==================================================*/
+  
+    .trusted-logo:nth-child(1) img {
+      max-width: 186px;
+    }
+  
+    .trusted-logo:nth-child(2) img {
+      max-width: 150px;
+    }
+  
+    .trusted-logo:nth-child(3) img {
+      max-width: 122px;
+    }
+  
+    .trusted-logo:nth-child(4) img {
+      max-width: 184px;
+    }
+  
+    .trusted-logo:nth-child(5) img {
+      max-width: 146px;
+    }
+  
+    .trusted-logo:nth-child(6) img {
+      max-width: 168px;
+    }
+  
+    .trusted-logo:nth-child(7) img {
+      max-width: 182px;
+    }
+  
+    .trusted-logo:nth-child(8) img {
+      max-width: 118px;
+    }
+  
+    .trusted-logo:nth-child(9) img {
+      max-width: 168px;
+    }
+  
+    .trusted-logo:nth-child(10) img {
+      max-width: 145px;
+    }
+  
+    .trusted-logo:nth-child(11) img {
+      max-width: 88px;
+    }
+  
+    /*==================================================
+                    LOGO HOVER
+    ==================================================*/
+  
+    .trusted-logo {
+  
+      position: relative;
+  
+      display: flex;
+  
+      justify-content: center;
+  
+      align-items: center;
+  
+      cursor: pointer;
+  
+      transition:
+        transform .25s ease;
+  
+    }
+  
+    .trusted-logo img {
+  
+      width: 100%;
+  
+      height: 72px;
+  
+      object-fit: contain;
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      transition:
+        filter .28s ease,
+        transform .28s ease,
+        opacity .28s ease;
+  
+    }
+  
+  
+  
+  
+    .trusted-logos:hover img {
+  
+      filter:
+        grayscale(100%) brightness(1.85) contrast(.72);
+  
+      opacity: .28;
+  
+    }
+  
+    .trusted-logo:hover img {
+  
+      filter: none;
+  
+      opacity: 1;
+  
+      transform: scale(1.03);
+  
+    }
+  
+    .trusted-logo:hover {
+  
+      transform: translateY(-4px);
+  
+    }
+  
+    /*==================================================
+        ECONOMY LOGO (Special Filter)
+  ==================================================*/
+  
+    .logo-economy img {
+  
+      filter:
+        grayscale(80%) brightness(1.25) contrast(.90);
+  
+    }
+  
+    .logo-economy:hover img {
+  
+      filter: none;
+  
+      opacity: 1;
+  
+      transform: scale(1.03);
+  
+    }
+}
+
+/*================================================
+                TRUSTED Section Tablet
+  ================================================*/
+
+@media screen and (min-width:640px) and (max-width:1024px) {
+  /*==================================================
+                    TRUSTED SECTION
+    ==================================================*/
+
+  .trusted-section {
+
+    width: 100%;
+    background: #fff;
+    padding: 96px 0 92px;
+
+  }
+
+  .trusted-section .container {
+
+
+    margin: auto;
+
+  }
+
+  /*==================================================
+                    TOP
+    ==================================================*/
+
+  .trusted-top {
+
+    margin-left: -5px;
+    width: 850px !important;
+    display: grid;
+
+  }
+
+  /*==================================================
+                    LEFT
+    ==================================================*/
+
+  .trusted-left {
+
+    width: 520px;
+
+    font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+
+  }
+
+  .trusted-small {
+
+    display: block;
+    margin-bottom: calc(var(--spacing) * 4);
+    font-size: .7rem;
+    font-weight: 500;
+    color:
+      color-mix(in oklch, var(--foreground) 55%, transparent);
+    margin-left: -21px;
+    font-family: var(--font-mono);
+    letter-spacing: .04em;
+    font-feature-settings: "tnum", "ss01";
+
+  }
+
+
+
+  .trusted-title {
+
+    padding-bottom: calc(var(--spacing) * 1);
+
+    font-size: 30px;
+
+    font-weight: 600;
+
+    line-height: 1.12;
+
+    letter-spacing: -.025em;
+
+    color: #111;
+
+    margin-left: -22px;
+
+
+
+
+
+  }
+
+  /*==================================================
+                    RIGHT
+    ==================================================*/
+
+  .trusted-right {
+
+    width: 535px;
+    margin-top: -59px;
+
+  }
+
+  .trusted-right p {
+
+    font-size: 16px;
+
+    line-height: var(--leading-relaxed);
+
+    color: var(--muted-foreground);
+
+    margin-left: -16px;
+
+  }
+
+  /*==================================================
+                    DIVIDER
+    ==================================================*/
+
+  .trusted-divider {
+
+    width: 585px;
+    height: 1px;
+    background: #e7e7e7;
+    margin: 40px 0 58px;
+    margin-left: -23px;
+
+  }
+
+  /*==================================================
+                    GRID
+    ==================================================*/
+
+  .trusted-logos {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    column-gap: 54px;
+
+    row-gap: 58px;
+
+    align-items: center;
+
+    margin-left: -15px;
+
+    margin-top: -16px;
+
+  }
+
+  /*==================================================
+                    LOGO
+    ==================================================*/
+
+  .trusted-logo {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition:
+      transform .28s ease,
+      opacity .28s ease;
+
+  }
+
+  .trusted-logo img {
+
+    width: 100%;
+    height: 72px;
+    max-width: 165px;
+
+    object-fit: contain;
+
+    filter:
+      grayscale(100%) brightness(1.85) contrast(.72);
+
+    opacity: .92;
+
+    transition:
+      filter .35s cubic-bezier(.22, .61, .36, 1),
+      transform .35s cubic-bezier(.22, .61, .36, 1),
+      opacity .35s cubic-bezier(.22, .61, .36, 1);
+
+    will-change: transform, filter;
+
+  }
+
+
+
+
+  /*==================================================
+                INDIVIDUAL SIZES
+    ==================================================*/
+
+  .trusted-logo:nth-child(1) img {
+    max-width: 186px;
+  }
+
+  .trusted-logo:nth-child(2) img {
+    max-width: 150px;
+  }
+
+  .trusted-logo:nth-child(3) img {
+    max-width: 122px;
+  }
+
+  .trusted-logo:nth-child(4) img {
+    max-width: 184px;
+  }
+
+  .trusted-logo:nth-child(5) img {
+    max-width: 146px;
+  }
+
+  .trusted-logo:nth-child(6) img {
+    max-width: 168px;
+  }
+
+  .trusted-logo:nth-child(7) img {
+    max-width: 182px;
+  }
+
+  .trusted-logo:nth-child(8) img {
+    max-width: 118px;
+  }
+
+  .trusted-logo:nth-child(9) img {
+    max-width: 168px;
+  }
+
+  .trusted-logo:nth-child(10) img {
+    max-width: 145px;
+  }
+
+  .trusted-logo:nth-child(11) img {
+    max-width: 88px;
+  }
+
+  /*==================================================
+                    LOGO HOVER
+    ==================================================*/
+
+  .trusted-logo {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition:
+      transform .25s ease;
+
+  }
+
+  .trusted-logo img {
+
+    width: 100%;
+
+    height: 72px;
+
+    object-fit: contain;
+
+    filter:
+      grayscale(100%) brightness(1.85) contrast(.72);
+
+    transition:
+      filter .28s ease,
+      transform .28s ease,
+      opacity .28s ease;
+
+  }
+
+
+
+
+  .trusted-logos:hover img {
+
+    filter:
+      grayscale(100%) brightness(1.85) contrast(.72);
+
+    opacity: .28;
+
+  }
+
+  .trusted-logo:hover img {
+
+    filter: none;
+
+    opacity: 1;
+
+    transform: scale(1.03);
+
+  }
+
+  .trusted-logo:hover {
+
+    transform: translateY(-4px);
+
+  }
+
+  /*==================================================
+        ECONOMY LOGO (Special Filter)
+  ==================================================*/
+
+  .logo-economy img {
+
+    filter:
+      grayscale(80%) brightness(1.25) contrast(.90);
+
+  }
+
+  .logo-economy:hover img {
+
+    filter: none;
+
+    opacity: 1;
+
+    transform: scale(1.03);
+
+  }
+}
+
+
 
 
