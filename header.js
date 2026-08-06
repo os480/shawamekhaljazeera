@@ -841,13 +841,13 @@ logos.forEach((logo, index) => {
         // 390px
         //==============================
 
-        if (width < 640) {
+        if (width < 417) {
 
             scrollStart = 1400;
             scrollEnd   = 1800;
 
-            downMove = 180;
-            upMove   = 250;
+            downMove = 1;
+            upMove   = 170;
 
         }
 

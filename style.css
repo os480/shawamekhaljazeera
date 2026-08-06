@@ -15173,7 +15173,7 @@ body.menu-open footer {
 
   .about-number {
       position: absolute;
-      top: -101px;
+      top: -49px;
       right: 34px;
       font-family: var(--font-mono);
       font-size: clamp(4.5rem, 13vw, 10rem);
@@ -15203,7 +15203,7 @@ body.menu-open footer {
 
   .about-text-main {
 
-      margin-top: 52px;
+      margin-top: 54px;
       font-size: 16px;
       line-height: var(--leading-relaxed);
       color:
