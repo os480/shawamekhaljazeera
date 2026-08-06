@@ -807,63 +807,141 @@ logos.forEach((logo, index) => {
 });
 
 /*==================================================
-        SECTION NUMBER SMOOTH PARALLAX
+        ABOUT NUMBER RESPONSIVE SCROLL
 ==================================================*/
 
-function createSmoothParallax(sectionSelector, numberSelector, maxMove = 220, smooth = 0.08) {
+(() => {
 
-    const section = document.querySelector(sectionSelector);
-    const number = document.querySelector(numberSelector);
+    const number = document.querySelector(".about-number");
 
-    if (!section || !number) return;
+    if (!number) return;
+
 
     let currentY = 0;
     let targetY = 0;
 
-    function updateTarget() {
 
-        const rect = section.getBoundingClientRect();
-        const vh = window.innerHeight;
+    const smooth = 0.30;
 
-        let progress = (vh - rect.top) / (vh + rect.height * 0.65);
+
+    let scrollStart;
+    let scrollEnd;
+    let downMove;
+    let upMove;
+
+
+    function setSettings() {
+
+
+        const width = window.innerWidth;
+
+
+        //==============================
+        // MOBILE
+        // 390px
+        //==============================
+
+        if (width < 640) {
+
+            scrollStart = 1400;
+            scrollEnd   = 1800;
+
+            downMove = 180;
+            upMove   = 250;
+
+        }
+
+
+        //==============================
+        // TABLET
+        // 640px - 1024px
+        //==============================
+
+        else if (width < 1025) {
+
+            scrollStart = 0; // نعدلها بعد القياس
+            scrollEnd   = 0;
+
+            downMove = 150;
+            upMove   = 200;
+
+        }
+
+
+        //==============================
+        // DESKTOP
+        // 1025px+
+        //==============================
+
+        else {
+
+            scrollStart = 0; // نعدلها بعد القياس
+            scrollEnd   = 0;
+
+            downMove = 120;
+            upMove   = 170;
+
+        }
+
+    }
+
+
+    function update() {
+
+
+        let progress =
+            (window.scrollY - scrollStart) /
+            (scrollEnd - scrollStart);
+
 
         progress = Math.max(0, Math.min(progress, 1));
 
-        targetY = progress * maxMove;
+
+        targetY =
+            downMove -
+            (progress * (downMove + upMove));
+
+
     }
+
 
     function animate() {
 
-        currentY += (targetY - currentY) * smooth;
+
+        currentY +=
+            (targetY - currentY) * smooth;
+
 
         number.style.transform =
-            `translate3d(0, -${currentY}px, 0)`;
+            `translate3d(0, ${currentY}px, 0)`;
+
 
         requestAnimationFrame(animate);
+
     }
 
-    window.addEventListener('scroll', updateTarget, { passive: true });
-    window.addEventListener('resize', updateTarget);
 
-    updateTarget();
+    window.addEventListener("resize", () => {
+
+        setSettings();
+        update();
+
+    });
+
+
+    window.addEventListener(
+        "scroll",
+        update,
+        {passive:true}
+    );
+
+
+    setSettings();
+    update();
     animate();
-}
 
-/* Store section */
-createSmoothParallax(
-    '.store-section',
-    '.store-number',
-    220,
-    0.08
-);
 
-/* Contact section */
-createSmoothParallax(
-    '.contact-section',
-    '.contact-bg-number',
-    260,
-    0.08
-);
+})();
 
 /* =========================================
    HERO TITLE ANIMATION
