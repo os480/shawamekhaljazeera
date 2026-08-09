@@ -15057,11 +15057,9 @@ body.menu-open footer {
 
     background: #fff;
 
-    padding: 33px 0;
+    padding: 0 0;
 
-    overflow: hidden;
-
-
+    overflow: visible;
 
 
   }
@@ -15173,7 +15171,7 @@ body.menu-open footer {
 
   .about-number {
       position: absolute;
-      top: -49px;
+      top: -154px;
       right: 34px;
       font-family: var(--font-mono);
       font-size: clamp(4.5rem, 13vw, 10rem);

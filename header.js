@@ -844,10 +844,10 @@ logos.forEach((logo, index) => {
         if (width < 417) {
 
             scrollStart = 1400;
-            scrollEnd   = 1800;
+            scrollEnd   = 1767;
 
-            downMove = 1;
-            upMove   = 170;
+            downMove = 60;
+            upMove = 40;
 
         }
 
