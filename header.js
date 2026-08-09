@@ -806,7 +806,155 @@ logos.forEach((logo, index) => {
 
 });
 
+
+
+
+
+
+
+
 /*==================================================
+        SECTION NUMBER SMOOTH PARALLAX
+==================================================*/
+
+function createSmoothParallax(
+    sectionSelector,
+    numberSelector,
+    maxMove = 220,
+    smooth = 0.08
+) {
+
+    const section = document.querySelector(sectionSelector);
+    const number = document.querySelector(numberSelector);
+
+    if (!section || !number) return;
+
+    /*=========================================
+                ANIMATION VALUES
+    =========================================*/
+
+    let currentY = 0;
+    let targetY = 0;
+
+
+    /*=========================================
+                UPDATE TARGET
+    =========================================*/
+
+    function updateTarget() {
+
+        const rect = section.getBoundingClientRect();
+
+        const vh = window.innerHeight;
+
+        /*
+            حساب نسبة دخول الـ Section
+        */
+
+        let progress =
+            (vh - rect.top) /
+            (vh + rect.height * 0.65);
+
+
+        /*
+            منع القيمة من النزول
+            تحت 0 أو فوق 1
+        */
+
+        progress = Math.max(
+            0,
+            Math.min(progress, 1)
+        );
+
+
+        /*
+            تحديد مكان الرقم
+        */
+
+        targetY = progress * maxMove;
+
+    }
+
+
+    /*=========================================
+                SMOOTH ANIMATION
+    =========================================*/
+
+    function animate() {
+
+        /*
+            الحركة الناعمة
+        */
+
+        currentY +=
+            (targetY - currentY) * smooth;
+
+
+        /*
+            تحريك الرقم لأعلى
+        */
+
+        number.style.transform =
+            `translate3d(0, -${currentY}px, 0)`;
+
+
+        requestAnimationFrame(animate);
+
+    }
+
+
+    /*=========================================
+                    EVENTS
+    =========================================*/
+
+    window.addEventListener(
+        "scroll",
+        updateTarget,
+        { passive: true }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        updateTarget
+    );
+
+
+    /*=========================================
+                INITIALIZE
+    =========================================*/
+
+    updateTarget();
+
+    animate();
+
+}
+
+
+/*==================================================
+                    STORE NUMBER
+==================================================*/
+
+createSmoothParallax(
+    ".store-section",
+    ".store-number",
+    220,
+    0.08
+);
+
+
+/*==================================================
+                    CONTACT NUMBER
+==================================================*/
+
+createSmoothParallax(
+    ".contact-section",
+    ".contact-bg-number",
+    260,
+    0.08
+);
+
+/*==================================================*
         ABOUT NUMBER RESPONSIVE SCROLL
 ==================================================*/
 
@@ -817,76 +965,117 @@ logos.forEach((logo, index) => {
     if (!number) return;
 
 
+    /*==================================================
+                    VARIABLES
+    ==================================================*/
+
     let currentY = 0;
     let targetY = 0;
 
-
     const smooth = 0.30;
 
+    let scrollStart = 0;
+    let scrollEnd = 0;
+    let downMove = 0;
+    let upMove = 0;
 
-    let scrollStart;
-    let scrollEnd;
-    let downMove;
-    let upMove;
+    let animationEnabled = false;
 
+
+    /*==================================================
+                    SET SETTINGS
+    ==================================================*/
 
     function setSettings() {
-
 
         const width = window.innerWidth;
 
 
-        //==============================
-        // MOBILE
-        // 390px
-        //==============================
+        /*==============================================
+                    MOBILE
+                390px - 416px
+        ==============================================*/
 
-        if (width < 417) {
+        if (width >= 390 && width < 417) {
+
+            animationEnabled = true;
+
+            scrollStart = 1360;
+            scrollEnd   = 1780;
+
+            downMove = 60;
+            upMove   = 40;
+
+            return;
+        }
+
+
+        /*==============================================
+                    TABLET
+                640px - 1024px
+        ==============================================*/
+
+        else if (width >= 640 && width < 1025) {
+
+            animationEnabled = true;
 
             scrollStart = 1400;
             scrollEnd   = 1767;
 
             downMove = 60;
-            upMove = 40;
+            upMove   = 66;
 
+            return;
         }
 
 
-        //==============================
-        // TABLET
-        // 640px - 1024px
-        //==============================
+        /*==============================================
+                    DESKTOP
+                    1025px+
+        ==============================================*/
 
-        else if (width < 1025) {
+        else if (width >= 1025) {
 
-            scrollStart = 0; // نعدلها بعد القياس
-            scrollEnd   = 0;
+            animationEnabled = true;
 
-            downMove = 150;
-            upMove   = 200;
+            scrollStart = 1627;
+            scrollEnd   = 1947;
 
+            downMove = 0;
+            upMove   = 80;
+
+            return;
         }
 
 
-        //==============================
-        // DESKTOP
-        // 1025px+
-        //==============================
+        /*==============================================
+                    OTHER SIZES
+        ==============================================*/
 
-        else {
+        animationEnabled = false;
 
-            scrollStart = 0; // نعدلها بعد القياس
-            scrollEnd   = 0;
+        scrollStart = 0;
+        scrollEnd   = 0;
 
-            downMove = 120;
-            upMove   = 170;
-
-        }
+        downMove = 0;
+        upMove   = 0;
 
     }
 
 
+    /*==================================================
+                    UPDATE
+    ==================================================*/
+
     function update() {
+
+        if (!animationEnabled) {
+
+            targetY = 0;
+
+            return;
+
+        }
 
 
         let progress =
@@ -894,22 +1083,31 @@ logos.forEach((logo, index) => {
             (scrollEnd - scrollStart);
 
 
-        progress = Math.max(0, Math.min(progress, 1));
+        progress = Math.max(
+            0,
+            Math.min(progress, 1)
+        );
 
 
         targetY =
             downMove -
-            (progress * (downMove + upMove));
-
+            (
+                progress *
+                (downMove + upMove)
+            );
 
     }
 
 
+    /*==================================================
+                    SMOOTH ANIMATION
+    ==================================================*/
+
     function animate() {
 
-
         currentY +=
-            (targetY - currentY) * smooth;
+            (targetY - currentY) *
+            smooth;
 
 
         number.style.transform =
@@ -921,25 +1119,39 @@ logos.forEach((logo, index) => {
     }
 
 
+    /*==================================================
+                    RESIZE
+    ==================================================*/
+
     window.addEventListener("resize", () => {
 
         setSettings();
+
         update();
 
     });
 
 
+    /*==================================================
+                    SCROLL
+    ==================================================*/
+
     window.addEventListener(
         "scroll",
         update,
-        {passive:true}
+        { passive: true }
     );
 
 
-    setSettings();
-    update();
-    animate();
+    /*==================================================
+                    INITIALIZE
+    ==================================================*/
 
+    setSettings();
+
+    update();
+
+    animate();
 
 })();
 
