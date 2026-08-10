@@ -431,22 +431,76 @@ if (trustedSection) {
 }
 
 
-/*==================================
-    Function Anemation About Section
-    =================================*/
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach((entry)=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-},{threshold:0.15});
 
-document.querySelectorAll(
-'.about-left,.about-right,.about-feature'
-).forEach((el)=>{
-  observer.observe(el);
-});
+
+
+/*==================================================
+        ABOUT SECTION ANIMATION
+==================================================*/
+
+const aboutImage = document.querySelector(".about-image");
+
+const aboutObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) return;
+
+            /*==================================
+                ADD SHOW TO CURRENT ELEMENT
+            ==================================*/
+
+            entry.target.classList.add("show");
+
+            /*==================================
+                ABOUT IMAGE
+                DESKTOP ONLY
+            ==================================*/
+
+            if (
+                entry.target.classList.contains("about-left") &&
+                aboutImage &&
+                window.innerWidth >= 640
+            ) {
+
+                setTimeout(() => {
+
+                    aboutImage.classList.add("show");
+
+                }, 800);
+
+            }
+
+            /*==================================
+                STOP OBSERVING
+            ==================================*/
+
+            aboutObserver.unobserve(entry.target);
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+
+/*==================================================
+        ABOUT LEFT + RIGHT + FEATURES
+==================================================*/
+
+document
+    .querySelectorAll(
+        ".about-left, .about-right, .about-feature"
+    )
+    .forEach((element) => {
+
+        aboutObserver.observe(element);
+
+    });
+
 
 
 
@@ -1172,6 +1226,236 @@ createSmoothParallax(
     animate();
 
 })();
+
+
+/*===============================================================*/
+
+
+/*==================================================*
+        SERVICE NUMBER RESPONSIVE SCROLL
+==================================================*/
+
+(() => {
+
+    const number = document.querySelector(".services-number");
+
+    if (!number) return;
+
+
+    /*==================================================
+                    VARIABLES
+    ==================================================*/
+
+    let currentY = 0;
+    let targetY = 0;
+
+    const smooth = 0.30;
+
+    let scrollStart = 0;
+    let scrollEnd = 0;
+    let downMove = 0;
+    let upMove = 0;
+
+    let animationEnabled = false;
+
+
+    /*==================================================
+                    SET SETTINGS
+    ==================================================*/
+
+    function setSettings() {
+
+        const width = window.innerWidth;
+
+
+        /*==============================================
+                    MOBILE
+                390px - 416px
+        ==============================================*/
+
+        if (width >= 390 && width < 417) {
+
+            animationEnabled = true;
+
+            scrollStart = 1360;
+            scrollEnd   = 1780;
+
+            downMove = 60;
+            upMove   = 40;
+
+            return;
+        }
+
+        /*==============================================
+                    Medium size
+                418px - 639px
+        ==============================================*/
+
+        if (width >= 418 && width < 639) {
+
+            animationEnabled = true;
+
+            scrollStart = 1360;
+            scrollEnd   = 1760;
+
+            downMove = 80;
+            upMove   = 40;
+
+            return;
+        }
+
+
+        /*==============================================
+                    TABLET
+                640px - 1024px
+        ==============================================*/
+
+        else if (width >= 640 && width < 1025) {
+
+            animationEnabled = true;
+
+            scrollStart = 1400;
+            scrollEnd   = 1767;
+
+            downMove = 60;
+            upMove   = 60;
+
+            return;
+        }
+
+
+        /*==============================================
+                    DESKTOP
+                    1025px+
+        ==============================================*/
+
+        else if (width >= 1025) {
+
+            animationEnabled = true;
+
+            scrollStart = 2667;
+            scrollEnd   = 3040;
+
+            downMove = 60;
+            upMove   = 50;
+
+            return;
+        }
+
+
+        /*==============================================
+                    OTHER SIZES
+        ==============================================*/
+
+        animationEnabled = false;
+
+        scrollStart = 0;
+        scrollEnd   = 0;
+
+        downMove = 0;
+        upMove   = 0;
+
+    }
+
+
+    /*==================================================
+                    UPDATE
+    ==================================================*/
+
+    function update() {
+
+        if (!animationEnabled) {
+
+            targetY = 0;
+
+            return;
+
+        }
+
+
+        let progress =
+            (window.scrollY - scrollStart) /
+            (scrollEnd - scrollStart);
+
+
+        progress = Math.max(
+            0,
+            Math.min(progress, 1)
+        );
+
+
+        targetY =
+            downMove -
+            (
+                progress *
+                (downMove + upMove)
+            );
+
+    }
+
+
+    /*==================================================
+                    SMOOTH ANIMATION
+    ==================================================*/
+
+    function animate() {
+
+        currentY +=
+            (targetY - currentY) *
+            smooth;
+
+
+        number.style.transform =
+            `translate3d(0, ${currentY}px, 0)`;
+
+
+        requestAnimationFrame(animate);
+
+    }
+
+
+    /*==================================================
+                    RESIZE
+    ==================================================*/
+
+    window.addEventListener("resize", () => {
+
+        setSettings();
+
+        update();
+
+    });
+
+
+    /*==================================================
+                    SCROLL
+    ==================================================*/
+
+    window.addEventListener(
+        "scroll",
+        update,
+        { passive: true }
+    );
+
+
+    /*==================================================
+                    INITIALIZE
+    ==================================================*/
+
+    setSettings();
+
+    update();
+
+    animate();
+
+})();
+
+
+
+
+
+
+
 
 /* =========================================
    HERO TITLE ANIMATION
