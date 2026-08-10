@@ -1009,6 +1009,24 @@ createSmoothParallax(
             return;
         }
 
+        /*==============================================
+                    Medium size
+                418px - 639px
+        ==============================================*/
+
+        if (width >= 418 && width < 639) {
+
+            animationEnabled = true;
+
+            scrollStart = 1360;
+            scrollEnd   = 1760;
+
+            downMove = 80;
+            upMove   = 40;
+
+            return;
+        }
+
 
         /*==============================================
                     TABLET
@@ -1023,7 +1041,7 @@ createSmoothParallax(
             scrollEnd   = 1767;
 
             downMove = 60;
-            upMove   = 66;
+            upMove   = 60;
 
             return;
         }
@@ -1042,7 +1060,7 @@ createSmoothParallax(
             scrollEnd   = 1947;
 
             downMove = 0;
-            upMove   = 80;
+            upMove   = 120;
 
             return;
         }
