@@ -12480,7 +12480,7 @@ body.menu-open footer {
 
   .hero-description {
 
-    max-width: 363px;
+    width: 400px;
 
     font-size: 16px;
 
@@ -12502,7 +12502,7 @@ body.menu-open footer {
 
     .hero-quote-btn {
       
-      width: 338px;
+      width: 358px;
       height: 44px;
       padding: 6px 24px;
       border-radius: 999px;
@@ -12529,7 +12529,7 @@ body.menu-open footer {
 
     .hero-phone-btn {
 
-      width: 278px;
+      width: 300px;
 
       height: calc(var(--spacing) * 12);
 
@@ -13762,7 +13762,7 @@ body.menu-open footer {
   
     .trusted-divider {
   
-        width: 324px;
+        width: 349px;
         height: 1px;
         background: #e7e7e7;
         margin: 40px 0 58px;
