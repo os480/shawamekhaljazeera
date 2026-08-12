@@ -1295,11 +1295,11 @@ createSmoothParallax(
 
             animationEnabled = true;
 
-            scrollStart = 1360;
-            scrollEnd   = 1760;
+            scrollStart = 2628;
+            scrollEnd   = 2988;
 
-            downMove = 80;
-            upMove   = 40;
+            downMove = 40;
+            upMove   = 51;
 
             return;
         }
@@ -1314,11 +1314,11 @@ createSmoothParallax(
 
             animationEnabled = true;
 
-            scrollStart = 1400;
-            scrollEnd   = 1767;
+            scrollStart = 2480;
+            scrollEnd   = 2840;
 
-            downMove = 60;
-            upMove   = 60;
+            downMove = 30;
+            upMove   = 80;
 
             return;
         }

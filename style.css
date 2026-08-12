@@ -2319,6 +2319,7 @@ svg:not(:root) {
 
 }
 
+
 /*==================================================
                 HEADER
 ==================================================*/
@@ -2339,6 +2340,7 @@ svg:not(:root) {
 
 }
 
+
 /*==================================================
                 SERVICES LIST
 ==================================================*/
@@ -2349,8 +2351,9 @@ svg:not(:root) {
 
 }
 
+
 /*==================================================
-                ROW
+                SERVICE ROW
 ==================================================*/
 
 .service-item {
@@ -2359,15 +2362,18 @@ svg:not(:root) {
 
   display: grid;
 
-  grid-template-columns: 70px 430px 2fr 170px 45px;
+  grid-template-columns:
+    70px 430px minmax(340px, 1fr) 190px 70px;
 
   align-items: center;
 
-  column-gap: 48px;
+  column-gap: 55px;
 
-  padding: 24px 22px;
+  width: 100%;
 
-  
+  min-height: 148px;
+
+  padding: 34px 55px;
 
   text-decoration: none;
 
@@ -2375,11 +2381,19 @@ svg:not(:root) {
 
   overflow: hidden;
 
+  cursor: pointer;
+
   transition:
     background-color .45s ease,
-    padding .35s ease;
+    transform .45s cubic-bezier(.22, .61, .36, 1),
+    border-color .35s ease;
 
 }
+
+
+/*==================================================
+                TOP BORDER — 95%
+==================================================*/
 
 .service-item::after {
 
@@ -2388,16 +2402,25 @@ svg:not(:root) {
   position: absolute;
 
   top: 0;
-  left: 2%;
+
+  left: 2.5%;
 
   width: 95%;
+
   height: 1px;
 
   background: #ececec;
 
   z-index: 3;
 
+  pointer-events: none;
+
 }
+
+
+/*==================================================
+                HOVER BACKGROUND
+==================================================*/
 
 .service-item::before {
 
@@ -2405,17 +2428,41 @@ svg:not(:root) {
 
   position: absolute;
 
-  inset: 0;
+  top: 0;
 
-  background: #fcf5f6;
+  right: 0;
+
+  bottom: 1px;
+
+  left: 0;
+
+  background: #fbf7f7;
 
   opacity: 0;
 
-  transition: opacity .35s ease;
+  transition: opacity .45s ease;
 
   z-index: 0;
 
+  pointer-events: none;
+
 }
+
+
+/*==================================================
+                HOVER BACKGROUND ACTIVE
+==================================================*/
+
+.service-item:hover::before {
+
+  opacity: 1;
+
+}
+
+
+/*==================================================
+                CONTENT LAYER
+==================================================*/
 
 .service-item>* {
 
@@ -2425,19 +2472,105 @@ svg:not(:root) {
 
 }
 
+
+/*==================================================
+                LAST SERVICE ITEM
+                BOTTOM BORDER — 95%
+==================================================*/
+
+.service-item.item-four {
+
+  border-bottom: none;
+
+  background-color: transparent;
+
+  background-image: linear-gradient(to right,
+      transparent 0%,
+      transparent 2.5%,
+      #ececec 2.5%,
+      #ececec 97.5%,
+      transparent 97.5%,
+      transparent 100%);
+
+  background-repeat: no-repeat;
+
+  background-position: bottom;
+
+  background-size: 100% 1px;
+
+}
+
+
+/*==================================================
+        LAST SERVICE ITEM — HOVER
+==================================================*/
+
+.service-item.item-four:hover {
+
+  background-color: transparent;
+
+}
+
+
+/*==================================================
+                INDEX
+==================================================*/
+
 .service-index {
 
-  color: #8f8f8f;
-
-  font-size: 17px;
+  font-size: 24px;
 
   font-weight: 500;
 
+  letter-spacing: -1px;
+
+  color: #7e7e7e;
+
 }
 
+
+/*==================================================
+                FONT MONO
+==================================================*/
+
 .font-mono {
-  font-family: Geist Mono, Geist Mono Fallback, ui-monospace, monospace;
+
+  font-family:
+    Geist Mono,
+    Geist Mono Fallback,
+    ui-monospace,
+    monospace;
+
 }
+
+
+/*==================================================
+                LEFT CONTENT
+==================================================*/
+
+.service-main {
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  transition:
+    transform .45s cubic-bezier(.22, .61, .36, 1);
+
+}
+
+.service-item:hover .service-main {
+
+  transform: translateX(12px);
+
+}
+
+
+/*==================================================
+                SERVICE TITLE
+==================================================*/
 
 .service-title-item {
 
@@ -2445,130 +2578,203 @@ svg:not(:root) {
 
   font-size: 31px;
 
+  line-height: 1.08;
+
   font-weight: 700;
 
-  letter-spacing: -1.3px;
+  letter-spacing: -1.4px;
 
   color: #111;
 
-  transition: .35s;
-
-
+  transition:
+    color .35s ease,
+    transform .45s cubic-bezier(.22, .61, .36, 1);
 
 }
+
+.service-item:hover .service-title-item {
+
+  color: #c31734;
+
+}
+
+
+/*==================================================
+                SERVICE SUBTITLE
+==================================================*/
 
 .service-subtitle {
 
-  margin-top: 8px;
+  margin-top: 12px;
 
-  font-size: 15px;
+  font-size: 18px;
 
-  color: #666;
-
-  width: 350px;
-
-}
-
-.service-description {
-
-  font-size: 12px;
-
-  line-height: 1.75;
-
-  color: #666;
-
-  width: 100%;
-
-  padding-right: 33px;
-
-  transition: .35s;
+  line-height: 1.5;
 
   font-weight: 400;
 
+  color: #777;
 
+  transition:
+    color .35s ease,
+    transform .45s cubic-bezier(.22, .61, .36, 1);
 
 }
 
+.service-item:hover .service-subtitle {
+
+  color: #666;
+
+  transform: translateX(8px);
+
+}
+
+
+/*==================================================
+                SERVICE DESCRIPTION
+==================================================*/
+
+.service-description {
+
+  max-width: 420px;
+
+  width: 410px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  font-weight: 400;
+
+  color: #666;
+
+  transition:
+    transform .50s cubic-bezier(.22, .61, .36, 1),
+    color .35s ease;
+
+}
+
+.service-item:hover .service-description {
+
+  transform: translateX(14px);
+
+}
+
+
+/*==================================================
+                TEXT UTILITIES
+==================================================*/
 
 .text-muted-foreground,
 .text-muted-foreground\/50 {
+
   color: var(--muted-foreground);
+
 }
 
 .leading-relaxed {
+
   --tw-leading: var(--leading-relaxed);
+
   line-height: var(--leading-relaxed);
+
 }
 
 .text-sm {
+
   font-size: var(--text-sm);
-  line-height: var(--tw-leading, var(--text-sm--line-height));
+
+  line-height:
+    var(--tw-leading,
+      var(--text-sm--line-height));
+
 }
 
 .line-clamp-2 {
- --webkit-line-clamp: 2;
-  --webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
   display: -webkit-box;
+
   overflow: hidden;
+
 }
 
 .font-sans {
-  font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+
+  font-family:
+    Geist,
+    Geist Fallback,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+
 }
+
+
+/*==================================================
+                SERVICE PREVIEW
+==================================================*/
 
 .service-preview {
 
-  width: 170px;
+  width: 190px;
 
-  height: 96px;
+  height: 110px;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   overflow: hidden;
 
   opacity: 0;
 
-  transform: translateX(35px) scale(.95);
+  visibility: hidden;
+
+  transform: translateX(55px);
+
+  filter: saturate(.95) contrast(.98);
 
   transition:
-
-    opacity .25s,
-
-    transform .32s cubic-bezier(.22, .61, .36, 1);
-
-}
-
-.service-preview img {
-
-  width: 70%;
-
-  height: 70%;
-
-  object-fit: cover;
-
-  display: block;
-
-  border-radius: 22px;
-
-  transition: transform .45s ease;
+    opacity .35s ease,
+    transform .55s cubic-bezier(.22, .61, .36, 1),
+    filter .45s ease,
+    visibility .35s;
 
 }
-
-
-
-.service-item:hover::before {
-
-  opacity: 1;
-
-}
-
-
 
 .service-item:hover .service-preview {
 
   opacity: 1;
 
-  transform: translateX(0) scale(1);
+  visibility: visible;
+
+  transform: translateX(0);
+
+  filter: saturate(1.08) contrast(1.02);
+
+}
+
+
+/*==================================================
+                PREVIEW IMAGE
+==================================================*/
+
+.service-preview img {
+
+  width: 90%;
+
+  height: 90%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  transition:
+    transform .65s cubic-bezier(.22, .61, .36, 1);
 
 }
 
@@ -2579,18 +2785,17 @@ svg:not(:root) {
 }
 
 
-
-
-
 /*==================================================
-                TITLE
+                SERVICES TITLE
 ==================================================*/
 
 .services-title {
 
   font-size: var(--text-6xl);
 
-  line-height: var(--tw-leading, var(--text-6xl--line-height));
+  line-height:
+    var(--tw-leading,
+      var(--text-6xl--line-height));
 
   letter-spacing: -.025em;
 
@@ -2600,16 +2805,20 @@ svg:not(:root) {
 
   color: var(--foreground);
 
-  --tw-leading: 1.08;
-
   padding-bottom: calc(var(--spacing) * 1);
 
-  font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    Geist,
+    Geist Fallback,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
 
 }
 
+
 /*==================================================
-                DESCRIPTION
+                SERVICES DESCRIPTION
 ==================================================*/
 
 .services-right {
@@ -2630,15 +2839,23 @@ svg:not(:root) {
 
   font-size: var(--text-lg);
 
-  line-height: var(--tw-leading, var(--text-lg--line-height));
+  line-height:
+    var(--tw-leading,
+      var(--text-lg--line-height));
 
   color: var(--muted-foreground);
 
-  -tw-leading: var(--leading-relaxed);
+  --tw-leading: var(--leading-relaxed);
 
-  font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    Geist,
+    Geist Fallback,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
 
 }
+
 
 /*==================================================
                 BACKGROUND NUMBER
@@ -2647,25 +2864,39 @@ svg:not(:root) {
 .services-number {
 
   position: absolute;
+
   top: -90px;
+
   right: -11px;
+
   font-family: var(--font-mono);
+
   font-size: clamp(4.5rem, 13vw, 10rem);
+
   font-weight: 600;
+
   line-height: 1;
+
   letter-spacing: -.06em;
+
   color: #00000000;
-  -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 9%, transparent);
+
+  -webkit-text-stroke:
+    1.5px color-mix(in oklch,
+      var(--foreground) 9%,
+      transparent);
+
   user-select: none;
+
   pointer-events: none;
+
   z-index: 0;
 
 }
 
 
-
 /*==================================================
-                DIVIDER
+                SERVICES DIVIDER
 ==================================================*/
 
 .services-divider {
@@ -2678,967 +2909,48 @@ svg:not(:root) {
 
 }
 
-/*==================================================
-                SERVICE ROW HOVER
-==================================================*/
-
-.service-item {
-
-  transition:
-    background-color .45s ease,
-    transform .35s ease;
-
-}
-
-.service-item::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: #fcf6f7;
-
-  opacity: 0;
-
-  transition: opacity .35s ease;
-
-  z-index: 0;
-
-}
-
-.service-item>* {
-
-  position: relative;
-
-  z-index: 2;
-
-}
-
-.service-item:hover::before {
-
-  opacity: 1;
-
-}
 
 /*==================================================
-                TITLE
+                ARROW
 ==================================================*/
-
-.service-title-item {
-
-  transition:
-    color .35s ease,
-    transform .35s ease;
-
-}
-
-
-
-/*==================================================
-                SUBTITLE
-==================================================*/
-
-.service-subtitle {
-
-  transition:
-    color .35s ease,
-    transform .35s ease;
-
-}
-
-
-
-/*==================================================
-                DESCRIPTION
-==================================================*/
-
-.service-description {
-
-  transition:
-    transform .35s ease,
-    color .35s ease;
-
-}
-
-.service-item:hover .service-description {
-
-  transform: translateX(10px);
-
-}
-
-/*==================================================
-                IMAGE
-==================================================*/
-
-.service-preview {
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  transform: translateX(45px) scale(.94);
-
-  transition:
-
-    opacity .30s ease,
-
-    transform .45s cubic-bezier(.22, .61, .36, 1),
-
-    visibility .30s;
-
-}
-
-
-
-.service-preview img {
-
-  transition: transform .45s ease;
-
-}
-
-.service-item:hover .service-preview img {
-
-  transform: scale(1.08);
-
-}
-
-
-
-/*==================================================
-                CURSOR
-==================================================*/
-
-.service-item {
-
-  cursor: pointer;
-
-}
-
-/*==================================================
-                    SERVICE ROW
-==================================================*/
-
-.service-item {
-
-  position: relative;
-
-  display: grid;
-
-grid-template-columns:
-70px 430px minmax(340px,1fr) 190px 95px;
-
-  align-items: center;
-
-  column-gap: 55px;
-
-  width: 100%;
-
-  min-height: 148px;
-
-  padding: 34px 55px;
-
-  text-decoration: none;
-
-  color: inherit;
-
- 
-
-  overflow: hidden;
-
-  cursor: pointer;
-
-}
-
-
-/* Hover Background */
-
-.service-item::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: #fbf7f7;
-
-  opacity: 0;
-
-  transition: .45s;
-
-  z-index: 0;
-
-}
-
-.service-item:hover::before {
-
-  opacity: 1;
-
-}
-
-.service-item>* {
-
-  position: relative;
-
-  z-index: 2;
-
-}
-
-
-/*==================================================
-                    INDEX
-==================================================*/
-
-.service-index {
-
-  font-size: 24px;
-
-  font-weight: 500;
-
-  color: #7e7e7e;
-
-  letter-spacing: -1px;
-
-}
-
-
-/*==================================================
-                    LEFT CONTENT
-==================================================*/
-
-.service-main {
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-}
-
-.service-title-item {
-
-  margin: 0;
-
-  font-size: 31px;
-
-  line-height: 1.08;
-
-  font-weight: 700;
-
-  letter-spacing: -1.4px;
-
-  color: #111;
-
-  transition: .35s;
-
-}
-
-.service-subtitle {
-
-  margin-top: 12px;
-
-  font-size: 18px;
-
-  color: #777;
-
-  line-height: 1.5;
-
-}
-
-
-/*==================================================
-                    DESCRIPTION
-==================================================*/
-
-.service-description {
-
-  font-size: 11px;
-
-  line-height: 1.8;
-
-  color: #666;
-
-  width: 410px;
-
-  transition: .35s;
-
-}
-
-/*==================================================
-                SERVICE IMAGE
-==================================================*/
-
-.service-preview {
-
-  width: 190px;
-
-  height: 110px;
-
-  border-radius: 14px;
-
-  overflow: hidden;
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  transform: translateX(45px);
-
-  transition:
-    opacity .35s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1),
-    visibility .35s;
-
-}
-
-.service-preview img {
-
-  width: 70%;
-
-  height: 70%;
-
-  object-fit: cover;
-
-  display: block;
-
-  transition: transform .45s ease;
-
-}
-
-
-
-.service-item:hover .service-preview img {
-
-  transform: scale(1.08);
-
-}
-
-
-/*==================================================
-                TITLE HOVER
-==================================================*/
-
-.service-title-item {
-
-  transition:
-    color .35s ease,
-    transform .35s ease;
-
-}
-
-
-
-
-/*==================================================
-                SUBTITLE
-==================================================*/
-
-.service-subtitle {
-
-  transition: transform .35s ease;
-
-}
-
-.service-item:hover .service-subtitle {
-
-  transform: translateX(10px);
-
-}
-
-
-/*==================================================
-                DESCRIPTION
-==================================================*/
-
-.service-description {
-
-  transition:
-    transform .35s ease,
-    color .35s ease;
-
-}
-
-.service-item:hover .service-description {
-
-  transform: translateX(5px);
-
-}
-
-
-
-
-/*==================================================
-                SERVICE HOVER
-==================================================*/
-
-.service-item {
-
-  transition:
-    background-color .45s ease,
-    transform .35s ease;
-
-}
-
-.service-item::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: #fbf6f6;
-
-  opacity: 0;
-
-  transition: opacity .40s ease;
-
-  z-index: 0;
-
-}
-
-.service-item:hover::before {
-
-  opacity: 1;
-
-}
-
-
-/*==================================================
-                LEFT CONTENT
-==================================================*/
-
-.service-main {
-
-  transition: transform .35s ease;
-
-}
-
-.service-item:hover .service-main {
-
-  transform: translateX(10px);
-
-}
-
-.service-title-item {
-
-  transition:
-    color .35s ease,
-    transform .35s ease;
-
-}
-
-.service-item:hover .service-title-item {
-
-  color: #c31734;
-
-}
-
-.service-subtitle {
-
-  transition:
-    color .35s ease,
-    transform .35s ease;
-
-}
-
-.service-item:hover .service-subtitle {
-
-  color: #666;
-
-}
-
-
-/*==================================================
-                DESCRIPTION
-==================================================*/
-
-.service-description {
-
-  transition:
-    transform .35s ease,
-    color .35s ease;
-
-}
-
-.service-item:hover .service-description {
-
-  transform: translateX(12px);
-
-}
-
-
-/*==================================================
-                IMAGE
-==================================================*/
-
-.service-preview {
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  transform: translateX(55px);
-
-  transition:
-    opacity .35s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1),
-    visibility .35s;
-
-}
-
-.service-item:hover .service-preview {
-
-  opacity: 1;
-
-  visibility: visible;
-
-  transform: translateX(0);
-
-}
-
-.service-preview img {
-
-  transition: transform .45s ease;
-
-}
-
-.service-item:hover .service-preview img {
-
-  transform: scale(1.08);
-
-}
-
-
-
-/*==================================================
-                CURSOR
-==================================================*/
-
-.service-item {
-
-  cursor: pointer;
-
-}
-
-/*==================================================
-            FINAL HOVER ANIMATION
-==================================================*/
-
-/* تحسين الأداء */
-
-.service-main,
-.service-description,
-.service-preview,
-.service-arrow {
-
-  will-change: transform, opacity;
-
-}
-
-
-/*==================================================
-            ROW TIMING
-==================================================*/
-
-.service-item {
-
-  transition:
-    background-color .45s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1);
-
-}
-
-
-/*==================================================
-            MAIN BLOCK
-==================================================*/
-
-.service-main {
-
-  transition:
-    transform .45s cubic-bezier(.22, .61, .36, 1);
-
-}
-
-.service-item:hover .service-main {
-
-  transform: translateX(12px);
-
-}
-
-
-/*==================================================
-            DESCRIPTION
-==================================================*/
-
-.service-description {
-
-  transition:
-    transform .50s cubic-bezier(.22, .61, .36, 1);
-
-}
-
-.service-item:hover .service-description {
-
-  transform: translateX(14px);
-
-}
-
-
-/*==================================================
-            IMAGE
-==================================================*/
-
-.service-preview {
-
-  transition:
-
-    opacity .30s ease,
-
-    transform .55s cubic-bezier(.22, .61, .36, 1),
-
-    visibility .30s;
-
-}
-
-.service-item:hover .service-preview {
-
-  transform: translateX(0);
-
-}
-
-
-/*==================================================
-            IMAGE ZOOM
-==================================================*/
-
-.service-preview img {
-
-  transition:
-    transform .60s ease;
-
-}
-
-.service-item:hover .service-preview img {
-
-  transform: scale(1.08);
-
-}
-
-
-/*==================================================
-            ROW ACTIVE
-==================================================*/
-
-.service-item:hover {
-
-  z-index: 10;
-
-}
-
-/*==================================================
-    SERVICES 02 — Service Row
-==================================================*/
-
-
-/*--------------------------------------------------
-    Services List
---------------------------------------------------*/
-
-.services-list {
-  width: 100%;
-}
-
-
-/*--------------------------------------------------
-    Service Row
---------------------------------------------------*/
-
-.service-item {
-  position: relative;
-
-  display: grid;
-  grid-template-columns: 70px 430px minmax(340px, 1fr) 190px 70px;
-  align-items: center;
-  column-gap: 55px;
-
-  width: 100%;
-  min-height: 148px;
-
-  padding: 34px 55px;
-
-  text-decoration: none;
-  color: inherit;
-
-
-  overflow: hidden;
-  cursor: pointer;
-}
-
-/*==================================================
-    LAST SERVICE ITEM — BOTTOM BORDER 95%
-==================================================*/
-
-.service-item.item-four {
-  border-bottom: none;
-
-  background-color: transparent;
-
-  background-image: linear-gradient(to right,
-      transparent 0%,
-      transparent 2.5%,
-      #ececec 2.5%,
-      #ececec 97.5%,
-      transparent 97.5%,
-      transparent 100%);
-
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 1px;
-}
-
-/*==================================================
-    SERVICE HOVER — KEEP BOTTOM BORDER
-==================================================*/
-
-.service-item:hover {
-  background-color: transparent;
-}
-
-/* Hover background remains on pseudo element */
-.service-item:hover::before {
-  opacity: 1;
-}
-
-
-
-
-/*--------------------------------------------------
-    Layer Order
---------------------------------------------------*/
-
-.service-item>* {
-  position: relative;
-  z-index: 2;
-}
-
-
-/*--------------------------------------------------
-    Hover Background Layer
---------------------------------------------------*/
-
-.service-item::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background: #fbf7f7;
-
-  opacity: 0;
-
-  z-index: 0;
-}
-
-/*==================================================
-    SERVICES 03 — Typography
-==================================================*/
-
-
-/*--------------------------------------------------
-    Service Index
---------------------------------------------------*/
-
-.service-index {
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: -1px;
-  color: #7e7e7e;
-}
-
-
-/*--------------------------------------------------
-    Service Main
---------------------------------------------------*/
-
-.service-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-/*--------------------------------------------------
-    Service Title
---------------------------------------------------*/
-
-.service-title-item {
-  margin: 0;
-
-  font-size: 31px;
-  line-height: 1.08;
-  letter-spacing: -1.4px;
-  font-weight: 700;
-
-  color: #111;
-}
-
-
-/*--------------------------------------------------
-    Service Subtitle
---------------------------------------------------*/
-
-.service-subtitle {
-  margin-top: 12px;
-
-  font-size: 18px;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: #777;
-}
-
-
-/*--------------------------------------------------
-    Service Description
---------------------------------------------------*/
-
-.service-description {
-  max-width: 420px;
-
-  font-size: 15px;
-  line-height: 1.8;
-  font-weight: 400;
-
-  color: #666;
-}
-
-/*==================================================
-    SERVICES 04 — Hover Background & Image
-==================================================*/
-
-
-/*--------------------------------------------------
-    Hover Background
---------------------------------------------------*/
-
-.service-item::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background: #fbf7f7;
-
-  opacity: 0;
-
-  transition: opacity .45s ease;
-
-  z-index: 0;
-
-  border-width: 90% !important;
-}
-
-.service-item:hover::before {
-  opacity: 1;
-}
-
-
-/*--------------------------------------------------
-    Service Preview
---------------------------------------------------*/
-
-.service-preview {
-  width: 190px;
-  height: 110px;
-
-  border-radius: 14px;
-  overflow: hidden;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transform: translateX(55px);
-
-  transition:
-    opacity .35s ease,
-    transform .50s cubic-bezier(.22, .61, .36, 1),
-    visibility .35s;
-}
-
-
-/*--------------------------------------------------
-    Preview Image
---------------------------------------------------*/
-
-.service-preview img {
-  width: 90% !important;
-  height: 90% !important;
-
-  display: block;
-  object-fit: cover;
-
-  border-radius: 12px !important;
-
-  transition: transform .60s ease;
-}
-
-
-/*--------------------------------------------------
-    Image Hover
---------------------------------------------------*/
-
-.service-item:hover .service-preview {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-
-.service-item:hover .service-preview img {
-  transform: scale(0.8) !important;
-}
-
-/*==================================================
-    SERVICES 05 — Arrow Animation
-==================================================*/
-
-
-/*--------------------------------------------------
-    Arrow Container
---------------------------------------------------*/
-
-
-
 
 .arrow {
+
   display: flex;
+
   align-items: center;
+
   color: #777;
+
+  transition: color .35s ease;
+
 }
 
 .arrow-svg {
+
   overflow: visible;
+
 }
 
 .arrow-line,
 .arrow-head {
 
   stroke: currentColor;
+
   fill: none;
 
   stroke-width: 1.7;
 
   stroke-linecap: round;
+
   stroke-linejoin: round;
+
 }
 
 .arrow-line {
 
   transform-origin: 30px 6px;
+
   transform: scaleX(.50);
 
   transition: transform .35s ease;
@@ -3657,179 +2969,72 @@ grid-template-columns:
 
 }
 
+
 /*==================================================
-    SERVICES 06 — Content Hover Animation
+                CURSOR
 ==================================================*/
 
+.service-item {
 
-/*--------------------------------------------------
-    Performance
---------------------------------------------------*/
+  cursor: pointer;
+
+}
+
+
+/*==================================================
+                PERFORMANCE
+==================================================*/
 
 .service-main,
 .service-description,
 .service-preview,
 .service-arrow {
+
   will-change: transform, opacity;
+
 }
 
-
-/*--------------------------------------------------
-    Service Main
---------------------------------------------------*/
-
-.service-main {
-  transition:
-    transform .45s cubic-bezier(.22, .61, .36, 1);
-}
-
-.service-item:hover .service-main {
-  transform: translateX(12px);
-}
-
-
-/*--------------------------------------------------
-    Service Title
---------------------------------------------------*/
-
-.service-title-item {
-  transition:
-    color .35s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1);
-}
-
-.service-item:hover .service-title-item {
-  color: #c31734;
-}
-
-
-/*--------------------------------------------------
-    Service Subtitle
---------------------------------------------------*/
-
-.service-subtitle {
-  transition:
-    color .35s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1);
-}
-
-.service-item:hover .service-subtitle {
-  transform: translateX(8px);
-}
-
-
-/*--------------------------------------------------
-    Service Description
---------------------------------------------------*/
-
-.service-description {
-  transition:
-    transform .50s cubic-bezier(.22, .61, .36, 1),
-    color .35s ease;
-}
-
-.service-item:hover .service-description {
-  transform: translateX(14px);
-}
-
-
-/*--------------------------------------------------
-    Active Layer
---------------------------------------------------*/
-
-.service-item:hover {
-  z-index: 10;
-}
 
 /*==================================================
-    SERVICES 07 — Premium Effects
+                ROW ACTIVE
 ==================================================*/
 
+.service-item:hover {
 
-/*--------------------------------------------------
-    Smooth Row Transition
---------------------------------------------------*/
+  z-index: 10;
 
-.service-item {
-  transition:
-    background-color .45s ease,
-    transform .45s cubic-bezier(.22, .61, .36, 1),
-    border-color .35s ease;
 }
 
 
-/*--------------------------------------------------
-    Better Hover Background
---------------------------------------------------*/
-
-.service-item::before {
-  transition:
-    opacity .45s ease;
-}
-
-
-/*--------------------------------------------------
-    Image Enhancement
---------------------------------------------------*/
-
-.service-preview {
-  filter: saturate(.95) contrast(.98);
-
-  transition:
-    opacity .35s ease,
-    transform .55s cubic-bezier(.22, .61, .36, 1),
-    filter .45s ease,
-    visibility .35s;
-}
-
-.service-item:hover .service-preview {
-  filter: saturate(1.08) contrast(1.02);
-}
-
-
-/*--------------------------------------------------
-    Image Zoom
---------------------------------------------------*/
-
-.service-preview img {
-  transition:
-    transform .65s cubic-bezier(.22, .61, .36, 1);
-}
-
-.service-item:hover .service-preview img {
-  transform: scale(1.08);
-}
-
-
-
-
-
-
-/*--------------------------------------------------
-    Improve Rendering
---------------------------------------------------*/
+/*==================================================
+                RENDERING
+==================================================*/
 
 .service-item,
 .service-preview,
 .service-main,
 .service-arrow {
+
   backface-visibility: hidden;
+
   transform-style: preserve-3d;
+
 }
 
 
-/*--------------------------------------------------
-    GPU Acceleration
---------------------------------------------------*/
+/*==================================================
+                GPU ACCELERATION
+==================================================*/
 
 .service-preview img,
 .service-main,
 .service-description,
 .arrow-line,
 .arrow-head {
-  will-change: transform;
-}
 
+  will-change: transform;
+
+}
 
 
 
@@ -11742,86 +10947,37 @@ body.menu-open footer {
     .mobile-menu {
   
       display: flex;
-  
       flex-direction: column;
-  
       position: fixed;
-  
-      height: 1185.27px;
-  
+      height: 97%;
       top: 12px;
       right: 12px;
       left: auto;
       bottom: 12px;
-  
       font-size: var(--text-sm);
-  
       line-height: var(--tw-leading, var(--text-sm--line-height));
-  
       --removed-body-scroll-bar-size: 0px;
-  
       width: 75%;
       max-width: 384px;
-  
       border-radius: 26px;
-  
-  
       overflow: hidden;
-  
       -webkit-overflow-scrolling: touch;
-  
       overscroll-behavior: contain;
-  
       isolation: isolate;
-  
       z-index: 9999;
-  
-      transform:
-        translateX(120%) scale(.97);
-  
-      transition:
-        transform .28s cubic-bezier(.22, .61, .36, 1);
-  
-      background:
-  
-        linear-gradient(rgba(255, 255, 255, .28),
-  
-          rgba(255, 255, 255, .18));
-  
-      backdrop-filter:
-  
-        blur(60px) saturate(190%) brightness(1.08);
-  
-      -webkit-backdrop-filter:
-        blur(48px) saturate(180%) brightness(1.05);
-  
+      transform: translateX(120%) scale(.97);
+      transition: transform .28s cubic-bezier(.22, .61, .36, 1);
+      background: linear-gradient(rgba(255, 255, 255, .28), rgba(255, 255, 255, .18));
+      backdrop-filter: blur(60px) saturate(190%) brightness(1.08);
+      -webkit-backdrop-filter: blur(48px) saturate(180%) brightness(1.05);
       border: 1px solid rgba(255, 255, 255, .55);
-  
-      outline:
-        1px solid rgba(255, 255, 255, .12);
-  
+      outline: 1px solid rgba(255, 255, 255, .12);
       outline-offset: -1px;
-  
-      box-shadow:
-  
-        0 40px 90px rgba(0, 0, 0, .12),
-  
-        0 12px 28px rgba(0, 0, 0, .08),
-  
-        inset 0 1px rgba(255, 255, 255, .9),
-  
-        inset 0 -1px rgba(255, 255, 255, .15),
-  
-        0 0 0 1px rgba(255, 255, 255, .22);
-  
+      box-shadow: 0 40px 90px rgba(0, 0, 0, .12), 0 12px 28px rgba(0, 0, 0, .08), inset 0 1px rgba(255, 255, 255, .9), inset 0 -1px rgba(255, 255, 255, .15), 0 0 0 1px rgba(255, 255, 255, .22);
       color: var(--popover-foreground);
-  
       text-rendering: optimizeLegibility;
-  
       -webkit-font-smoothing: antialiased;
-  
       pointer-events: auto;
-  
       border-color: var(--border);
   
     }
@@ -12093,17 +11249,19 @@ body.menu-open footer {
   
     .mobile-menu-list {
   
-      list-style: none;
-  
-      margin: 0;
-  
-      padding: 18px 28px;
-  
-      display: flex;
-  
-      flex-direction: column;
-  
-      gap: 0;
+        list-style: none;
+        margin: 0;
+        padding-top: calc(var(--spacing) * 6);
+        padding-inline: calc(var(--spacing) * 6);
+        overflow-y: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: var(--text-sm);
+        line-height: var(--tw-leading, var(--text-sm--line-height));
+        color: var(--popover-foreground);
+        --removed-body-scroll-bar-size: 0px;
+        gap: 0;
   
     }
   
@@ -12234,9 +11392,10 @@ body.menu-open footer {
    background-color: #25d366;
  }
 
- .rounded-full {
-   border-radius: 3.40282e38px;
- }
+.rounded-full {
+  border-radius: 16px;
+  padding: 0 !important;
+}
 
  .justify-center {
    justify-content: center;
@@ -12252,12 +11411,14 @@ body.menu-open footer {
 
 
  .size-8 {
-   width: calc(var(--spacing) * 8);
-   height: calc(var(--spacing) * 8);
+   width: 32px;
+   height: 32px;
  }
 
- .inline-flex {
+ .mobile-menu-list .inline-flex {
    display: inline-flex;
+   align-items: center;
+   justify-content: center;
  }
 
  .text-sm {
@@ -12271,6 +11432,8 @@ body.menu-open footer {
 
    width: calc(var(--spacing) * 3.5);
    height: calc(var(--spacing) * 3.5);
+
+   border-radius: 50%;
 
    font-size: var(--text-sm);
 
@@ -12286,7 +11449,7 @@ body.menu-open footer {
    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
    transition-duration: var(--tw-duration, var(--default-transition-duration));
 
-   border-radius: 3.40282e38px;
+
 
  }
 
@@ -12337,117 +11500,177 @@ body.menu-open footer {
    font-size: 13px;
 
  }
-    /*==================================================
-                  MENU ANIMATION
+      /*==================================================
+                MENU ANIMATION
+==================================================*/
+
+
+
+  /*=============================================
+        MENU ITEMS
+=============================================*/
+
+  .mobile-menu-list li {
+
+    opacity: 0;
+
+    transform:
+      translateY(-25px);
+
+    transition:
+      opacity .45s ease,
+      transform .6s cubic-bezier(.22, .61, .36, 1);
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li {
+
+    opacity: 1;
+
+    transform: none;
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li:nth-child(1) {
+
+    transition-delay: .22s;
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li:nth-child(2) {
+
+    transition-delay: .30s;
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li:nth-child(3) {
+
+    transition-delay: .38s;
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li:nth-child(4) {
+
+    transition-delay: .46s;
+
+  }
+
+  .mobile-menu.active .mobile-menu-list li:nth-child(5) {
+
+    transition-delay: .54s;
+
+  }
+
+  /*=============================================
+        CONTACT
+=============================================*/
+
+  .mobile-contact {
+
+    opacity: 0;
+
+    transform:
+      translateY(-30px);
+
+    transition:
+      opacity .45s ease,
+      transform .65s cubic-bezier(.22, .61, .36, 1);
+
+  }
+
+  .mobile-menu.active .mobile-contact {
+
+    opacity: 1;
+
+    transform: none;
+
+    transition-delay: .66s;
+
+  }
+
+  /*=============================================
+        FOOTER
+=============================================*/
+
+  .mobile-menu-footer {
+
+    opacity: 0;
+
+    transform:
+      translateY(-30px);
+
+    transition:
+      opacity .45s ease,
+      transform .65s cubic-bezier(.22, .61, .36, 1);
+
+  }
+
+  .mobile-menu.active .mobile-menu-footer {
+
+    opacity: 1;
+
+    transform: none;
+
+    transition-delay: .82s;
+
+  }
+
+  /*==================================================
+                PAGE FROSTED GLASS
   ==================================================*/
-  
-    .mobile-menu-list li {
-  
-      opacity: 0;
-  
-      transform: translateX(20px);
-  
-      transition: .35s;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li {
-  
-      opacity: 1;
-  
-      transform: none;
-  
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(1) {
-      transition-delay: .08s;
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(2) {
-      transition-delay: .12s;
-    }
-  
-  
-  
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(3) {
-      transition-delay: .16s;
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(4) {
-      transition-delay: .20s;
-    }
-  
-    .mobile-menu.active .mobile-menu-list li:nth-child(5) {
-      transition-delay: .24s;
-    }
-  
-    /*==================================================
-                  PAGE FROSTED GLASS
-    ==================================================*/
-  
-    body {
-  
-      transition:
-        filter .35s ease,
-        transform .35s ease;
-  
-    }
-  
-  
-    /*==================================================
-                  PAGE GLASS EFFECT
-  ==================================================*/
-  
-    main,
-    header,
-    footer {
-  
-      transition:
-        filter .45s ease,
-        transform .45s ease,
-        opacity .45s ease;
-  
-    }
-  
-    body.menu-open main {
-  
-      filter:
-  
-        blur(12px) brightness(.68) saturate(.50) contrast(.92);
-  
-      transform: scale(.985);
-  
-    }
-  
-    body.menu-open header {
-  
-      filter:
-  
-        blur(8px) brightness(.82);
-  
-    }
-  
-    body.menu-open footer {
-  
-      filter:
-  
-        blur(12px) brightness(.70);
-  
-    }
+
+  body {
+
+    transition:
+      filter .35s ease,
+      transform .35s ease;
+
+  }
 
 
-    .header {
-      z-index: 999;
-    }
+  /*==================================================
+                PAGE GLASS EFFECT
+==================================================*/
 
-    .mobile-overlay {
-      z-index: 9998;
-    }
+  main,
+  header,
+  footer {
 
-    .mobile-menu {
-      z-index: 9999;
-    }
+    transition:
+      filter .45s ease,
+      transform .45s ease,
+      opacity .45s ease;
+
+  }
+
+  body.menu-open main {
+
+    filter:
+      brightness(.96) saturate(.95);
+
+  }
+
+
+
+  body.menu-open footer {
+
+    filter:
+
+      blur(12px) brightness(.70);
+
+  }
+
+  .header {
+    z-index: 999;
+  }
+
+  .mobile-overlay {
+    z-index: 9998;
+  }
+
+  .mobile-menu {
+    z-index: 9999;
+  }
 
 }
 
@@ -14496,7 +13719,7 @@ body.menu-open footer {
 
   .trusted-divider {
 
-    width: 751px;
+    width: 937px;
     height: 1px;
     background: #e7e7e7;
     margin: 40px 0 58px;
@@ -15142,7 +14365,7 @@ body.menu-open footer {
     
         background: #fff;
     
-        padding: 0 0;
+        padding: 119px 0px;
     
         overflow: visible;
     
@@ -16035,7 +15258,7 @@ body.menu-open footer {
         .services-left {
           width: 400px;
           margin-top: -54px;
-          margin-left: -29px;
+          margin-left: -14px;
           font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
         }
 
@@ -16054,7 +15277,7 @@ body.menu-open footer {
 
         .services-right {
           width: 339px;
-          margin-left: -23px;
+          margin-left: -13px;
           margin-top: -13px;
         }
 
@@ -16108,7 +15331,7 @@ body.menu-open footer {
 
           align-items: center;
 
-          column-gap: 12px;
+          column-gap: 27px;
 
           width: 100%;
           min-width: 0;
@@ -16172,23 +15395,14 @@ body.menu-open footer {
     ==================================================*/
           
         .service-item>.font-mono {
-          width: 28px;
-
-          font-family:
-            Geist Mono,
-            Geist Mono Fallback,
-            ui-monospace,
-            monospace;
-
-          font-size: 10px;
-
-          line-height: 1;
-
-          font-weight: 400;
-
-          color: #777;
-
-          white-space: nowrap;
+              width: 28px;
+              font-family: Geist Mono, Geist Mono Fallback, ui-monospace, monospace;
+              font-size: 12px;
+              line-height: 1;
+              font-weight: 400;
+              color: #777;
+              white-space: nowrap;
+              margin-left: 17px;
         }
           
           
@@ -16255,7 +15469,7 @@ body.menu-open footer {
 
         margin: 5px 0 0;
 
-        font-size: 10.5px;
+        font-size: 12px;
 
         line-height: 1.4;
 
@@ -16408,6 +15622,1122 @@ body.menu-open footer {
 
 
 }
+
+/*=====================================================
+                SERVICE SECTION Medium Size           
+  =====================================================*/
+
+@media screen and (min-width:418px) and (max-width:639px) {
+  /*==================================================
+                      SERVICES SECTION
+      ==================================================*/
+  
+    .services-section {
+  
+      position: relative;
+  
+      background-color:
+        color-mix(in oklab, var(--secondary) 50%, transparent);
+  
+      padding-top: 160px;
+  
+  
+  
+    }
+  
+    .services-divider {
+  
+      width: 100%;
+  
+      height: 1px;
+  
+      background: #e7e7e7;
+  
+      margin-top: 4px;
+  
+  
+    }
+  
+    .services-section .container {
+  
+      max-width: 1380px;
+  
+      margin: auto;
+  
+  
+  
+    }
+  
+    /*==================================================
+                      HEADER
+      ==================================================*/
+  
+    .services-header {
+      grid-template-columns: 1fr;
+      column-gap: 0;
+      row-gap: 30px;
+      align-items: start;
+      padding-bottom: 40px;
+      margin-top: -33px;
+    }
+  
+  
+    /* ==============================
+        SERVICES TITLE
+    ============================== */
+  
+    .services-left {
+      width: 400px;
+      margin-top: -54px;
+      margin-left: -16px;
+      font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .services-title .divider-medium{
+      display: none !important;
+    }
+  
+    .services-title {
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      font-weight: var(--font-weight-semibold);
+      padding-bottom: calc(var(--spacing) * 1);
+    }
+  
+  
+    /* ==============================
+        SERVICES DESCRIPTION
+    ============================== */
+  
+    .services-right {
+      width: 339px;
+      margin-left: -10px;
+      margin-top: -21px;
+    }
+  
+    .services-right p {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--muted-foreground);
+    }
+  
+  
+    .services-number {
+  
+      position: absolute;
+      top: -62px;
+      right: -35px;
+      font-family: var(--font-mono);
+      font-size: clamp(4.5rem, 13vw, 10rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -.06em;
+      color: #00000000;
+      -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 9%, transparent);
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+  
+    }
+  
+    /*==================================================
+                        SERVICES LIST
+        ==================================================*/
+  
+    .services-list {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+  
+    /*==================================================
+                        SERVICE ITEM
+        ==================================================*/
+  
+    .service-item {
+      position: relative;
+  
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr) 28px;
+  
+      align-items: center;
+  
+      column-gap: 27px;
+  
+      width: 100%;
+      min-width: 0;
+      min-height: 73px;
+  
+      padding: 17px 10px;
+  
+      box-sizing: border-box;
+  
+      border-top: 1px solid #e8e8e8;
+  
+      text-decoration: none;
+      color: inherit;
+  
+      overflow: hidden;
+  
+      cursor: pointer;
+  
+      transition:
+        background-color .35s ease;
+    }
+  
+  
+    /*==================================================
+                    HOVER BACKGROUND
+      ==================================================*/
+  
+    .service-item::before {
+      content: "";
+  
+      position: absolute;
+      inset: 0;
+  
+      background: #fbf6f6;
+  
+      opacity: 0;
+  
+      z-index: 0;
+  
+      transition:
+        opacity .35s ease;
+    }
+  
+    .service-item:hover::before {
+      opacity: 1;
+    }
+  
+  
+    /*==================================================
+                      CONTENT LAYER
+      ==================================================*/
+  
+    .service-item>* {
+      position: relative;
+      z-index: 2;
+    }
+  
+  
+    /*==================================================
+                    INDEX — 01 / 02 / 03
+      ==================================================*/
+  
+    .service-item>.font-mono {
+        width: 28px;
+        font-family: Geist Mono, Geist Mono Fallback, ui-monospace, monospace;
+        font-size: 12px;
+        line-height: 1;
+        font-weight: 400;
+        color: #777;
+        white-space: nowrap;
+        margin-left: 17px;
+    }
+  
+  
+    /*==================================================
+                    SERVICE MAIN
+    ==================================================*/
+  
+    .service-main {
+      min-width: 0;
+  
+      display: flex;
+  
+      flex-direction: column;
+  
+      justify-content: center;
+  
+      transition:
+        transform .35s cubic-bezier(.22, .61, .36, 1);
+    }
+  
+  
+    /*==================================================
+                      SERVICE TITLE
+      ==================================================*/
+  
+    .service-title-item {
+      display: block;
+  
+      width: 100%;
+      max-width: 100%;
+  
+      margin: 0;
+  
+      font-size: 16px;
+  
+      line-height: 1.2;
+  
+      font-weight: 700;
+  
+      letter-spacing: -.4px;
+  
+      color: #111;
+  
+      white-space: nowrap;
+  
+      overflow: hidden;
+  
+      text-overflow: ellipsis;
+  
+      transition:
+        color .35s ease;
+    }
+  
+  
+    /*==================================================
+                    SERVICE SUBTITLE
+    ==================================================*/
+  
+    .service-subtitle {
+      display: block;
+  
+      width: 100%;
+      max-width: 100%;
+  
+      margin: 5px 0 0;
+  
+      font-size: 10.5px;
+  
+      line-height: 1.4;
+  
+      font-weight: 400;
+  
+      color: #777;
+  
+      white-space: nowrap;
+  
+      overflow: hidden;
+  
+      text-overflow: ellipsis;
+  
+      transition:
+        color .35s ease;
+    }
+  
+  
+    /*==================================================
+                      SERVICE DESCRIPTION
+                      HIDDEN ON MOBILE
+      ==================================================*/
+  
+    .service-description {
+      display: none !important;
+    }
+  
+  
+    /*==================================================
+                        SERVICE PREVIEW / IMAGE
+                        HIDDEN ON MOBILE
+        ==================================================*/
+  
+    .service-preview {
+      display: none !important;
+    }
+  
+    .service-preview img {
+      display: none !important;
+    }
+  
+  
+    /*==================================================
+                            ARROW
+    ==================================================*/
+  
+    .service-item .arrow {
+      display: flex;
+  
+      align-items: center;
+      justify-content: center;
+  
+      width: 28px;
+      height: 28px;
+  
+      flex-shrink: 0;
+  
+      color: #777;
+  
+      transition:
+        color .35s ease,
+        transform .35s cubic-bezier(.22, .61, .36, 1);
+    }
+  
+  
+    .service-item .arrow-svg {
+      display: block;
+  
+      width: 22px;
+      height: 12px;
+  
+      overflow: visible;
+  
+      transition:
+        width .35s cubic-bezier(.22, .61, .36, 1);
+    }
+  
+  
+    /*==================================================
+                    ARROW SVG
+    ==================================================*/
+  
+    .service-item .arrow-line,
+    .service-item .arrow-head {
+      fill: none;
+  
+      stroke: currentColor;
+  
+      stroke-width: 1.3;
+  
+      transition:
+        stroke .35s ease;
+    }
+  
+  
+    /*==================================================
+                  HOVER — MAIN CONTENT
+  ==================================================*/
+  
+    .service-item:hover .service-main {
+      transform: translateX(5px);
+    }
+  
+  
+    /*==================================================
+                    HOVER — TITLE
+    ==================================================*/
+  
+    .service-item:hover .service-title-item {
+      color: #c31734;
+    }
+  
+  
+    /*==================================================
+                    HOVER — ARROW
+    ==================================================*/
+  
+    .service-item:hover .arrow {
+      color: #c31734;
+  
+      transform: translateX(2px);
+    }
+  
+    .service-item:hover .arrow-svg {
+      width: 28px;
+    }
+  
+  
+    /*==================================================
+                    LAST ITEM
+    ==================================================*/
+  
+    .service-item:last-child {
+      border-bottom: 1px solid #e8e8e8;
+  
+    }
+  
+  
+    /*==================================================
+                    SERVICES DIVIDER
+    ==================================================*/
+  
+    .services-divider {
+      width: 100%;
+      height: 1px;
+  
+      background: #e8e8e8;
+    }
+}
+
+/*=====================================================*
+                SERVICE SECTION — TABLET
+                640px → 1024px
+*=====================================================*/
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+
+
+  /*==================================================*
+                SERVICES SECTION
+==================================================*/
+
+  .services-section {
+
+    position: relative;
+
+    background: color-mix(in oklab,
+        var(--secondary) 50%,
+        transparent);
+
+    padding-top: 120px;
+
+  }
+
+
+  /*==================================================*
+                SECTION BOTTOM
+==================================================*/
+
+  .services-section::after {
+
+    content: "";
+
+    display: block;
+
+    width: 100%;
+
+    height: 80px;
+
+    background: #fcf6f6;
+
+  }
+
+
+  /*==================================================*
+                CONTAINER
+==================================================*/
+
+  .services-section .container {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+  }
+
+
+  /*==================================================*
+                HEADER
+==================================================*/
+
+  .services-header {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    column-gap: 0;
+
+    row-gap: 24px;
+
+    align-items: start;
+
+    width: 100%;
+
+    padding: 0 32px 42px;
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+  }
+
+
+  /*==================================================*
+                LEFT SIDE
+==================================================*/
+
+  .services-left {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+      Geist,
+      Geist Fallback,
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+
+  }
+
+
+  /*==================================================*
+                SERVICES TITLE
+==================================================*/
+
+  .services-title {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-size: clamp(17px, 5.8913vw, 53px);
+
+    line-height: 1.05;
+
+    letter-spacing: -.035em;
+
+    font-weight: var(--font-weight-semibold);
+
+    color: var(--foreground);
+
+  }
+
+
+  /*==================================================*
+                HIDE MEDIUM DIVIDER
+==================================================*/
+
+  .services-title .divider-medium {
+
+    display: none !important;
+
+  }
+
+
+  /*==================================================*
+                RIGHT DESCRIPTION
+==================================================*/
+
+  .services-right {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    margin: 0;
+
+    padding: 0;
+
+    align-self: start;
+
+  }
+
+
+  .services-right p {
+
+    margin-top: 8px;
+
+    width: 93.89vw;
+
+    font-size: clamp(15px, 2.45vw, 18px);
+
+    line-height: 1.65;
+
+    color: var(--muted-foreground);
+
+    font-family:
+      Geist,
+      Geist Fallback,
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+
+  }
+
+
+  /*==================================================*
+                BACKGROUND NUMBER
+==================================================*/
+
+  .services-number {
+
+    position: absolute;
+
+    top: -35px;
+
+    right: 18px;
+
+    font-family: var(--font-mono);
+
+    font-size: clamp(5rem, 15vw, 9rem);
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -.06em;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+      1.5px color-mix(in oklch,
+        var(--foreground) 9%,
+        transparent);
+
+    user-select: none;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+  }
+
+
+  /*==================================================*
+                SERVICES LIST
+==================================================*/
+
+  .services-list {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 0 24px;
+
+    box-sizing: border-box;
+
+  }
+
+
+  /*==================================================*
+                SERVICE ITEM
+==================================================*/
+
+  .service-item {
+
+    position: relative;
+
+    display: grid;
+
+    /*
+      INDEX
+      CONTENT
+      ARROW
+  */
+
+    grid-template-columns:
+      34px minmax(0, 1fr) 34px;
+
+    align-items: center;
+
+    column-gap: 22px;
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 92px;
+
+    padding: 20px 12px;
+
+    box-sizing: border-box;
+
+    border-top: 1px solid #e8e8e8;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+      background-color .35s ease;
+
+  }
+
+
+  /*==================================================*
+                HOVER BACKGROUND
+==================================================*/
+
+  .service-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #fbf6f6;
+
+    opacity: 0;
+
+    z-index: 0;
+
+    transition:
+      opacity .35s ease;
+
+  }
+
+
+  .service-item:hover::before {
+
+    opacity: 1;
+
+  }
+
+
+  /*==================================================*
+                CONTENT LAYER
+==================================================*/
+
+  .service-item>* {
+
+    position: relative;
+
+    z-index: 2;
+
+  }
+
+
+  /*==================================================*
+                INDEX
+==================================================*/
+
+  .service-item>.font-mono {
+
+    width: 34px;
+
+    margin: 0;
+
+    font-family:
+      Geist Mono,
+      Geist Mono Fallback,
+      ui-monospace,
+      monospace;
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    color: #777;
+
+    white-space: nowrap;
+
+  }
+
+
+  /*==================================================*
+                SERVICE MAIN
+==================================================*/
+
+  .service-main {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    transition:
+      transform .40s cubic-bezier(.22, .61, .36, 1);
+
+  }
+
+
+  /*==================================================*
+                SERVICE TITLE
+==================================================*/
+
+  .service-title-item {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-size: 3.26vw;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    letter-spacing: -.5px;
+
+    color: #111;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    transition:
+      color .35s ease;
+
+  }
+
+
+  /*==================================================*
+                SERVICE SUBTITLE
+==================================================*/
+
+  .service-subtitle {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: calc(var(--spacing) * 1);
+
+
+    font-size: 1.90vw;
+
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+
+        font-family: Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif;
+
+    color: var(--muted-foreground);
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    transition:
+      color .35s ease;
+
+  }
+
+
+  /*==================================================*
+                DESCRIPTION
+                HIDDEN
+==================================================*/
+
+  .service-description {
+
+    display: none !important;
+
+  }
+
+
+  /*==================================================*
+                PREVIEW
+                HIDDEN
+==================================================*/
+
+  .service-preview {
+
+    display: none !important;
+
+  }
+
+
+  .service-preview img {
+
+    display: none !important;
+
+  }
+
+
+/*==================================================*
+                ARROW — TABLET
+==================================================*/
+
+.service-item .arrow {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 12px;
+
+  flex-shrink: 0;
+
+  color: #777;
+
+  transition:
+    color .55s cubic-bezier(.22, .61, .36, 1),
+    transform .55s cubic-bezier(.22, .61, .36, 1);
+
+}
+
+
+/*==================================================*
+                ARROW SVG
+==================================================*/
+
+.service-item .arrow-svg {
+
+  display: block;
+
+  width: 34px;
+  height: 12px;
+
+  overflow: visible;
+
+}
+
+
+/*==================================================*
+                ARROW LINE
+==================================================*/
+
+.service-item .arrow-line {
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.25;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transform-origin: 30px 6px;
+
+  transform: scaleX(.4);
+
+  transition:
+    transform .60s cubic-bezier(.22, .61, .36, 1),
+    stroke .55s ease;
+
+}
+
+
+/*==================================================*
+                ARROW HEAD
+==================================================*/
+
+.service-item .arrow-head {
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.25;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transition:
+    stroke .55s ease;
+
+}
+
+
+/*==================================================*
+                HOVER
+==================================================*/
+
+.service-item:hover .arrow {
+
+  color: #C53137;
+
+}
+
+.service-item:hover .arrow-line {
+
+  transform: scaleX(1);
+
+}
+
+
+  /*==================================================*
+                HOVER — MAIN
+==================================================*/
+
+  .service-item:hover .service-main {
+
+    transform: translateX(8px);
+
+  }
+
+
+  /*==================================================*
+                HOVER — TITLE
+==================================================*/
+
+  .service-item:hover .service-title-item {
+
+    color: #c31734;
+
+  }
+
+
+  /*==================================================*
+                HOVER — SUBTITLE
+==================================================*/
+
+  .service-item:hover .service-subtitle {
+
+    color: #666;
+
+  }
+
+
+
+
+
+  /*==================================================*
+                LAST SERVICE ITEM
+==================================================*/
+
+  .service-item:last-child {
+
+    border-bottom:
+      1px solid #e8e8e8;
+
+  }
+
+
+  /*==================================================*
+                SERVICES DIVIDER
+==================================================*/
+
+  .services-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin: 0;
+
+    padding: 0;
+
+    background: #e8e8e8;
+
+  }
+
+
+  /*==================================================*
+                PERFORMANCE
+==================================================*/
+
+  .service-item,
+  .service-main,
+  .service-arrow {
+
+    backface-visibility: hidden;
+
+  }
+
+
+}
+
 
 
 
