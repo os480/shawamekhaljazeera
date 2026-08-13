@@ -1450,6 +1450,226 @@ createSmoothParallax(
 
 })();
 
+/*==================================================*
+        Process NUMBER RESPONSIVE SCROLL
+==================================================*/
+
+(() => {
+
+    const number = document.querySelector(".process-bg-number");
+
+    if (!number) return;
+
+
+    /*==================================================
+                    VARIABLES
+    ==================================================*/
+
+    let currentY = 0;
+    let targetY = 0;
+
+    const smooth = 0.30;
+
+    let scrollStart = 0;
+    let scrollEnd = 0;
+    let downMove = 0;
+    let upMove = 0;
+
+    let animationEnabled = false;
+
+
+    /*==================================================
+                    SET SETTINGS
+    ==================================================*/
+
+    function setSettings() {
+
+        const width = window.innerWidth;
+
+
+        /*==============================================
+                    MOBILE
+                390px - 416px
+        ==============================================*/
+
+        if (width >= 390 && width < 417) {
+
+            animationEnabled = true;
+
+            scrollStart = 3262;
+            scrollEnd   = 3622;
+
+            downMove = 46;
+            upMove   = 56;
+
+            return;
+        }
+
+        /*==============================================
+                    Medium size
+                418px - 639px
+        ==============================================*/
+
+        if (width >= 418 && width < 639) {
+
+            animationEnabled = true;
+
+            scrollStart = 2662;
+            scrollEnd   = 2988;
+
+            downMove = 100;
+            upMove   = 500;
+
+            return;
+        }
+
+
+        /*==============================================
+                    TABLET
+                640px - 1024px
+        ==============================================*/
+
+        else if (width >= 640 && width < 1025) {
+
+            animationEnabled = true;
+
+            scrollStart = 2480;
+            scrollEnd   = 2840;
+
+            downMove = 30;
+            upMove   = 80;
+
+            return;
+        }
+
+
+        /*==============================================
+                    DESKTOP
+                    1025px+
+        ==============================================*/
+
+        else if (width >= 1025) {
+
+            animationEnabled = true;
+
+            scrollStart = 4190;
+            scrollEnd   = 4590;
+
+            downMove = -10;
+            upMove   = 70;
+
+            return;
+        }
+
+
+        /*==============================================
+                    OTHER SIZES
+        ==============================================*/
+
+        animationEnabled = false;
+
+        scrollStart = 0;
+        scrollEnd   = 0;
+
+        downMove = 0;
+        upMove   = 0;
+
+    }
+
+
+    /*==================================================
+                    UPDATE
+    ==================================================*/
+
+    function update() {
+
+        if (!animationEnabled) {
+
+            targetY = 0;
+
+            return;
+
+        }
+
+
+        let progress =
+            (window.scrollY - scrollStart) /
+            (scrollEnd - scrollStart);
+
+
+        progress = Math.max(
+            0,
+            Math.min(progress, 1)
+        );
+
+
+        targetY =
+            downMove -
+            (
+                progress *
+                (downMove + upMove)
+            );
+
+    }
+
+
+    /*==================================================
+                    SMOOTH ANIMATION
+    ==================================================*/
+
+    function animate() {
+
+        currentY +=
+            (targetY - currentY) *
+            smooth;
+
+
+        number.style.transform =
+            `translate3d(0, ${currentY}px, 0)`;
+
+
+        requestAnimationFrame(animate);
+
+    }
+
+
+    /*==================================================
+                    RESIZE
+    ==================================================*/
+
+    window.addEventListener("resize", () => {
+
+        setSettings();
+
+        update();
+
+    });
+
+
+    /*==================================================
+                    SCROLL
+    ==================================================*/
+
+    window.addEventListener(
+        "scroll",
+        update,
+        { passive: true }
+    );
+
+
+    /*==================================================
+                    INITIALIZE
+    ==================================================*/
+
+    setSettings();
+
+    update();
+
+    animate();
+
+})();
+
+
 
 
 
